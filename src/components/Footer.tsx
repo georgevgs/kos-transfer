@@ -1,0 +1,144 @@
+import { Separator } from '@/components/ui/separator'
+import { WhatsappLogo, Phone, EnvelopeSimple, MapPin, InstagramLogo, FacebookLogo } from '@phosphor-icons/react'
+import { motion } from 'framer-motion'
+
+export function Footer() {
+    const whatsappNumber = '+306900000000'
+    const phoneNumber = '+30 690 000 0000'
+    const email = 'info@koselitetransfers.com'
+    
+    return (
+        <footer className="bg-gradient-to-b from-primary to-primary/95 text-primary-foreground py-20 sm:py-20 md:py-24 px-5 sm:px-6 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent/10 via-transparent to-transparent opacity-40" />
+            <div className="absolute top-0 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-accent/5 rounded-full blur-3xl" />
+            
+            <div className="max-w-7xl mx-auto relative z-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-12 md:gap-14 mb-16 sm:mb-16 md:mb-20">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                        className="sm:col-span-2 lg:col-span-1"
+                    >
+                        <h3 className="text-2xl sm:text-3xl font-bold mb-5 sm:mb-5 md:mb-6 text-accent tracking-tight">
+                            Kos Elite Transfers
+                        </h3>
+                        <p className="text-primary-foreground/75 leading-relaxed font-light text-base sm:text-base">
+                            Premium transportation services across the beautiful island of Kos. 
+                            Experience luxury, comfort, and reliability.
+                        </p>
+                    </motion.div>
+                    
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                        <h4 className="font-semibold text-lg sm:text-lg mb-5 sm:mb-5 md:mb-6 tracking-tight">Quick Links</h4>
+                        <ul className="space-y-4 sm:space-y-4">
+                            <li>
+                                <a href="#fleet" className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light inline-flex items-center group">
+                                    <span className="group-hover:translate-x-1 transition-transform">Our Fleet</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#services" className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light inline-flex items-center group">
+                                    <span className="group-hover:translate-x-1 transition-transform">Services</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#about" className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light inline-flex items-center group">
+                                    <span className="group-hover:translate-x-1 transition-transform">About Us</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </motion.div>
+                    
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                        <h4 className="font-semibold text-lg sm:text-lg mb-5 sm:mb-5 md:mb-6 tracking-tight">Contact</h4>
+                        <ul className="space-y-5 sm:space-y-5">
+                            <li className="flex items-center gap-3 sm:gap-3 group">
+                                <Phone size={22} weight="fill" className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform" />
+                                <a href={`tel:${whatsappNumber}`} className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light">
+                                    {phoneNumber}
+                                </a>
+                            </li>
+                            <li className="flex items-center gap-3 sm:gap-3 group">
+                                <WhatsappLogo size={22} weight="fill" className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform" />
+                                <a 
+                                    href={`https://wa.me/${whatsappNumber}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light"
+                                >
+                                    WhatsApp
+                                </a>
+                            </li>
+                            <li className="flex items-center gap-3 sm:gap-3 group">
+                                <EnvelopeSimple size={22} weight="fill" className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform" />
+                                <a href={`mailto:${email}`} className="text-sm sm:text-sm text-primary-foreground/75 hover:text-accent transition-colors font-light break-all">
+                                    {email}
+                                </a>
+                            </li>
+                        </ul>
+                    </motion.div>
+                    
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                        <h4 className="font-semibold text-lg sm:text-lg mb-5 sm:mb-5 md:mb-6 tracking-tight">Location</h4>
+                        <div className="flex items-start gap-3 sm:gap-3 mb-10 sm:mb-10">
+                            <MapPin size={22} weight="fill" className="text-accent flex-shrink-0 mt-0.5 sm:mt-1" />
+                            <p className="text-base sm:text-base text-primary-foreground/75 font-light">
+                                Kos Island<br />
+                                Dodecanese, Greece
+                            </p>
+                        </div>
+                        <div className="flex gap-4 sm:gap-4">
+                            <motion.a 
+                                href="#" 
+                                className="w-12 h-12 sm:w-12 sm:h-12 rounded-full bg-primary-foreground/5 hover:bg-accent/15 border border-primary-foreground/10 hover:border-accent/40 flex items-center justify-center transition-all duration-300"
+                                aria-label="Instagram"
+                                whileHover={{ scale: 1.1, y: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <InstagramLogo size={22} weight="fill" className="text-primary-foreground hover:text-accent transition-colors" />
+                            </motion.a>
+                            <motion.a 
+                                href="#" 
+                                className="w-12 h-12 sm:w-12 sm:h-12 rounded-full bg-primary-foreground/5 hover:bg-accent/15 border border-primary-foreground/10 hover:border-accent/40 flex items-center justify-center transition-all duration-300"
+                                aria-label="Facebook"
+                                whileHover={{ scale: 1.1, y: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <FacebookLogo size={22} weight="fill" className="text-primary-foreground hover:text-accent transition-colors" />
+                            </motion.a>
+                        </div>
+                    </motion.div>
+                </div>
+                
+                <Separator className="bg-primary-foreground/15 mb-10 sm:mb-10" />
+                
+                <motion.div 
+                    className="text-center text-primary-foreground/60 text-sm sm:text-sm font-light"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7, delay: 0.4 }}
+                >
+                    <p>© {new Date().getFullYear()} Kos Elite Transfers. All rights reserved.</p>
+                </motion.div>
+            </div>
+        </footer>
+    )
+}
