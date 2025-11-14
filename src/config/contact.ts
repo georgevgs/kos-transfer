@@ -9,12 +9,12 @@ export const CONTACT = {
     email: 'info@koselitetransfers.com',
     location: {
         city: 'Kos Island',
-        region: 'Dodecanese, Greece'
+        region: 'Dodecanese, Greece',
     },
     social: {
         instagram: '#',
-        facebook: '#'
-    }
+        facebook: '#',
+    },
 } as const
 
 /**

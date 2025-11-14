@@ -1,40 +1,40 @@
 import { Separator } from '@/components/ui/separator'
-import { WhatsappLogo, Phone, EnvelopeSimple, MapPin, InstagramLogo, FacebookLogo } from '@phosphor-icons/react'
+import { EnvelopeSimple, FacebookLogo, InstagramLogo, MapPin, Phone, WhatsappLogo } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
 
 const CONTACT_INFO = {
     whatsappNumber: '+306900000000',
     phoneNumber: '+30 690 000 0000',
-    email: 'info@koselitetransfers.com'
+    email: 'info@koselitetransfers.com',
 }
 
 const QUICK_LINKS = [
     { href: '#fleet', label: 'Our Fleet' },
     { href: '#services', label: 'Services' },
-    { href: '#about', label: 'About Us' }
+    { href: '#about', label: 'About Us' },
 ]
 
 const SOCIAL_LINKS = [
-    { 
-        href: '#', 
-        icon: InstagramLogo, 
-        label: 'Instagram' 
+    {
+        href: '#',
+        icon: InstagramLogo,
+        label: 'Instagram',
     },
-    { 
-        href: '#', 
-        icon: FacebookLogo, 
-        label: 'Facebook' 
-    }
+    {
+        href: '#',
+        icon: FacebookLogo,
+        label: 'Facebook',
+    },
 ]
 
 export function Footer() {
     const currentYear = new Date().getFullYear()
-    
+
     return (
         <footer className="bg-gradient-to-b from-primary to-primary/95 text-primary-foreground py-20 sm:py-20 md:py-24 px-5 sm:px-6 relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent/10 via-transparent to-transparent opacity-40" />
             <div className="absolute top-0 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-accent/5 rounded-full blur-3xl" />
-            
+
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-12 md:gap-14 mb-16 sm:mb-16 md:mb-20">
                     <motion.div
@@ -48,11 +48,11 @@ export function Footer() {
                             Kos Elite Transfers
                         </h3>
                         <p className="text-primary-foreground/75 leading-relaxed font-light text-base sm:text-base">
-                            Premium transportation services across the beautiful island of Kos. 
-                            Experience luxury, comfort, and reliability.
+                            Premium transportation services across the beautiful island of Kos. Experience luxury,
+                            comfort, and reliability.
                         </p>
                     </motion.div>
-                    
+
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -66,8 +66,8 @@ export function Footer() {
                             {QUICK_LINKS.map((link) => {
                                 return (
                                     <li key={link.href}>
-                                        <a 
-                                            href={link.href} 
+                                        <a
+                                            href={link.href}
                                             className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light inline-flex items-center group"
                                         >
                                             <span className="group-hover:translate-x-1 transition-transform">
@@ -79,7 +79,7 @@ export function Footer() {
                             })}
                         </ul>
                     </motion.div>
-                    
+
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -91,25 +91,25 @@ export function Footer() {
                         </h4>
                         <ul className="space-y-5 sm:space-y-5">
                             <li className="flex items-center gap-3 sm:gap-3 group">
-                                <Phone 
-                                    size={22} 
-                                    weight="fill" 
-                                    className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform" 
+                                <Phone
+                                    size={22}
+                                    weight="fill"
+                                    className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform"
                                 />
-                                <a 
-                                    href={getPhoneLink(CONTACT_INFO.whatsappNumber)} 
+                                <a
+                                    href={getPhoneLink(CONTACT_INFO.whatsappNumber)}
                                     className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light"
                                 >
                                     {CONTACT_INFO.phoneNumber}
                                 </a>
                             </li>
                             <li className="flex items-center gap-3 sm:gap-3 group">
-                                <WhatsappLogo 
-                                    size={22} 
-                                    weight="fill" 
-                                    className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform" 
+                                <WhatsappLogo
+                                    size={22}
+                                    weight="fill"
+                                    className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform"
                                 />
-                                <a 
+                                <a
                                     href={getWhatsAppLink(CONTACT_INFO.whatsappNumber)}
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -119,13 +119,13 @@ export function Footer() {
                                 </a>
                             </li>
                             <li className="flex items-center gap-3 sm:gap-3 group">
-                                <EnvelopeSimple 
-                                    size={22} 
-                                    weight="fill" 
-                                    className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform" 
+                                <EnvelopeSimple
+                                    size={22}
+                                    weight="fill"
+                                    className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform"
                                 />
-                                <a 
-                                    href={getEmailLink(CONTACT_INFO.email)} 
+                                <a
+                                    href={getEmailLink(CONTACT_INFO.email)}
                                     className="text-sm sm:text-sm text-primary-foreground/75 hover:text-accent transition-colors font-light break-all"
                                 >
                                     {CONTACT_INFO.email}
@@ -133,7 +133,7 @@ export function Footer() {
                             </li>
                         </ul>
                     </motion.div>
-                    
+
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -144,11 +144,7 @@ export function Footer() {
                             Location
                         </h4>
                         <div className="flex items-start gap-3 sm:gap-3 mb-10 sm:mb-10">
-                            <MapPin 
-                                size={22} 
-                                weight="fill" 
-                                className="text-accent flex-shrink-0 mt-0.5 sm:mt-1" 
-                            />
+                            <MapPin size={22} weight="fill" className="text-accent flex-shrink-0 mt-0.5 sm:mt-1" />
                             <p className="text-base sm:text-base text-primary-foreground/75 font-light">
                                 Kos Island
                                 <br />
@@ -159,18 +155,18 @@ export function Footer() {
                             {SOCIAL_LINKS.map((social) => {
                                 const Icon = social.icon
                                 return (
-                                    <motion.a 
+                                    <motion.a
                                         key={social.label}
-                                        href={social.href} 
+                                        href={social.href}
                                         className="w-12 h-12 sm:w-12 sm:h-12 rounded-full bg-primary-foreground/5 hover:bg-accent/15 border border-primary-foreground/10 hover:border-accent/40 flex items-center justify-center transition-all duration-300"
                                         aria-label={social.label}
                                         whileHover={{ scale: 1.1, y: -2 }}
                                         whileTap={{ scale: 0.95 }}
                                     >
-                                        <Icon 
-                                            size={22} 
-                                            weight="fill" 
-                                            className="text-primary-foreground hover:text-accent transition-colors" 
+                                        <Icon
+                                            size={22}
+                                            weight="fill"
+                                            className="text-primary-foreground hover:text-accent transition-colors"
                                         />
                                     </motion.a>
                                 )
@@ -178,10 +174,10 @@ export function Footer() {
                         </div>
                     </motion.div>
                 </div>
-                
+
                 <Separator className="bg-primary-foreground/15 mb-10 sm:mb-10" />
-                
-                <motion.div 
+
+                <motion.div
                     className="text-center text-primary-foreground/60 text-sm sm:text-sm font-light"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
