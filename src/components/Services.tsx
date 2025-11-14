@@ -1,10 +1,16 @@
-import { Card } from '@/components/ui/card'
-import { AirplaneTilt, Anchor, Buildings, MapPin, Sun, Umbrella } from '@phosphor-icons/react'
-import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { AirplaneTilt, Anchor, Buildings, MapPin, Sun, Umbrella } from '@phosphor-icons/react'
+import { Card } from '@/components/ui/card'
 import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
 
-const services = [
+type Service = {
+    icon: typeof AirplaneTilt
+    title: string
+    description: string
+}
+
+const SERVICES: Service[] = [
     {
         icon: AirplaneTilt,
         title: 'Airport Transfers',
@@ -37,7 +43,7 @@ const services = [
     },
 ]
 
-const locations = [
+const LOCATIONS: string[] = [
     'Kos Town',
     'Kardamena',
     'Kefalos',
@@ -52,7 +58,7 @@ const locations = [
     'Paradise Beach',
 ]
 
-export function Services() {
+export const Services = () => {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, margin: '-50px' })
 
@@ -62,15 +68,13 @@ export function Services() {
             id="services"
             className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 bg-gradient-to-b from-muted/10 via-muted/20 to-background relative overflow-hidden"
         >
-            {/* Kos Island Silhouette */}
-            <KosIslandSilhouette 
-                className="top-1/2 left-0 -translate-x-1/4 -translate-y-1/2 w-[600px] h-[375px] lg:w-[900px] lg:h-[560px]" 
+            <KosIslandSilhouette
+                className="top-1/2 left-0 -translate-x-1/4 -translate-y-1/2 w-[600px] h-[375px] lg:w-[900px] lg:h-[560px]"
                 opacity={0.04}
             />
-            
-            {/* Greek Wave Pattern Background */}
+
             <GreekWavePattern />
-            
+
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent" />
 
             <div className="max-w-7xl mx-auto relative z-10">
@@ -109,7 +113,7 @@ export function Services() {
                 </motion.div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8 mb-20 sm:mb-20 md:mb-28">
-                    {services.map((service, index) => {
+                    {SERVICES.map((service, index) => {
                         const Icon = service.icon
                         return (
                             <motion.div
@@ -163,7 +167,7 @@ export function Services() {
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 relative z-10">
-                        {locations.map((location, index) => {
+                        {LOCATIONS.map((location, index) => {
                             return (
                                 <motion.div
                                     key={location}

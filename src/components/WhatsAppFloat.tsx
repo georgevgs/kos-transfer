@@ -1,13 +1,13 @@
-import { Button } from '@/components/ui/button'
-import { WhatsappLogo } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
+import { WhatsappLogo } from '@phosphor-icons/react'
+import { Button } from '@/components/ui/button'
 
 const WHATSAPP_CONFIG = {
     number: '+306900000000',
     message: 'Hello! I would like to book a transfer in Kos.',
 }
 
-export function WhatsAppFloat() {
+export const WhatsAppFloat = () => {
     return (
         <motion.div
             initial={{ scale: 0, opacity: 0 }}

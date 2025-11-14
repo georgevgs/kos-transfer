@@ -1,20 +1,37 @@
-import { Separator } from '@/components/ui/separator'
-import { EnvelopeSimple, FacebookLogo, InstagramLogo, MapPin, Phone, WhatsappLogo } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
+import { EnvelopeSimple, FacebookLogo, InstagramLogo, MapPin, Phone, WhatsappLogo } from '@phosphor-icons/react'
+import { Separator } from '@/components/ui/separator'
 
-const CONTACT_INFO = {
+type ContactInfo = {
+    whatsappNumber: string
+    phoneNumber: string
+    email: string
+}
+
+type Link = {
+    href: string
+    label: string
+}
+
+type SocialLink = {
+    href: string
+    icon: typeof InstagramLogo
+    label: string
+}
+
+const CONTACT_INFO: ContactInfo = {
     whatsappNumber: '+306900000000',
     phoneNumber: '+30 690 000 0000',
     email: 'info@koselitetransfers.com',
 }
 
-const QUICK_LINKS = [
+const QUICK_LINKS: Link[] = [
     { href: '#fleet', label: 'Our Fleet' },
     { href: '#services', label: 'Services' },
     { href: '#about', label: 'About Us' },
 ]
 
-const SOCIAL_LINKS = [
+const SOCIAL_LINKS: SocialLink[] = [
     {
         href: '#',
         icon: InstagramLogo,
@@ -27,7 +44,7 @@ const SOCIAL_LINKS = [
     },
 ]
 
-export function Footer() {
+export const Footer = () => {
     const currentYear = new Date().getFullYear()
 
     return (
@@ -44,7 +61,6 @@ export function Footer() {
                         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                         className="sm:col-span-2 lg:col-span-1 relative"
                     >
-                        {/* Kos Island Map Background - Behind this section only */}
                         <div className="absolute inset-0 opacity-[0.06] pointer-events-none overflow-hidden">
                             <img
                                 src="/kos-map.avif"
@@ -52,7 +68,7 @@ export function Footer() {
                                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[320px] h-auto brightness-0 invert"
                             />
                         </div>
-                        
+
                         <h3 className="text-2xl sm:text-3xl font-bold mb-5 sm:mb-5 md:mb-6 text-accent tracking-tight relative z-10">
                             Kos Elite Transfers
                         </h3>

@@ -1,13 +1,15 @@
-import { Button } from '@/components/ui/button'
-import { Phone, WhatsappLogo } from '@phosphor-icons/react'
-import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { Phone, WhatsappLogo } from '@phosphor-icons/react'
+import { Button } from '@/components/ui/button'
 import { KosIslandSilhouette } from '@/components/decorative/KosElements'
 
-const WHATSAPP_NUMBER = '+306900000000'
-const WHATSAPP_MESSAGE = 'Hello! I would like to book a transfer in Kos.'
+const WHATSAPP_CONFIG = {
+    number: '+306900000000',
+    message: 'Hello! I would like to book a transfer in Kos.',
+}
 
-export function Hero() {
+export const Hero = () => {
     const ref = useRef<HTMLElement>(null)
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -19,7 +21,6 @@ export function Hero() {
 
     return (
         <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* Kos Island Silhouette Background */}
             <KosIslandSilhouette
                 className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] lg:w-[1200px] lg:h-[750px]"
                 opacity={0.05}
@@ -140,13 +141,13 @@ export function Hero() {
 }
 
 const handleWhatsAppClick = () => {
-    const encodedMessage = encodeURIComponent(WHATSAPP_MESSAGE)
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`
+    const encodedMessage = encodeURIComponent(WHATSAPP_CONFIG.message)
+    const whatsappUrl = `https://wa.me/${WHATSAPP_CONFIG.number}?text=${encodedMessage}`
     window.open(whatsappUrl, '_blank')
 }
 
 const handlePhoneClick = () => {
-    const phoneUrl = `tel:${WHATSAPP_NUMBER}`
+    const phoneUrl = `tel:${WHATSAPP_CONFIG.number}`
     window.open(phoneUrl, '_self')
 }
 

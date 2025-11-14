@@ -1,10 +1,16 @@
-import { Card } from '@/components/ui/card'
-import { CheckCircle, Clock, Shield, Star } from '@phosphor-icons/react'
-import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { CheckCircle, Clock, Shield, Star } from '@phosphor-icons/react'
+import { Card } from '@/components/ui/card'
 import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
 
-const features = [
+type Feature = {
+    icon: typeof Star
+    title: string
+    description: string
+}
+
+const FEATURES: Feature[] = [
     {
         icon: Star,
         title: 'Premium Service',
@@ -27,7 +33,7 @@ const features = [
     },
 ]
 
-export function About() {
+export const About = () => {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, margin: '-50px' })
 
@@ -37,13 +43,11 @@ export function About() {
             id="about"
             className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 bg-gradient-to-b from-background via-background to-muted/10 relative overflow-hidden"
         >
-            {/* Kos Island Silhouette */}
-            <KosIslandSilhouette 
-                className="top-1/2 right-0 translate-x-1/3 -translate-y-1/2 w-[700px] h-[435px] lg:w-[1000px] lg:h-[625px]" 
+            <KosIslandSilhouette
+                className="top-1/2 right-0 translate-x-1/3 -translate-y-1/2 w-[700px] h-[435px] lg:w-[1000px] lg:h-[625px]"
                 opacity={0.03}
             />
-            
-            {/* Greek Wave Pattern */}
+
             <GreekWavePattern />
 
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/8 via-transparent to-transparent opacity-60" />
@@ -100,14 +104,18 @@ export function About() {
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6"
                     >
-                        {features.map((feature, index) => {
+                        {FEATURES.map((feature, index) => {
                             const Icon = feature.icon
                             return (
                                 <motion.div
                                     key={feature.title}
                                     initial={{ opacity: 0, y: 40 }}
                                     animate={getAnimationState(isInView)}
-                                    transition={{ duration: 0.8, delay: 0.5 + index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                                    transition={{
+                                        duration: 0.8,
+                                        delay: 0.5 + index * 0.15,
+                                        ease: [0.16, 1, 0.3, 1],
+                                    }}
                                 >
                                     <motion.div
                                         whileHover={{ y: -8 }}

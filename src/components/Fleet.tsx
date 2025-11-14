@@ -1,15 +1,26 @@
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { Briefcase, CheckCircle, Shield, Users, WhatsappLogo } from '@phosphor-icons/react'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Briefcase, CheckCircle, Shield, Users, WhatsappLogo } from '@phosphor-icons/react'
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
 import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
 
-const WHATSAPP_NUMBER = '+306900000000'
-const WHATSAPP_MESSAGE = 'Hello! I would like to book a transfer in Kos.'
+type Vehicle = {
+    name: string
+    image: string
+    capacity: number
+    luggage: number
+    features: string[]
+    description: string
+}
 
-const vehicles = [
+const WHATSAPP_CONFIG = {
+    number: '+306900000000',
+    message: 'Hello! I would like to book a transfer in Kos.',
+}
+
+const VEHICLES: Vehicle[] = [
     {
         name: 'Luxury Sedan',
         image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070',
@@ -28,7 +39,7 @@ const vehicles = [
     },
 ]
 
-export function Fleet() {
+export const Fleet = () => {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, margin: '-50px' })
 
@@ -38,15 +49,13 @@ export function Fleet() {
             id="fleet"
             className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 bg-gradient-to-b from-background via-background to-muted/10 relative overflow-hidden"
         >
-            {/* Kos Island Silhouette */}
-            <KosIslandSilhouette 
-                className="top-1/2 right-0 translate-x-1/4 -translate-y-1/2 w-[600px] h-[375px] lg:w-[900px] lg:h-[560px]" 
+            <KosIslandSilhouette
+                className="top-1/2 right-0 translate-x-1/4 -translate-y-1/2 w-[600px] h-[375px] lg:w-[900px] lg:h-[560px]"
                 opacity={0.04}
             />
-            
-            {/* Greek Wave Pattern */}
+
             <GreekWavePattern />
-            
+
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent/8 via-transparent to-transparent opacity-60" />
             <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-accent/5 rounded-full blur-3xl" />
             <div className="absolute bottom-0 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-accent/5 rounded-full blur-3xl" />
@@ -87,7 +96,7 @@ export function Fleet() {
                 </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 md:gap-12 lg:gap-14">
-                    {vehicles.map((vehicle, index) => {
+                    {VEHICLES.map((vehicle, index) => {
                         return (
                             <motion.div
                                 key={vehicle.name}
@@ -198,7 +207,7 @@ const getScaleAnimationState = (isInView: boolean) => {
 }
 
 const handleBookingClick = () => {
-    const encodedMessage = encodeURIComponent(WHATSAPP_MESSAGE)
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`
+    const encodedMessage = encodeURIComponent(WHATSAPP_CONFIG.message)
+    const whatsappUrl = `https://wa.me/${WHATSAPP_CONFIG.number}?text=${encodedMessage}`
     window.open(whatsappUrl, '_blank')
 }
