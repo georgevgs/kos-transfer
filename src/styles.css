@@ -8,6 +8,7 @@
 
     html {
         scroll-behavior: smooth;
+        scroll-padding-top: 80px; /* Account for fixed navigation */
     }
 
     body {
@@ -15,6 +16,63 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         @apply bg-background text-foreground;
+    }
+
+    /* Selection Styling */
+    ::selection {
+        background-color: oklch(0.70 0.15 75 / 0.3);
+        color: oklch(0.15 0.02 240);
+    }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: oklch(0.96 0.005 240);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: oklch(0.70 0.15 75 / 0.5);
+        border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: oklch(0.70 0.15 75);
+    }
+
+    /* Focus Styles */
+    *:focus-visible {
+        outline: 2px solid oklch(0.70 0.15 75);
+        outline-offset: 2px;
+    }
+}
+
+/* Utility Classes */
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+
+    .scroll-smooth {
+        scroll-behavior: smooth;
+    }
+
+    /* Animation Utilities */
+    .animate-fade-in {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 }
 

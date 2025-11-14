@@ -3,11 +3,9 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Phone, WhatsappLogo } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { KosIslandSilhouette } from '@/components/decorative/KosElements'
-
-const WHATSAPP_CONFIG = {
-    number: '+306900000000',
-    message: 'Hello! I would like to book a transfer in Kos.',
-}
+import { useWhatsApp } from '@/hooks/useWhatsApp'
+import { useContactLinks } from '@/hooks/useContactLinks'
+import { useLanguage } from '@/i18n'
 
 export const Hero = () => {
     const ref = useRef<HTMLElement>(null)
@@ -18,6 +16,10 @@ export const Hero = () => {
 
     const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
     const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
+
+    const { openWhatsAppBooking } = useWhatsApp()
+    const { openPhone } = useContactLinks()
+    const { t } = useLanguage()
 
     return (
         <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -55,7 +57,7 @@ export const Hero = () => {
                         whileHover={{ scale: 1.05 }}
                     >
                         <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-xs uppercase">
-                            Premium Transfers in Kos
+                            {t.hero.badge}
                         </span>
                     </motion.div>
 
@@ -65,7 +67,7 @@ export const Hero = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        Arrive in <span className="text-accent italic font-light">Style</span>
+                        {t.hero.title} <span className="text-accent italic font-light">{t.hero.titleAccent}</span>
                     </motion.h1>
 
                     <motion.p
@@ -74,11 +76,7 @@ export const Hero = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        Experience luxury transportation across the beautiful island of Kos.
-                        <span className="hidden sm:inline">
-                            <br />
-                            Professional service, comfortable vehicles, unforgettable journeys.
-                        </span>
+                        {t.hero.subtitle}
                     </motion.p>
 
                     <motion.div
@@ -95,11 +93,11 @@ export const Hero = () => {
                             <Button
                                 size="lg"
                                 className="w-full sm:w-auto bg-accent hover:bg-accent/95 text-accent-foreground font-semibold tracking-wide text-base sm:text-base px-10 sm:px-10 md:px-12 shadow-2xl shadow-accent/40 transition-all duration-300 hover:shadow-3xl hover:shadow-accent/50 rounded-full relative overflow-hidden group h-[60px]"
-                                onClick={handleWhatsAppClick}
+                                onClick={openWhatsAppBooking}
                             >
                                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                                 <WhatsappLogo className="mr-2.5 sm:mr-2.5" weight="fill" size={22} />
-                                Book via WhatsApp
+                                {t.hero.bookWhatsApp}
                             </Button>
                         </motion.div>
 
@@ -112,10 +110,10 @@ export const Hero = () => {
                                 size="lg"
                                 variant="outline"
                                 className="w-full sm:w-auto border-2 border-white/50 bg-white/8 hover:bg-white/20 text-white backdrop-blur-xl font-semibold tracking-wide text-base sm:text-base px-10 sm:px-10 md:px-12 transition-all duration-300 hover:border-white/70 rounded-full h-[60px]"
-                                onClick={handlePhoneClick}
+                                onClick={openPhone}
                             >
                                 <Phone className="mr-2.5 sm:mr-2.5" weight="fill" size={22} />
-                                Call Now
+                                {t.hero.callNow}
                             </Button>
                         </motion.div>
                     </motion.div>
@@ -138,17 +136,6 @@ export const Hero = () => {
             </motion.div>
         </section>
     )
-}
-
-const handleWhatsAppClick = () => {
-    const encodedMessage = encodeURIComponent(WHATSAPP_CONFIG.message)
-    const whatsappUrl = `https://wa.me/${WHATSAPP_CONFIG.number}?text=${encodedMessage}`
-    window.open(whatsappUrl, '_blank')
-}
-
-const handlePhoneClick = () => {
-    const phoneUrl = `tel:${WHATSAPP_CONFIG.number}`
-    window.open(phoneUrl, '_self')
 }
 
 const handleScrollClick = () => {

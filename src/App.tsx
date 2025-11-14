@@ -1,20 +1,35 @@
+import { Navigation } from '@/components/Navigation'
 import { Hero } from '@/components/Hero'
+import { BookingForm } from '@/components/BookingForm'
 import { Fleet } from '@/components/Fleet'
 import { Services } from '@/components/Services'
 import { About } from '@/components/About'
+import { Testimonials } from '@/components/Testimonials'
+import { FAQ } from '@/components/FAQ'
 import { Footer } from '@/components/Footer'
 import { WhatsAppFloat } from '@/components/WhatsAppFloat'
+import { ScrollToTop } from '@/components/ScrollToTop'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
+import { PageTransition } from '@/components/PageTransition'
 
-function App() {
+const App = () => {
     return (
-        <div className="min-h-screen bg-background">
-            <Hero />
-            <Fleet />
-            <Services />
-            <About />
-            <Footer />
-            <WhatsAppFloat />
-        </div>
+        <PageTransition>
+            <div className="min-h-screen bg-background scroll-smooth">
+                <Navigation />
+                <LanguageSwitcher />
+                <Hero />
+                <BookingForm />
+                <Fleet />
+                <Services />
+                <About />
+                <Testimonials />
+                <FAQ />
+                <Footer />
+                <WhatsAppFloat />
+                <ScrollToTop />
+            </div>
+        </PageTransition>
     )
 }
 

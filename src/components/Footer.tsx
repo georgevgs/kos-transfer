@@ -1,17 +1,9 @@
 import { motion } from 'framer-motion'
 import { EnvelopeSimple, FacebookLogo, InstagramLogo, MapPin, Phone, WhatsappLogo } from '@phosphor-icons/react'
 import { Separator } from '@/components/ui/separator'
-
-type ContactInfo = {
-    whatsappNumber: string
-    phoneNumber: string
-    email: string
-}
-
-type Link = {
-    href: string
-    label: string
-}
+import { CONTACT, SOCIAL_MEDIA } from '@/constants/contact'
+import { useContactLinks } from '@/hooks/useContactLinks'
+import { useLanguage } from '@/i18n'
 
 type SocialLink = {
     href: string
@@ -19,26 +11,14 @@ type SocialLink = {
     label: string
 }
 
-const CONTACT_INFO: ContactInfo = {
-    whatsappNumber: '+306900000000',
-    phoneNumber: '+30 690 000 0000',
-    email: 'info@koselitetransfers.com',
-}
-
-const QUICK_LINKS: Link[] = [
-    { href: '#fleet', label: 'Our Fleet' },
-    { href: '#services', label: 'Services' },
-    { href: '#about', label: 'About Us' },
-]
-
 const SOCIAL_LINKS: SocialLink[] = [
     {
-        href: '#',
+        href: SOCIAL_MEDIA.instagram,
         icon: InstagramLogo,
         label: 'Instagram',
     },
     {
-        href: '#',
+        href: SOCIAL_MEDIA.facebook,
         icon: FacebookLogo,
         label: 'Facebook',
     },
@@ -46,6 +26,14 @@ const SOCIAL_LINKS: SocialLink[] = [
 
 export const Footer = () => {
     const currentYear = new Date().getFullYear()
+    const { getPhoneLink, getWhatsAppLink, getEmailLink } = useContactLinks()
+    const { t } = useLanguage()
+
+    const quickLinks = [
+        { href: '#fleet', label: t.nav.fleet },
+        { href: '#services', label: t.nav.services },
+        { href: '#about', label: t.nav.about },
+    ]
 
     return (
         <footer className="bg-gradient-to-b from-primary to-primary/95 text-primary-foreground py-20 sm:py-20 md:py-24 px-5 sm:px-6 relative overflow-hidden">
@@ -70,11 +58,10 @@ export const Footer = () => {
                         </div>
 
                         <h3 className="text-2xl sm:text-3xl font-bold mb-5 sm:mb-5 md:mb-6 text-accent tracking-tight relative z-10">
-                            Kos Elite Transfers
+                            {t.footer.companyName}
                         </h3>
                         <p className="text-primary-foreground/75 leading-relaxed font-light text-base sm:text-base relative z-10">
-                            Premium transportation services across the beautiful island of Kos. Experience luxury,
-                            comfort, and reliability.
+                            {t.footer.description}
                         </p>
                     </motion.div>
 
@@ -85,10 +72,10 @@ export const Footer = () => {
                         transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                     >
                         <h4 className="font-semibold text-lg sm:text-lg mb-5 sm:mb-5 md:mb-6 tracking-tight">
-                            Quick Links
+                            {t.footer.quickLinks}
                         </h4>
                         <ul className="space-y-4 sm:space-y-4">
-                            {QUICK_LINKS.map((link) => {
+                            {quickLinks.map((link) => {
                                 return (
                                     <li key={link.href}>
                                         <a
@@ -112,7 +99,7 @@ export const Footer = () => {
                         transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     >
                         <h4 className="font-semibold text-lg sm:text-lg mb-5 sm:mb-5 md:mb-6 tracking-tight">
-                            Contact
+                            {t.footer.contact}
                         </h4>
                         <ul className="space-y-5 sm:space-y-5">
                             <li className="flex items-center gap-3 sm:gap-3 group">
@@ -122,10 +109,10 @@ export const Footer = () => {
                                     className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform"
                                 />
                                 <a
-                                    href={getPhoneLink(CONTACT_INFO.whatsappNumber)}
+                                    href={getPhoneLink()}
                                     className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light"
                                 >
-                                    {CONTACT_INFO.phoneNumber}
+                                    {CONTACT.phoneDisplay}
                                 </a>
                             </li>
                             <li className="flex items-center gap-3 sm:gap-3 group">
@@ -135,12 +122,12 @@ export const Footer = () => {
                                     className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform"
                                 />
                                 <a
-                                    href={getWhatsAppLink(CONTACT_INFO.whatsappNumber)}
+                                    href={getWhatsAppLink()}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light"
                                 >
-                                    WhatsApp
+                                    {t.footer.whatsapp}
                                 </a>
                             </li>
                             <li className="flex items-center gap-3 sm:gap-3 group">
@@ -150,10 +137,10 @@ export const Footer = () => {
                                     className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform"
                                 />
                                 <a
-                                    href={getEmailLink(CONTACT_INFO.email)}
+                                    href={getEmailLink()}
                                     className="text-sm sm:text-sm text-primary-foreground/75 hover:text-accent transition-colors font-light break-all"
                                 >
-                                    {CONTACT_INFO.email}
+                                    {CONTACT.email}
                                 </a>
                             </li>
                         </ul>
@@ -166,14 +153,14 @@ export const Footer = () => {
                         transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     >
                         <h4 className="font-semibold text-lg sm:text-lg mb-5 sm:mb-5 md:mb-6 tracking-tight">
-                            Location
+                            {t.footer.location}
                         </h4>
                         <div className="flex items-start gap-3 sm:gap-3 mb-10 sm:mb-10">
                             <MapPin size={22} weight="fill" className="text-accent flex-shrink-0 mt-0.5 sm:mt-1" />
                             <p className="text-base sm:text-base text-primary-foreground/75 font-light">
-                                Kos Island
+                                {t.footer.island}
                                 <br />
-                                Dodecanese, Greece
+                                {t.footer.region}
                             </p>
                         </div>
                         <div className="flex gap-4 sm:gap-4">
@@ -209,21 +196,11 @@ export const Footer = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.7, delay: 0.4 }}
                 >
-                    <p>© {currentYear} Kos Elite Transfers. All rights reserved.</p>
+                    <p>
+                        © {currentYear} {t.footer.copyright}
+                    </p>
                 </motion.div>
             </div>
         </footer>
     )
-}
-
-const getPhoneLink = (phoneNumber: string): string => {
-    return `tel:${phoneNumber}`
-}
-
-const getWhatsAppLink = (phoneNumber: string): string => {
-    return `https://wa.me/${phoneNumber}`
-}
-
-const getEmailLink = (email: string): string => {
-    return `mailto:${email}`
 }

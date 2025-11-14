@@ -5,6 +5,9 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
+import { useWhatsApp } from '@/hooks/useWhatsApp'
+import { useLanguage } from '@/i18n'
+import { SectionHeader } from '@/components/common/SectionHeader'
 
 type Vehicle = {
     name: string
@@ -13,11 +16,6 @@ type Vehicle = {
     luggage: number
     features: string[]
     description: string
-}
-
-const WHATSAPP_CONFIG = {
-    number: '+306900000000',
-    message: 'Hello! I would like to book a transfer in Kos.',
 }
 
 const VEHICLES: Vehicle[] = [
@@ -42,6 +40,12 @@ const VEHICLES: Vehicle[] = [
 export const Fleet = () => {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, margin: '-50px' })
+    const { openWhatsAppVehicleBooking } = useWhatsApp()
+    const { t } = useLanguage()
+
+    const handleVehicleBooking = (vehicleName: string) => {
+        openWhatsAppVehicleBooking(vehicleName)
+    }
 
     return (
         <section
@@ -61,39 +65,16 @@ export const Fleet = () => {
             <div className="absolute bottom-0 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-accent/5 rounded-full blur-3xl" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={getAnimationState(isInView)}
-                    transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-center mb-14 sm:mb-16 md:mb-24"
-                >
-                    <motion.div
-                        className="inline-block mb-5 sm:mb-6 md:mb-7 px-6 sm:px-6 md:px-7 py-2.5 sm:py-2.5 border border-accent/40 rounded-full bg-accent/8 backdrop-blur-xl shadow-lg shadow-accent/10"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={getScaleAnimationState(isInView)}
-                        transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                        <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.15em] text-xs sm:text-xs uppercase">
-                            Our Fleet
-                        </span>
-                    </motion.div>
-                    <motion.h2
-                        className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-5 sm:mb-6 md:mb-7 tracking-tight px-4"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={getAnimationState(isInView)}
-                        transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                        Choose Your <span className="text-accent italic font-light">Luxury Ride</span>
-                    </motion.h2>
-                    <motion.p
-                        className="text-base leading-[1.6] sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto font-light px-4"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={getAnimationState(isInView)}
-                        transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                        Select from our premium vehicles tailored to your needs
-                    </motion.p>
-                </motion.div>
+                <SectionHeader
+                    badge={t.fleet.badge}
+                    title={
+                        <>
+                            {t.fleet.title} <span className="text-accent italic font-light">{t.fleet.titleAccent}</span>
+                        </>
+                    }
+                    description={t.fleet.subtitle}
+                    isInView={isInView}
+                />
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 md:gap-12 lg:gap-14">
                     {VEHICLES.map((vehicle, index) => {
@@ -126,11 +107,11 @@ export const Fleet = () => {
                                             <div className="flex gap-2.5 sm:gap-3 flex-wrap">
                                                 <Badge className="bg-accent/95 text-accent-foreground border-0 px-4 sm:px-4 py-2 sm:py-2 font-semibold shadow-xl shadow-accent/30 hover:bg-accent transition-colors text-sm sm:text-sm">
                                                     <Users className="mr-2 sm:mr-2" size={18} weight="fill" />
-                                                    {vehicle.capacity} Passengers
+                                                    {vehicle.capacity} {t.fleet.passengers}
                                                 </Badge>
                                                 <Badge className="bg-accent/95 text-accent-foreground border-0 px-4 sm:px-4 py-2 sm:py-2 font-semibold shadow-xl shadow-accent/30 hover:bg-accent transition-colors text-sm sm:text-sm">
                                                     <Briefcase className="mr-2 sm:mr-2" size={18} weight="fill" />
-                                                    {vehicle.luggage} Bags
+                                                    {vehicle.luggage} {t.fleet.bags}
                                                 </Badge>
                                             </div>
                                         </motion.div>
@@ -148,7 +129,7 @@ export const Fleet = () => {
                                                     size={22}
                                                     weight="fill"
                                                 />
-                                                Premium Features
+                                                {t.fleet.features}
                                             </h4>
                                             <ul className="grid grid-cols-1 gap-4 sm:gap-4">
                                                 {vehicle.features.map((feature) => {
@@ -174,11 +155,11 @@ export const Fleet = () => {
                                         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                                             <Button
                                                 className="w-full bg-accent hover:bg-accent/95 text-accent-foreground font-semibold tracking-wide transition-all duration-300 hover:shadow-xl hover:shadow-accent/30 text-base sm:text-base rounded-2xl relative overflow-hidden group/btn h-[56px]"
-                                                onClick={handleBookingClick}
+                                                onClick={() => handleVehicleBooking(vehicle.name)}
                                             >
                                                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
                                                 <WhatsappLogo className="mr-2.5 sm:mr-2.5" weight="fill" size={22} />
-                                                Book This Vehicle
+                                                {t.fleet.bookVehicle}
                                             </Button>
                                         </motion.div>
                                     </div>
@@ -197,17 +178,4 @@ const getAnimationState = (isInView: boolean) => {
         return { opacity: 1, y: 0 }
     }
     return {}
-}
-
-const getScaleAnimationState = (isInView: boolean) => {
-    if (isInView) {
-        return { opacity: 1, scale: 1 }
-    }
-    return {}
-}
-
-const handleBookingClick = () => {
-    const encodedMessage = encodeURIComponent(WHATSAPP_CONFIG.message)
-    const whatsappUrl = `https://wa.me/${WHATSAPP_CONFIG.number}?text=${encodedMessage}`
-    window.open(whatsappUrl, '_blank')
 }
