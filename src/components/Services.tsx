@@ -2,37 +2,38 @@ import { Card } from '@/components/ui/card'
 import { AirplaneTilt, Anchor, Buildings, MapPin, Sun, Umbrella } from '@phosphor-icons/react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
 
 const services = [
     {
         icon: AirplaneTilt,
         title: 'Airport Transfers',
-        description: 'Kos International Airport (KGS) pickups and drop-offs with flight tracking',
+        description: 'Kos International Airport (KGS) pickups and drop-offs with real-time flight tracking',
     },
     {
         icon: Anchor,
         title: 'Port Transfers',
-        description: 'Seamless transfers to and from Kos Port for cruise passengers',
+        description: 'Seamless transfers to and from Kos Port for cruise ship passengers and ferry travelers',
     },
     {
         icon: Buildings,
         title: 'Hotel Transfers',
-        description: 'Direct transportation to any hotel or resort across the island',
+        description: 'Direct transportation to any hotel or resort across the island of Kos',
     },
     {
         icon: MapPin,
-        title: 'Custom Routes',
-        description: 'Personalized itineraries to explore hidden gems of Kos',
+        title: 'Custom Island Tours',
+        description: 'Personalized itineraries to explore hidden beaches and traditional Greek villages',
     },
     {
         icon: Umbrella,
-        title: 'Beach Destinations',
-        description: "Comfortable rides to Kos' most beautiful beaches and coves",
+        title: 'Beach Paradise',
+        description: "Comfortable rides to Paradise Beach, Tigaki, and Kos' pristine Aegean coastline",
     },
     {
         icon: Sun,
-        title: 'Sightseeing Tours',
-        description: 'Discover ancient ruins, castles, and scenic viewpoints',
+        title: 'Historical Sites',
+        description: 'Visit the ancient Asklepion, Neratzia Castle, and the charming village of Zia',
     },
 ]
 
@@ -61,6 +62,15 @@ export function Services() {
             id="services"
             className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 bg-gradient-to-b from-muted/10 via-muted/20 to-background relative overflow-hidden"
         >
+            {/* Kos Island Silhouette */}
+            <KosIslandSilhouette 
+                className="top-1/2 left-0 -translate-x-1/4 -translate-y-1/2 w-[600px] h-[375px] lg:w-[900px] lg:h-[560px]" 
+                opacity={0.04}
+            />
+            
+            {/* Greek Wave Pattern Background */}
+            <GreekWavePattern />
+            
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent" />
 
             <div className="max-w-7xl mx-auto relative z-10">

@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Phone, WhatsappLogo } from '@phosphor-icons/react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { KosIslandSilhouette } from '@/components/decorative/KosElements'
 
 const WHATSAPP_NUMBER = '+306900000000'
 const WHATSAPP_MESSAGE = 'Hello! I would like to book a transfer in Kos.'
@@ -18,10 +19,16 @@ export function Hero() {
 
     return (
         <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+            {/* Kos Island Silhouette Background */}
+            <KosIslandSilhouette
+                className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] lg:w-[1200px] lg:h-[750px]"
+                opacity={0.05}
+            />
+
             <motion.div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
                 style={{
-                    backgroundImage: "url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070')",
+                    backgroundImage: "url('/kos-scenery.avif')",
                     scale,
                 }}
             >

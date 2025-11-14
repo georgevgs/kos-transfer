@@ -2,6 +2,7 @@ import { Card } from '@/components/ui/card'
 import { CheckCircle, Clock, Shield, Star } from '@phosphor-icons/react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
 
 const features = [
     {
@@ -36,6 +37,15 @@ export function About() {
             id="about"
             className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 bg-gradient-to-b from-background via-background to-muted/10 relative overflow-hidden"
         >
+            {/* Kos Island Silhouette */}
+            <KosIslandSilhouette 
+                className="top-1/2 right-0 translate-x-1/3 -translate-y-1/2 w-[700px] h-[435px] lg:w-[1000px] lg:h-[625px]" 
+                opacity={0.03}
+            />
+            
+            {/* Greek Wave Pattern */}
+            <GreekWavePattern />
+
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/8 via-transparent to-transparent opacity-60" />
             <div className="absolute top-1/4 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-accent/5 rounded-full blur-3xl" />
             <div className="absolute bottom-1/4 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-accent/5 rounded-full blur-3xl" />

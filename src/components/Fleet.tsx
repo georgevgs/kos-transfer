@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import { Briefcase, CheckCircle, Shield, Users, WhatsappLogo } from '@phosphor-icons/react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
 
 const WHATSAPP_NUMBER = '+306900000000'
 const WHATSAPP_MESSAGE = 'Hello! I would like to book a transfer in Kos.'
@@ -11,19 +12,19 @@ const WHATSAPP_MESSAGE = 'Hello! I would like to book a transfer in Kos.'
 const vehicles = [
     {
         name: 'Luxury Sedan',
-        image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070',
+        image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070',
         capacity: 4,
         luggage: 3,
         features: ['Premium Comfort', 'Air Conditioning', 'Professional Driver', 'Wi-Fi Available'],
-        description: 'Perfect for couples or small groups seeking elegant transportation',
+        description: 'Perfect for couples or small groups seeking elegant transportation around Kos',
     },
     {
-        name: 'Ford Transit Van',
-        image: 'https://images.unsplash.com/photo-1562984098-c825fe86d38c?q=80&w=2070',
+        name: 'Mercedes Van',
+        image: 'https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=2070',
         capacity: 8,
         luggage: 8,
         features: ['Spacious Interior', 'Climate Control', 'Extra Luggage Space', 'Group Transport'],
-        description: 'Ideal for families and larger groups with ample space for luggage',
+        description: 'Ideal for families and larger groups exploring the beaches of Kos',
     },
 ]
 
@@ -37,6 +38,15 @@ export function Fleet() {
             id="fleet"
             className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 bg-gradient-to-b from-background via-background to-muted/10 relative overflow-hidden"
         >
+            {/* Kos Island Silhouette */}
+            <KosIslandSilhouette 
+                className="top-1/2 right-0 translate-x-1/4 -translate-y-1/2 w-[600px] h-[375px] lg:w-[900px] lg:h-[560px]" 
+                opacity={0.04}
+            />
+            
+            {/* Greek Wave Pattern */}
+            <GreekWavePattern />
+            
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent/8 via-transparent to-transparent opacity-60" />
             <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-accent/5 rounded-full blur-3xl" />
             <div className="absolute bottom-0 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-accent/5 rounded-full blur-3xl" />

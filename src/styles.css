@@ -18,32 +18,32 @@
     }
 }
 
-/* Color Variables */
+/* Color Variables - Greek Island Inspired */
 :root {
-    /* Backgrounds */
-    --background: oklch(0.98 0.002 264);
-    --foreground: oklch(0.18 0.01 264);
+    /* Backgrounds - Whitewashed Mediterranean */
+    --background: oklch(0.99 0.002 240);
+    --foreground: oklch(0.15 0.02 240);
 
     /* Cards */
     --card: oklch(1 0 0);
-    --card-foreground: oklch(0.18 0.01 264);
+    --card-foreground: oklch(0.15 0.02 240);
 
-    /* Primary */
-    --primary: oklch(0.18 0.01 264);
-    --primary-foreground: oklch(0.98 0.002 264);
+    /* Primary - Deep Aegean Blue */
+    --primary: oklch(0.25 0.08 240);
+    --primary-foreground: oklch(0.99 0.002 240);
 
     /* Muted */
-    --muted: oklch(0.95 0.002 264);
-    --muted-foreground: oklch(0.48 0.01 264);
+    --muted: oklch(0.96 0.005 240);
+    --muted-foreground: oklch(0.45 0.02 240);
 
-    /* Accent (Gold) */
-    --accent: oklch(0.78 0.12 85);
-    --accent-foreground: oklch(0.18 0.01 264);
+    /* Accent - Mediterranean Gold/Bronze */
+    --accent: oklch(0.70 0.15 75);
+    --accent-foreground: oklch(0.15 0.02 240);
 
     /* Borders */
-    --border: oklch(0.88 0.005 264);
-    --input: oklch(0.88 0.005 264);
-    --ring: oklch(0.78 0.12 85);
+    --border: oklch(0.90 0.005 240);
+    --input: oklch(0.90 0.005 240);
+    --ring: oklch(0.70 0.15 75);
 
     /* Border Radius */
     --radius: 0.75rem;
