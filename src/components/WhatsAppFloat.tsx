@@ -2,10 +2,12 @@ import { Button } from '@/components/ui/button'
 import { WhatsappLogo } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
 
+const whatsappConfig = {
+    number: '+306900000000',
+    message: 'Hello! I would like to book a transfer in Kos.'
+}
+
 export function WhatsAppFloat() {
-    const whatsappNumber = '+306900000000'
-    const whatsappMessage = encodeURIComponent('Hello! I would like to book a transfer in Kos.')
-    
     return (
         <motion.div
             initial={{ scale: 0, opacity: 0 }}
@@ -30,7 +32,7 @@ export function WhatsAppFloat() {
                     <Button
                         size="lg"
                         className="w-[72px] h-[72px] sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-full bg-accent hover:bg-accent/95 shadow-2xl shadow-accent/50 hover:shadow-3xl hover:shadow-accent/60 p-0 transition-all duration-300 border-4 sm:border-4 border-accent/30 hover:border-accent/50 relative overflow-hidden group"
-                        onClick={() => window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank')}
+                        onClick={handleWhatsAppClick}
                         aria-label="Contact via WhatsApp"
                     >
                         <span className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent -translate-x-full -translate-y-full group-hover:translate-x-full group-hover:translate-y-full transition-transform duration-1000" />
@@ -53,4 +55,10 @@ export function WhatsAppFloat() {
             />
         </motion.div>
     )
+}
+
+const handleWhatsAppClick = () => {
+    const encodedMessage = encodeURIComponent(whatsappConfig.message)
+    const whatsappUrl = `https://wa.me/${whatsappConfig.number}?text=${encodedMessage}`
+    window.open(whatsappUrl, '_blank')
 }

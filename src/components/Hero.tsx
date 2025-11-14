@@ -77,7 +77,7 @@ export function Hero() {
                             <Button 
                                 size="lg"
                                 className="w-full sm:w-auto bg-accent hover:bg-accent/95 text-accent-foreground font-semibold tracking-wide text-base sm:text-base px-10 sm:px-10 md:px-12 shadow-2xl shadow-accent/40 transition-all duration-300 hover:shadow-3xl hover:shadow-accent/50 rounded-full relative overflow-hidden group h-[60px]"
-                                onClick={() => window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank')}
+                                onClick={handleWhatsAppClick}
                             >
                                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                                 <WhatsappLogo className="mr-2.5 sm:mr-2.5" weight="fill" size={22} />
@@ -90,7 +90,7 @@ export function Hero() {
                                 size="lg"
                                 variant="outline"
                                 className="w-full sm:w-auto border-2 border-white/50 bg-white/8 hover:bg-white/20 text-white backdrop-blur-xl font-semibold tracking-wide text-base sm:text-base px-10 sm:px-10 md:px-12 transition-all duration-300 hover:border-white/70 rounded-full h-[60px]"
-                                onClick={() => window.open(`tel:${whatsappNumber}`, '_self')}
+                                onClick={handlePhoneClick}
                             >
                                 <Phone className="mr-2.5 sm:mr-2.5" weight="fill" size={22} />
                                 Call Now
@@ -104,7 +104,7 @@ export function Hero() {
                 className="hidden sm:block absolute bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer"
                 animate={{ y: [0, 14, 0] }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+                onClick={handleScrollClick}
             >
                 <div className="w-7 h-11 md:w-8 md:h-12 border-2 border-white/50 rounded-full flex items-start justify-center p-2 backdrop-blur-md bg-white/5 hover:border-accent/70 transition-colors duration-300">
                     <motion.div 
@@ -116,4 +116,19 @@ export function Hero() {
             </motion.div>
         </section>
     )
+}
+
+const handleWhatsAppClick = () => {
+    const whatsappNumber = '+306900000000'
+    const whatsappMessage = encodeURIComponent('Hello! I would like to book a transfer in Kos.')
+    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank')
+}
+
+const handlePhoneClick = () => {
+    const whatsappNumber = '+306900000000'
+    window.open(`tel:${whatsappNumber}`, '_self')
+}
+
+const handleScrollClick = () => {
+    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
 }

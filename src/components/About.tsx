@@ -40,13 +40,13 @@ export function About() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 sm:gap-16 md:gap-20 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        animate={getSlideAnimationState(isInView)}
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                     >
                         <motion.div 
                             className="inline-block mb-5 sm:mb-6 md:mb-7 px-6 sm:px-6 md:px-7 py-2.5 sm:py-2.5 border border-accent/40 rounded-full bg-accent/8 backdrop-blur-xl shadow-lg shadow-accent/10"
                             initial={{ opacity: 0, scale: 0.9 }}
-                            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                            animate={getScaleAnimationState(isInView)}
                             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         >
                             <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.15em] text-xs sm:text-xs uppercase">Why Choose Us</span>
@@ -54,7 +54,7 @@ export function About() {
                         <motion.h2 
                             className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-7 sm:mb-8 md:mb-10 tracking-tight"
                             initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            animate={getAnimationState(isInView)}
                             transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         >
                             Experience the <span className="text-accent italic font-light">Difference</span>
@@ -62,7 +62,7 @@ export function About() {
                         <motion.div 
                             className="space-y-6 sm:space-y-6 md:space-y-7"
                             initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            animate={getAnimationState(isInView)}
                             transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
                         >
                             <p className="text-base leading-[1.7] sm:text-lg md:text-xl text-muted-foreground font-light">
@@ -79,7 +79,7 @@ export function About() {
                     
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        animate={getSlideRightAnimationState(isInView)}
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6"
                     >
@@ -89,7 +89,7 @@ export function About() {
                                 <motion.div
                                     key={feature.title}
                                     initial={{ opacity: 0, y: 40 }}
-                                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                                    animate={getAnimationState(isInView)}
                                     transition={{ duration: 0.8, delay: 0.5 + index * 0.15, ease: [0.16, 1, 0.3, 1] }}
                                 >
                                     <motion.div whileHover={{ y: -8 }} transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}>
@@ -118,4 +118,32 @@ export function About() {
             </div>
         </section>
     )
+}
+
+const getAnimationState = (isInView: boolean) => {
+    if (isInView) {
+        return { opacity: 1, y: 0 }
+    }
+    return {}
+}
+
+const getScaleAnimationState = (isInView: boolean) => {
+    if (isInView) {
+        return { opacity: 1, scale: 1 }
+    }
+    return {}
+}
+
+const getSlideAnimationState = (isInView: boolean) => {
+    if (isInView) {
+        return { opacity: 1, x: 0 }
+    }
+    return {}
+}
+
+const getSlideRightAnimationState = (isInView: boolean) => {
+    if (isInView) {
+        return { opacity: 1, x: 0 }
+    }
+    return {}
 }

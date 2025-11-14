@@ -39,14 +39,14 @@ export function Fleet() {
             <div className="max-w-7xl mx-auto relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    animate={getAnimationState(isInView)}
                     transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                     className="text-center mb-14 sm:mb-16 md:mb-24"
                 >
                     <motion.div 
                         className="inline-block mb-5 sm:mb-6 md:mb-7 px-6 sm:px-6 md:px-7 py-2.5 sm:py-2.5 border border-accent/40 rounded-full bg-accent/8 backdrop-blur-xl shadow-lg shadow-accent/10"
                         initial={{ opacity: 0, scale: 0.9 }}
-                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                        animate={getScaleAnimationState(isInView)}
                         transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     >
                         <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.15em] text-xs sm:text-xs uppercase">Our Fleet</span>
@@ -54,7 +54,7 @@ export function Fleet() {
                     <motion.h2 
                         className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-5 sm:mb-6 md:mb-7 tracking-tight px-4"
                         initial={{ opacity: 0, y: 20 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        animate={getAnimationState(isInView)}
                         transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     >
                         Choose Your <span className="text-accent italic font-light">Luxury Ride</span>
@@ -62,7 +62,7 @@ export function Fleet() {
                     <motion.p 
                         className="text-base leading-[1.6] sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto font-light px-4"
                         initial={{ opacity: 0, y: 20 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        animate={getAnimationState(isInView)}
                         transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     >
                         Select from our premium vehicles tailored to your needs
@@ -74,7 +74,7 @@ export function Fleet() {
                         <motion.div
                             key={vehicle.name}
                             initial={{ opacity: 0, y: 50 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            animate={getAnimationState(isInView)}
                             transition={{ duration: 0.9, delay: 0.5 + index * 0.2, ease: [0.16, 1, 0.3, 1] }}
                         >
                             <Card className="overflow-hidden border border-border/60 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/15 group bg-card/80 backdrop-blur-sm">
@@ -90,7 +90,7 @@ export function Fleet() {
                                     <motion.div 
                                         className="absolute bottom-6 sm:bottom-6 md:bottom-7 left-5 sm:left-6 md:left-7 right-5 sm:right-6 md:right-7"
                                         initial={{ opacity: 0, y: 20 }}
-                                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                                        animate={getAnimationState(isInView)}
                                         transition={{ duration: 0.7, delay: 0.8 + index * 0.2 }}
                                     >
                                         <h3 className="text-3xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-4 tracking-tight">{vehicle.name}</h3>
@@ -135,7 +135,7 @@ export function Fleet() {
                                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                                         <Button 
                                             className="w-full bg-accent hover:bg-accent/95 text-accent-foreground font-semibold tracking-wide transition-all duration-300 hover:shadow-xl hover:shadow-accent/30 text-base sm:text-base rounded-2xl relative overflow-hidden group/btn h-[56px]"
-                                            onClick={() => window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank')}
+                                            onClick={() => handleBookingClick(whatsappNumber, whatsappMessage)}
                                         >
                                             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
                                             <WhatsappLogo className="mr-2.5 sm:mr-2.5" weight="fill" size={22} />
@@ -150,4 +150,22 @@ export function Fleet() {
             </div>
         </section>
     )
+}
+
+const getAnimationState = (isInView: boolean) => {
+    if (isInView) {
+        return { opacity: 1, y: 0 }
+    }
+    return {}
+}
+
+const getScaleAnimationState = (isInView: boolean) => {
+    if (isInView) {
+        return { opacity: 1, scale: 1 }
+    }
+    return {}
+}
+
+const handleBookingClick = (phoneNumber: string, message: string) => {
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
 }

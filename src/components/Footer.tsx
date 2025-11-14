@@ -2,10 +2,14 @@ import { Separator } from '@/components/ui/separator'
 import { WhatsappLogo, Phone, EnvelopeSimple, MapPin, InstagramLogo, FacebookLogo } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
 
+const contactInfo = {
+    whatsappNumber: '+306900000000',
+    phoneNumber: '+30 690 000 0000',
+    email: 'info@koselitetransfers.com'
+}
+
 export function Footer() {
-    const whatsappNumber = '+306900000000'
-    const phoneNumber = '+30 690 000 0000'
-    const email = 'info@koselitetransfers.com'
+    const currentYear = new Date().getFullYear()
     
     return (
         <footer className="bg-gradient-to-b from-primary to-primary/95 text-primary-foreground py-20 sm:py-20 md:py-24 px-5 sm:px-6 relative overflow-hidden">
@@ -66,14 +70,14 @@ export function Footer() {
                         <ul className="space-y-5 sm:space-y-5">
                             <li className="flex items-center gap-3 sm:gap-3 group">
                                 <Phone size={22} weight="fill" className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform" />
-                                <a href={`tel:${whatsappNumber}`} className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light">
-                                    {phoneNumber}
+                                <a href={getPhoneLink(contactInfo.whatsappNumber)} className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light">
+                                    {contactInfo.phoneNumber}
                                 </a>
                             </li>
                             <li className="flex items-center gap-3 sm:gap-3 group">
                                 <WhatsappLogo size={22} weight="fill" className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform" />
                                 <a 
-                                    href={`https://wa.me/${whatsappNumber}`}
+                                    href={getWhatsAppLink(contactInfo.whatsappNumber)}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light"
@@ -83,8 +87,8 @@ export function Footer() {
                             </li>
                             <li className="flex items-center gap-3 sm:gap-3 group">
                                 <EnvelopeSimple size={22} weight="fill" className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform" />
-                                <a href={`mailto:${email}`} className="text-sm sm:text-sm text-primary-foreground/75 hover:text-accent transition-colors font-light break-all">
-                                    {email}
+                                <a href={getEmailLink(contactInfo.email)} className="text-sm sm:text-sm text-primary-foreground/75 hover:text-accent transition-colors font-light break-all">
+                                    {contactInfo.email}
                                 </a>
                             </li>
                         </ul>
@@ -136,9 +140,21 @@ export function Footer() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.7, delay: 0.4 }}
                 >
-                    <p>© {new Date().getFullYear()} Kos Elite Transfers. All rights reserved.</p>
+                    <p>© {currentYear} Kos Elite Transfers. All rights reserved.</p>
                 </motion.div>
             </div>
         </footer>
     )
+}
+
+const getPhoneLink = (phoneNumber: string): string => {
+    return `tel:${phoneNumber}`
+}
+
+const getWhatsAppLink = (phoneNumber: string): string => {
+    return `https://wa.me/${phoneNumber}`
+}
+
+const getEmailLink = (email: string): string => {
+    return `mailto:${email}`
 }

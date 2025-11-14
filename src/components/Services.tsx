@@ -62,14 +62,14 @@ export function Services() {
             <div className="max-w-7xl mx-auto relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    animate={getAnimationState(isInView)}
                     transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                     className="text-center mb-14 sm:mb-16 md:mb-24"
                 >
                     <motion.div 
                         className="inline-block mb-5 sm:mb-6 md:mb-7 px-6 sm:px-6 md:px-7 py-2.5 sm:py-2.5 border border-accent/40 rounded-full bg-accent/8 backdrop-blur-xl shadow-lg shadow-accent/10"
                         initial={{ opacity: 0, scale: 0.9 }}
-                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                        animate={getScaleAnimationState(isInView)}
                         transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     >
                         <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.15em] text-xs sm:text-xs uppercase">Our Services</span>
@@ -77,7 +77,7 @@ export function Services() {
                     <motion.h2 
                         className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-5 sm:mb-6 md:mb-7 tracking-tight px-4"
                         initial={{ opacity: 0, y: 20 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        animate={getAnimationState(isInView)}
                         transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     >
                         Comprehensive <span className="text-accent italic font-light">Coverage</span>
@@ -85,7 +85,7 @@ export function Services() {
                     <motion.p 
                         className="text-base leading-[1.6] sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto font-light px-4"
                         initial={{ opacity: 0, y: 20 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        animate={getAnimationState(isInView)}
                         transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     >
                         Professional transfer services to every corner of Kos island
@@ -99,7 +99,7 @@ export function Services() {
                             <motion.div
                                 key={service.title}
                                 initial={{ opacity: 0, y: 40 }}
-                                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                                animate={getAnimationState(isInView)}
                                 transition={{ duration: 0.8, delay: 0.5 + index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                             >
                                 <motion.div whileHover={{ y: -8 }} transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}>
@@ -127,7 +127,7 @@ export function Services() {
                 
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    animate={getAnimationState(isInView)}
                     transition={{ duration: 0.9, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="bg-card/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-7 sm:p-8 md:p-12 lg:p-16 border border-border/60 shadow-2xl relative overflow-hidden"
                 >
@@ -148,7 +148,7 @@ export function Services() {
                             <motion.div
                                 key={location}
                                 initial={{ opacity: 0, scale: 0.9 }}
-                                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                                animate={getScaleAnimationState(isInView)}
                                 transition={{ duration: 0.5, delay: 1 + index * 0.05, ease: [0.16, 1, 0.3, 1] }}
                                 whileHover={{ scale: 1.05, x: 2 }}
                                 className="flex items-center gap-3 sm:gap-3 p-5 sm:p-5 rounded-xl sm:rounded-2xl bg-background/70 hover:bg-accent/8 transition-all duration-300 border border-transparent hover:border-accent/30 cursor-default shadow-sm hover:shadow-md"
@@ -162,4 +162,18 @@ export function Services() {
             </div>
         </section>
     )
+}
+
+const getAnimationState = (isInView: boolean) => {
+    if (isInView) {
+        return { opacity: 1, y: 0 }
+    }
+    return {}
+}
+
+const getScaleAnimationState = (isInView: boolean) => {
+    if (isInView) {
+        return { opacity: 1, scale: 1 }
+    }
+    return {}
 }
