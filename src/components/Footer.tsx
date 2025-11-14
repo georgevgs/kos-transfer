@@ -1,7 +1,6 @@
 import { Separator } from '@/components/ui/separator'
 import { EnvelopeSimple, FacebookLogo, InstagramLogo, MapPin, Phone, WhatsappLogo } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
-import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
 
 const CONTACT_INFO = {
     whatsappNumber: '+306900000000',
@@ -33,15 +32,6 @@ export function Footer() {
 
     return (
         <footer className="bg-gradient-to-b from-primary to-primary/95 text-primary-foreground py-20 sm:py-20 md:py-24 px-5 sm:px-6 relative overflow-hidden">
-            {/* Kos Island Silhouette */}
-            <KosIslandSilhouette 
-                className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] lg:w-[1200px] lg:h-[750px]" 
-                opacity={0.02}
-            />
-            
-            {/* Greek Wave Pattern */}
-            <GreekWavePattern />
-            
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent/10 via-transparent to-transparent opacity-40" />
             <div className="absolute top-0 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-accent/5 rounded-full blur-3xl" />
 
@@ -52,12 +42,21 @@ export function Footer() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                        className="sm:col-span-2 lg:col-span-1"
+                        className="sm:col-span-2 lg:col-span-1 relative"
                     >
-                        <h3 className="text-2xl sm:text-3xl font-bold mb-5 sm:mb-5 md:mb-6 text-accent tracking-tight">
+                        {/* Kos Island Map Background - Behind this section only */}
+                        <div className="absolute inset-0 opacity-[0.06] pointer-events-none overflow-hidden">
+                            <img
+                                src="/kos-map.avif"
+                                alt=""
+                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[320px] h-auto brightness-0 invert"
+                            />
+                        </div>
+                        
+                        <h3 className="text-2xl sm:text-3xl font-bold mb-5 sm:mb-5 md:mb-6 text-accent tracking-tight relative z-10">
                             Kos Elite Transfers
                         </h3>
-                        <p className="text-primary-foreground/75 leading-relaxed font-light text-base sm:text-base">
+                        <p className="text-primary-foreground/75 leading-relaxed font-light text-base sm:text-base relative z-10">
                             Premium transportation services across the beautiful island of Kos. Experience luxury,
                             comfort, and reliability.
                         </p>
