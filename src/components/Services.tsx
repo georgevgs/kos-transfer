@@ -53,10 +53,14 @@ const locations = [
 
 export function Services() {
     const ref = useRef(null)
-    const isInView = useInView(ref, { once: true, margin: "-50px" })
+    const isInView = useInView(ref, { once: true, margin: '-50px' })
     
     return (
-        <section ref={ref} id="services" className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 bg-gradient-to-b from-muted/10 via-muted/20 to-background relative overflow-hidden">
+        <section 
+            ref={ref} 
+            id="services" 
+            className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 bg-gradient-to-b from-muted/10 via-muted/20 to-background relative overflow-hidden"
+        >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent" />
             
             <div className="max-w-7xl mx-auto relative z-10">
@@ -72,7 +76,9 @@ export function Services() {
                         animate={getScaleAnimationState(isInView)}
                         transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.15em] text-xs sm:text-xs uppercase">Our Services</span>
+                        <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.15em] text-xs sm:text-xs uppercase">
+                            Our Services
+                        </span>
                     </motion.div>
                     <motion.h2 
                         className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-5 sm:mb-6 md:mb-7 tracking-tight px-4"
@@ -102,7 +108,10 @@ export function Services() {
                                 animate={getAnimationState(isInView)}
                                 transition={{ duration: 0.8, delay: 0.5 + index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                             >
-                                <motion.div whileHover={{ y: -8 }} transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}>
+                                <motion.div 
+                                    whileHover={{ y: -8 }} 
+                                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                                >
                                     <Card className="p-7 sm:p-8 md:p-9 border border-border/60 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 group h-full bg-card/80 backdrop-blur-sm relative overflow-hidden">
                                         <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-accent/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-colors duration-500" />
                                         <motion.div 
@@ -144,19 +153,23 @@ export function Services() {
                     </div>
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 relative z-10">
-                        {locations.map((location, index) => (
-                            <motion.div
-                                key={location}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={getScaleAnimationState(isInView)}
-                                transition={{ duration: 0.5, delay: 1 + index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                                whileHover={{ scale: 1.05, x: 2 }}
-                                className="flex items-center gap-3 sm:gap-3 p-5 sm:p-5 rounded-xl sm:rounded-2xl bg-background/70 hover:bg-accent/8 transition-all duration-300 border border-transparent hover:border-accent/30 cursor-default shadow-sm hover:shadow-md"
-                            >
-                                <MapPin size={20} weight="fill" className="text-accent flex-shrink-0" />
-                                <span className="text-sm sm:text-sm font-medium text-foreground">{location}</span>
-                            </motion.div>
-                        ))}
+                        {locations.map((location, index) => {
+                            return (
+                                <motion.div
+                                    key={location}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={getScaleAnimationState(isInView)}
+                                    transition={{ duration: 0.5, delay: 1 + index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                                    whileHover={{ scale: 1.05, x: 2 }}
+                                    className="flex items-center gap-3 sm:gap-3 p-5 sm:p-5 rounded-xl sm:rounded-2xl bg-background/70 hover:bg-accent/8 transition-all duration-300 border border-transparent hover:border-accent/30 cursor-default shadow-sm hover:shadow-md"
+                                >
+                                    <MapPin size={20} weight="fill" className="text-accent flex-shrink-0" />
+                                    <span className="text-sm sm:text-sm font-medium text-foreground">
+                                        {location}
+                                    </span>
+                                </motion.div>
+                            )
+                        })}
                     </div>
                 </motion.div>
             </div>

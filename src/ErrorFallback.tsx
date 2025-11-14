@@ -1,4 +1,4 @@
-import { Button } from "./components/ui/button"
+import { Button } from './components/ui/button'
 
 interface ErrorFallbackProps {
     error: Error
@@ -25,7 +25,9 @@ export const ErrorFallback = ({ error, resetErrorBoundary }: ErrorFallbackProps)
                             />
                         </svg>
                         <div>
-                            <h3 className="font-semibold text-red-900 mb-1">Application Error</h3>
+                            <h3 className="font-semibold text-red-900 mb-1">
+                                Application Error
+                            </h3>
                             <p className="text-sm text-red-700">
                                 Something unexpected happened. Please try again or contact support if the problem persists.
                             </p>
@@ -34,7 +36,9 @@ export const ErrorFallback = ({ error, resetErrorBoundary }: ErrorFallbackProps)
                 </div>
                 
                 <div className="bg-card border rounded-lg p-4 mb-6">
-                    <h3 className="font-semibold text-sm text-muted-foreground mb-2">Error Details:</h3>
+                    <h3 className="font-semibold text-sm text-muted-foreground mb-2">
+                        Error Details:
+                    </h3>
                     <pre className="text-xs text-red-600 bg-muted/50 p-3 rounded border overflow-auto max-h-32">
                         {error.message}
                     </pre>

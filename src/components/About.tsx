@@ -28,10 +28,14 @@ const features = [
 
 export function About() {
     const ref = useRef(null)
-    const isInView = useInView(ref, { once: true, margin: "-50px" })
+    const isInView = useInView(ref, { once: true, margin: '-50px' })
     
     return (
-        <section ref={ref} id="about" className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 bg-gradient-to-b from-background via-background to-muted/10 relative overflow-hidden">
+        <section 
+            ref={ref} 
+            id="about" 
+            className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 bg-gradient-to-b from-background via-background to-muted/10 relative overflow-hidden"
+        >
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/8 via-transparent to-transparent opacity-60" />
             <div className="absolute top-1/4 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-accent/5 rounded-full blur-3xl" />
             <div className="absolute bottom-1/4 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-accent/5 rounded-full blur-3xl" />
@@ -49,7 +53,9 @@ export function About() {
                             animate={getScaleAnimationState(isInView)}
                             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.15em] text-xs sm:text-xs uppercase">Why Choose Us</span>
+                            <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.15em] text-xs sm:text-xs uppercase">
+                                Why Choose Us
+                            </span>
                         </motion.div>
                         <motion.h2 
                             className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-7 sm:mb-8 md:mb-10 tracking-tight"
@@ -92,7 +98,10 @@ export function About() {
                                     animate={getAnimationState(isInView)}
                                     transition={{ duration: 0.8, delay: 0.5 + index * 0.15, ease: [0.16, 1, 0.3, 1] }}
                                 >
-                                    <motion.div whileHover={{ y: -8 }} transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}>
+                                    <motion.div 
+                                        whileHover={{ y: -8 }} 
+                                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                                    >
                                         <Card className="p-7 sm:p-7 md:p-8 border border-border/60 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 h-full group bg-card/80 backdrop-blur-sm relative overflow-hidden">
                                             <div className="absolute top-0 right-0 w-20 h-20 sm:w-24 sm:h-24 bg-accent/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-colors duration-500" />
                                             <motion.div 

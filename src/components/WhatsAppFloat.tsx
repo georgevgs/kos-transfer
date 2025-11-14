@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import { WhatsappLogo } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
 
-const whatsappConfig = {
+const WHATSAPP_CONFIG = {
     number: '+306900000000',
     message: 'Hello! I would like to book a transfer in Kos.'
 }
@@ -22,7 +22,7 @@ export function WhatsAppFloat() {
                 transition={{ 
                     duration: 2.5, 
                     repeat: Infinity, 
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                 }}
             >
                 <motion.div
@@ -36,7 +36,11 @@ export function WhatsAppFloat() {
                         aria-label="Contact via WhatsApp"
                     >
                         <span className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent -translate-x-full -translate-y-full group-hover:translate-x-full group-hover:translate-y-full transition-transform duration-1000" />
-                        <WhatsappLogo size={36} weight="fill" className="text-accent-foreground relative z-10 sm:w-9 sm:h-9 md:w-10 md:h-10" />
+                        <WhatsappLogo 
+                            size={36} 
+                            weight="fill" 
+                            className="text-accent-foreground relative z-10 sm:w-9 sm:h-9 md:w-10 md:h-10" 
+                        />
                     </Button>
                 </motion.div>
             </motion.div>
@@ -50,7 +54,7 @@ export function WhatsAppFloat() {
                 transition={{
                     duration: 2.5,
                     repeat: Infinity,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                 }}
             />
         </motion.div>
@@ -58,7 +62,7 @@ export function WhatsAppFloat() {
 }
 
 const handleWhatsAppClick = () => {
-    const encodedMessage = encodeURIComponent(whatsappConfig.message)
-    const whatsappUrl = `https://wa.me/${whatsappConfig.number}?text=${encodedMessage}`
+    const encodedMessage = encodeURIComponent(WHATSAPP_CONFIG.message)
+    const whatsappUrl = `https://wa.me/${WHATSAPP_CONFIG.number}?text=${encodedMessage}`
     window.open(whatsappUrl, '_blank')
 }

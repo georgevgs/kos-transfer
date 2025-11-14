@@ -3,13 +3,14 @@ import { WhatsappLogo, Phone } from '@phosphor-icons/react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 
+const WHATSAPP_NUMBER = '+306900000000'
+const WHATSAPP_MESSAGE = 'Hello! I would like to book a transfer in Kos.'
+
 export function Hero() {
-    const whatsappNumber = '+306900000000'
-    const whatsappMessage = encodeURIComponent('Hello! I would like to book a transfer in Kos.')
     const ref = useRef<HTMLElement>(null)
     const { scrollYProgress } = useScroll({
         target: ref,
-        offset: ["start start", "end start"]
+        offset: ['start start', 'end start']
     })
     
     const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
@@ -45,7 +46,9 @@ export function Hero() {
                         transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         whileHover={{ scale: 1.05 }}
                     >
-                        <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-xs uppercase">Premium Transfers in Kos</span>
+                        <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-xs uppercase">
+                            Premium Transfers in Kos
+                        </span>
                     </motion.div>
                     
                     <motion.h1 
@@ -64,7 +67,10 @@ export function Hero() {
                         transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     >
                         Experience luxury transportation across the beautiful island of Kos.
-                        <span className="hidden sm:inline"><br />Professional service, comfortable vehicles, unforgettable journeys.</span>
+                        <span className="hidden sm:inline">
+                            <br />
+                            Professional service, comfortable vehicles, unforgettable journeys.
+                        </span>
                     </motion.p>
                     
                     <motion.div 
@@ -73,7 +79,11 @@ export function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <motion.div className="w-full sm:w-auto" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                        <motion.div 
+                            className="w-full sm:w-auto" 
+                            whileHover={{ scale: 1.03 }} 
+                            whileTap={{ scale: 0.98 }}
+                        >
                             <Button 
                                 size="lg"
                                 className="w-full sm:w-auto bg-accent hover:bg-accent/95 text-accent-foreground font-semibold tracking-wide text-base sm:text-base px-10 sm:px-10 md:px-12 shadow-2xl shadow-accent/40 transition-all duration-300 hover:shadow-3xl hover:shadow-accent/50 rounded-full relative overflow-hidden group h-[60px]"
@@ -85,7 +95,11 @@ export function Hero() {
                             </Button>
                         </motion.div>
                         
-                        <motion.div className="w-full sm:w-auto" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                        <motion.div 
+                            className="w-full sm:w-auto" 
+                            whileHover={{ scale: 1.03 }} 
+                            whileTap={{ scale: 0.98 }}
+                        >
                             <Button 
                                 size="lg"
                                 variant="outline"
@@ -103,14 +117,14 @@ export function Hero() {
             <motion.div
                 className="hidden sm:block absolute bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer"
                 animate={{ y: [0, 14, 0] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
                 onClick={handleScrollClick}
             >
                 <div className="w-7 h-11 md:w-8 md:h-12 border-2 border-white/50 rounded-full flex items-start justify-center p-2 backdrop-blur-md bg-white/5 hover:border-accent/70 transition-colors duration-300">
                     <motion.div 
                         className="w-1.5 h-1.5 bg-accent rounded-full shadow-xl shadow-accent/60"
                         animate={{ y: [0, 20, 0] }}
-                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                        transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
                     />
                 </div>
             </motion.div>
@@ -119,16 +133,19 @@ export function Hero() {
 }
 
 const handleWhatsAppClick = () => {
-    const whatsappNumber = '+306900000000'
-    const whatsappMessage = encodeURIComponent('Hello! I would like to book a transfer in Kos.')
-    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank')
+    const encodedMessage = encodeURIComponent(WHATSAPP_MESSAGE)
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`
+    window.open(whatsappUrl, '_blank')
 }
 
 const handlePhoneClick = () => {
-    const whatsappNumber = '+306900000000'
-    window.open(`tel:${whatsappNumber}`, '_self')
+    const phoneUrl = `tel:${WHATSAPP_NUMBER}`
+    window.open(phoneUrl, '_self')
 }
 
 const handleScrollClick = () => {
-    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
+    window.scrollTo({ 
+        top: window.innerHeight, 
+        behavior: 'smooth' 
+    })
 }

@@ -2,11 +2,30 @@ import { Separator } from '@/components/ui/separator'
 import { WhatsappLogo, Phone, EnvelopeSimple, MapPin, InstagramLogo, FacebookLogo } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
 
-const contactInfo = {
+const CONTACT_INFO = {
     whatsappNumber: '+306900000000',
     phoneNumber: '+30 690 000 0000',
     email: 'info@koselitetransfers.com'
 }
+
+const QUICK_LINKS = [
+    { href: '#fleet', label: 'Our Fleet' },
+    { href: '#services', label: 'Services' },
+    { href: '#about', label: 'About Us' }
+]
+
+const SOCIAL_LINKS = [
+    { 
+        href: '#', 
+        icon: InstagramLogo, 
+        label: 'Instagram' 
+    },
+    { 
+        href: '#', 
+        icon: FacebookLogo, 
+        label: 'Facebook' 
+    }
+]
 
 export function Footer() {
     const currentYear = new Date().getFullYear()
@@ -40,23 +59,24 @@ export function Footer() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <h4 className="font-semibold text-lg sm:text-lg mb-5 sm:mb-5 md:mb-6 tracking-tight">Quick Links</h4>
+                        <h4 className="font-semibold text-lg sm:text-lg mb-5 sm:mb-5 md:mb-6 tracking-tight">
+                            Quick Links
+                        </h4>
                         <ul className="space-y-4 sm:space-y-4">
-                            <li>
-                                <a href="#fleet" className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light inline-flex items-center group">
-                                    <span className="group-hover:translate-x-1 transition-transform">Our Fleet</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#services" className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light inline-flex items-center group">
-                                    <span className="group-hover:translate-x-1 transition-transform">Services</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#about" className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light inline-flex items-center group">
-                                    <span className="group-hover:translate-x-1 transition-transform">About Us</span>
-                                </a>
-                            </li>
+                            {QUICK_LINKS.map((link) => {
+                                return (
+                                    <li key={link.href}>
+                                        <a 
+                                            href={link.href} 
+                                            className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light inline-flex items-center group"
+                                        >
+                                            <span className="group-hover:translate-x-1 transition-transform">
+                                                {link.label}
+                                            </span>
+                                        </a>
+                                    </li>
+                                )
+                            })}
                         </ul>
                     </motion.div>
                     
@@ -66,18 +86,31 @@ export function Footer() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <h4 className="font-semibold text-lg sm:text-lg mb-5 sm:mb-5 md:mb-6 tracking-tight">Contact</h4>
+                        <h4 className="font-semibold text-lg sm:text-lg mb-5 sm:mb-5 md:mb-6 tracking-tight">
+                            Contact
+                        </h4>
                         <ul className="space-y-5 sm:space-y-5">
                             <li className="flex items-center gap-3 sm:gap-3 group">
-                                <Phone size={22} weight="fill" className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform" />
-                                <a href={getPhoneLink(contactInfo.whatsappNumber)} className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light">
-                                    {contactInfo.phoneNumber}
+                                <Phone 
+                                    size={22} 
+                                    weight="fill" 
+                                    className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform" 
+                                />
+                                <a 
+                                    href={getPhoneLink(CONTACT_INFO.whatsappNumber)} 
+                                    className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light"
+                                >
+                                    {CONTACT_INFO.phoneNumber}
                                 </a>
                             </li>
                             <li className="flex items-center gap-3 sm:gap-3 group">
-                                <WhatsappLogo size={22} weight="fill" className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform" />
+                                <WhatsappLogo 
+                                    size={22} 
+                                    weight="fill" 
+                                    className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform" 
+                                />
                                 <a 
-                                    href={getWhatsAppLink(contactInfo.whatsappNumber)}
+                                    href={getWhatsAppLink(CONTACT_INFO.whatsappNumber)}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-base sm:text-base text-primary-foreground/75 hover:text-accent transition-colors font-light"
@@ -86,9 +119,16 @@ export function Footer() {
                                 </a>
                             </li>
                             <li className="flex items-center gap-3 sm:gap-3 group">
-                                <EnvelopeSimple size={22} weight="fill" className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform" />
-                                <a href={getEmailLink(contactInfo.email)} className="text-sm sm:text-sm text-primary-foreground/75 hover:text-accent transition-colors font-light break-all">
-                                    {contactInfo.email}
+                                <EnvelopeSimple 
+                                    size={22} 
+                                    weight="fill" 
+                                    className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform" 
+                                />
+                                <a 
+                                    href={getEmailLink(CONTACT_INFO.email)} 
+                                    className="text-sm sm:text-sm text-primary-foreground/75 hover:text-accent transition-colors font-light break-all"
+                                >
+                                    {CONTACT_INFO.email}
                                 </a>
                             </li>
                         </ul>
@@ -100,33 +140,41 @@ export function Footer() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <h4 className="font-semibold text-lg sm:text-lg mb-5 sm:mb-5 md:mb-6 tracking-tight">Location</h4>
+                        <h4 className="font-semibold text-lg sm:text-lg mb-5 sm:mb-5 md:mb-6 tracking-tight">
+                            Location
+                        </h4>
                         <div className="flex items-start gap-3 sm:gap-3 mb-10 sm:mb-10">
-                            <MapPin size={22} weight="fill" className="text-accent flex-shrink-0 mt-0.5 sm:mt-1" />
+                            <MapPin 
+                                size={22} 
+                                weight="fill" 
+                                className="text-accent flex-shrink-0 mt-0.5 sm:mt-1" 
+                            />
                             <p className="text-base sm:text-base text-primary-foreground/75 font-light">
-                                Kos Island<br />
+                                Kos Island
+                                <br />
                                 Dodecanese, Greece
                             </p>
                         </div>
                         <div className="flex gap-4 sm:gap-4">
-                            <motion.a 
-                                href="#" 
-                                className="w-12 h-12 sm:w-12 sm:h-12 rounded-full bg-primary-foreground/5 hover:bg-accent/15 border border-primary-foreground/10 hover:border-accent/40 flex items-center justify-center transition-all duration-300"
-                                aria-label="Instagram"
-                                whileHover={{ scale: 1.1, y: -2 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                <InstagramLogo size={22} weight="fill" className="text-primary-foreground hover:text-accent transition-colors" />
-                            </motion.a>
-                            <motion.a 
-                                href="#" 
-                                className="w-12 h-12 sm:w-12 sm:h-12 rounded-full bg-primary-foreground/5 hover:bg-accent/15 border border-primary-foreground/10 hover:border-accent/40 flex items-center justify-center transition-all duration-300"
-                                aria-label="Facebook"
-                                whileHover={{ scale: 1.1, y: -2 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                <FacebookLogo size={22} weight="fill" className="text-primary-foreground hover:text-accent transition-colors" />
-                            </motion.a>
+                            {SOCIAL_LINKS.map((social) => {
+                                const Icon = social.icon
+                                return (
+                                    <motion.a 
+                                        key={social.label}
+                                        href={social.href} 
+                                        className="w-12 h-12 sm:w-12 sm:h-12 rounded-full bg-primary-foreground/5 hover:bg-accent/15 border border-primary-foreground/10 hover:border-accent/40 flex items-center justify-center transition-all duration-300"
+                                        aria-label={social.label}
+                                        whileHover={{ scale: 1.1, y: -2 }}
+                                        whileTap={{ scale: 0.95 }}
+                                    >
+                                        <Icon 
+                                            size={22} 
+                                            weight="fill" 
+                                            className="text-primary-foreground hover:text-accent transition-colors" 
+                                        />
+                                    </motion.a>
+                                )
+                            })}
                         </div>
                     </motion.div>
                 </div>
