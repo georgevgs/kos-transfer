@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { List, X } from '@phosphor-icons/react'
+import { List, X, Globe } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/i18n'
 import { useWhatsApp } from '@/hooks/useWhatsApp'
@@ -13,7 +13,7 @@ type NavLink = {
 export const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
-    const { t } = useLanguage()
+    const { t, language, setLanguage } = useLanguage()
     const { openWhatsAppBooking } = useWhatsApp()
 
     const navLinks: NavLink[] = [
@@ -45,6 +45,14 @@ export const Navigation = () => {
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' })
         }
+    }
+
+    const handleLanguageToggle = () => {
+        if (language === 'en') {
+            setLanguage('el')
+            return
+        }
+        setLanguage('en')
     }
 
     return (
@@ -106,8 +114,34 @@ export const Navigation = () => {
                             </div>
                         </div>
 
-                        {/* Book Now Button - Right */}
-                        <div className="hidden lg:flex items-center justify-end">
+                        {/* Language Switcher & Book Now Button - Right */}
+                        <div className="hidden lg:flex items-center justify-end gap-4">
+                            <motion.button
+                                onClick={handleLanguageToggle}
+                                className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
+                                    isScrolled
+                                        ? 'bg-card/80 border border-border/60 hover:border-accent/40'
+                                        : 'bg-black/20 border border-white/20 hover:border-accent/40'
+                                }`}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <Globe size={18} weight="fill" className={isScrolled ? 'text-accent' : 'text-white'} />
+                                <span className={`text-sm font-semibold ${
+                                    isScrolled ? 'text-foreground' : 'text-white'
+                                }`}>
+                                    {language === 'en' ? 'EN' : 'ΕΛ'}
+                                </span>
+                                <div className={`h-3 w-px ${
+                                    isScrolled ? 'bg-border/60' : 'bg-white/30'
+                                }`} />
+                                <span className={`text-sm ${
+                                    isScrolled ? 'text-muted-foreground' : 'text-white/70'
+                                }`}>
+                                    {language === 'en' ? 'ΕΛ' : 'EN'}
+                                </span>
+                            </motion.button>
+
                             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                 <Button
                                     onClick={openWhatsAppBooking}
@@ -190,8 +224,28 @@ export const Navigation = () => {
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.3, delay: 0.25 }}
+                                    className="mt-6"
+                                >
+                                    <button
+                                        onClick={handleLanguageToggle}
+                                        className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-xl bg-card/80 border border-border/60 hover:border-accent/40 transition-all duration-300"
+                                    >
+                                        <Globe size={20} weight="fill" className="text-accent" />
+                                        <span className="text-sm font-semibold text-foreground">
+                                            {language === 'en' ? 'Switch to Greek' : 'Αλλαγή σε Αγγλικά'}
+                                        </span>
+                                        <span className="text-sm text-muted-foreground">
+                                            ({language === 'en' ? 'ΕΛ' : 'EN'})
+                                        </span>
+                                    </button>
+                                </motion.div>
+
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.3, delay: 0.3 }}
-                                    className="mt-8"
+                                    className="mt-4"
                                 >
                                     <Button
                                         onClick={() => {

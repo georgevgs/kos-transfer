@@ -9,7 +9,6 @@ import { FAQ } from '@/components/FAQ'
 import { Footer } from '@/components/Footer'
 import { WhatsAppFloat } from '@/components/WhatsAppFloat'
 import { ScrollToTop } from '@/components/ScrollToTop'
-import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import { PageTransition } from '@/components/PageTransition'
 
 const App = () => {
@@ -17,7 +16,6 @@ const App = () => {
         <PageTransition>
             <div className="min-h-screen bg-background scroll-smooth">
                 <Navigation />
-                <LanguageSwitcher />
                 <Hero />
                 <BookingForm />
                 <Fleet />
