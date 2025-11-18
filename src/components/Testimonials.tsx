@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion'
 import { Star, Quotes } from '@phosphor-icons/react'
 import { Card } from '@/components/ui/card'
 import { SectionHeader } from '@/components/common/SectionHeader'
+import { useLanguage } from '@/i18n'
 
 type Testimonial = {
     name: string
@@ -14,52 +15,53 @@ type Testimonial = {
 
 const TESTIMONIALS: Testimonial[] = [
     {
-        name: 'Sarah Johnson',
+        name: 'Sarah M.',
         location: 'United Kingdom',
         rating: 5,
-        text: 'Absolutely fantastic service! Our driver was waiting for us at the airport with a name sign, the car was immaculate, and the journey to our hotel was smooth and comfortable. Highly recommend for anyone visiting Kos!',
-        date: 'October 2024',
+        text: 'Georgia was already waiting when we came out of arrivals - such a relief after a long flight! Car was spotless and cool, and she knew exactly where our hotel was. Couldn\'t have asked for a better start to our holiday.',
+        date: 'October 2025',
     },
     {
-        name: 'Michael Schmidt',
+        name: 'Michael S.',
         location: 'Germany',
         rating: 5,
-        text: 'We booked the Mercedes Van for our family of 6 and it was perfect. Plenty of space for luggage, air conditioning worked great, and the driver was very professional and friendly. Great value for money!',
+        text: 'Traveled with my wife and 4 kids, so we needed the bigger van. Plenty of room for everyone and all our bags. The driver was patient with the kids and even helped us with the luggage. Very fair price too.',
+        date: 'August 2025',
+    },
+    {
+        name: 'Emma A.',
+        location: 'Sweden',
+        rating: 5,
+        text: 'Used them three times during our week in Kos - airport, a day trip to Zia, and back to the airport. Always on time, always friendly. Georgia even recommended a great taverna in Zia village!',
+        date: 'June 2025',
+    },
+    {
+        name: 'James O.',
+        location: 'Ireland',
+        rating: 5,
+        text: 'Our flight got delayed by almost 3 hours and I was worried, but they tracked it and were there when we finally landed. No fuss, no extra charge. That\'s proper service right there.',
         date: 'September 2024',
     },
     {
-        name: 'Emma Andersson',
-        location: 'Sweden',
+        name: 'Maria R.',
+        location: 'Italy',
         rating: 5,
-        text: 'Used Kos Elite Transfers for our entire stay - airport pickup, day trips to Zia Village and Paradise Beach, and airport drop-off. Every journey was punctual and the drivers were knowledgeable about the island. Will definitely use again!',
+        text: 'Booked last minute on WhatsApp - got a reply within minutes and everything was sorted. The Peugeot was comfortable and clean. Simple, easy, exactly what you want after traveling.',
         date: 'August 2024',
     },
     {
-        name: 'James O\'Connor',
-        location: 'Ireland',
-        rating: 5,
-        text: 'Flight was delayed by 3 hours but they tracked it and adjusted pickup time automatically. No extra charges, just excellent service. The luxury sedan was spotless and very comfortable. 10/10!',
-        date: 'July 2024',
-    },
-    {
-        name: 'Maria Rossi',
-        location: 'Italy',
-        rating: 5,
-        text: 'Booked last minute via WhatsApp and they accommodated us immediately. The booking process was so easy and the service exceeded our expectations. The driver even gave us great restaurant recommendations!',
-        date: 'June 2024',
-    },
-    {
-        name: 'Thomas Dubois',
+        name: 'Thomas D.',
         location: 'France',
         rating: 5,
-        text: 'Professional, reliable, and affordable. We needed transfers for our wedding guests and Kos Elite handled everything perfectly. All 8 transfers went smoothly and on time. Thank you for making our day stress-free!',
-        date: 'May 2024',
+        text: 'Organised transfers for 12 of our wedding guests arriving on different flights. Georgia coordinated everything perfectly - everyone got picked up on time. One less thing to stress about on our big day!',
+        date: 'July 2024',
     },
 ]
 
 export const Testimonials = () => {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, margin: '-50px' })
+    const { t } = useLanguage()
 
     return (
         <section
@@ -73,13 +75,13 @@ export const Testimonials = () => {
 
             <div className="max-w-7xl mx-auto relative z-10">
                 <SectionHeader
-                    badge="Testimonials"
+                    badge={t.testimonials.badge}
                     title={
                         <>
-                            What Our <span className="text-accent italic font-light">Clients Say</span>
+                            {t.testimonials.title} <span className="text-accent italic font-light">{t.testimonials.titleAccent}</span>
                         </>
                     }
-                    description="Real experiences from travelers who chose Kos Elite Transfers"
+                    description={t.testimonials.subtitle}
                     isInView={isInView}
                 />
 
@@ -149,7 +151,7 @@ export const Testimonials = () => {
                     className="text-center mt-12 sm:mt-14"
                 >
                     <p className="text-muted-foreground font-light text-base sm:text-lg">
-                        Join hundreds of satisfied customers who trusted us with their Kos transfers
+                        {t.testimonials.joinText}
                     </p>
                 </motion.div>
             </div>

@@ -58,7 +58,7 @@ export const en = {
         title: 'Experience the',
         titleAccent: 'Difference',
         intro1:
-            'At Kos Elite Transfers, we understand that your journey begins the moment you arrive. With our premium fleet and professional service, we ensure every transfer is smooth, comfortable, and memorable.',
+            'At VIP Tour Transfer, we understand that your journey begins the moment you arrive. With our premium fleet and professional service, we ensure every transfer is smooth, comfortable, and memorable.',
         intro2:
             "Whether you're visiting for business or pleasure, traveling solo or with a group, we provide tailored transportation solutions that match your needs and exceed your expectations.",
     },
@@ -66,7 +66,7 @@ export const en = {
         badge: 'Testimonials',
         title: 'What Our',
         titleAccent: 'Clients Say',
-        subtitle: 'Real experiences from travelers who chose Kos Elite Transfers',
+        subtitle: 'Real experiences from travelers who chose VIP Tour Transfer',
         joinText: 'Join hundreds of satisfied customers who trusted us with their Kos transfers',
     },
     faq: {
@@ -78,7 +78,7 @@ export const en = {
         contactPrompt: "Contact us via WhatsApp or email and we'll be happy to help!",
     },
     footer: {
-        companyName: 'Kos Elite Transfers',
+        companyName: 'VIP Tour Transfer',
         description:
             'Premium transportation services across the beautiful island of Kos. Experience luxury, comfort, and reliability.',
         quickLinks: 'Quick Links',
@@ -87,7 +87,7 @@ export const en = {
         whatsapp: 'WhatsApp',
         island: 'Kos Island',
         region: 'Dodecanese, Greece',
-        copyright: 'Kos Elite Transfers. All rights reserved.',
+        copyright: 'VIP Tour Transfer. All rights reserved.',
     },
     common: {
         loading: 'Loading...',

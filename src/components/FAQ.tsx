@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { CaretDown } from '@phosphor-icons/react'
 import { SectionHeader } from '@/components/common/SectionHeader'
+import { useLanguage } from '@/i18n'
 
 type FAQ = {
     question: string
@@ -15,15 +16,11 @@ const FAQS: FAQ[] = [
     },
     {
         question: 'What payment methods do you accept?',
-        answer: 'We accept cash (EUR) upon arrival, credit/debit cards, and bank transfers. Payment can be made to the driver or in advance through our secure payment system.',
+        answer: 'We accept cash (EUR) and card payments. Payment is made at the end of your ride - no prepayment required.',
     },
     {
         question: 'What is your cancellation policy?',
         answer: 'Free cancellation up to 24 hours before your scheduled pickup time. Cancellations within 24 hours are subject to a 50% charge. No-shows will be charged the full amount.',
-    },
-    {
-        question: 'Do you provide child seats?',
-        answer: 'Yes, we provide complimentary child seats and booster seats upon request. Please specify the age of your children when booking so we can prepare the appropriate safety seats.',
     },
     {
         question: 'What happens if my flight is delayed?',
@@ -31,7 +28,7 @@ const FAQS: FAQ[] = [
     },
     {
         question: 'How much luggage can I bring?',
-        answer: 'Our luxury sedans accommodate 3 large suitcases plus hand luggage for up to 4 passengers. Our Mercedes vans can fit 8 large suitcases plus hand luggage for up to 8 passengers.',
+        answer: 'Our Peugeot 308 sedan accommodates 3 large suitcases plus hand luggage for up to 4 passengers. Our Ford Transit van can fit 6 large suitcases plus hand luggage for up to 8 passengers.',
     },
     {
         question: 'Are your drivers licensed and insured?',
@@ -55,6 +52,7 @@ export const FAQ = () => {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, margin: '-50px' })
     const [openIndex, setOpenIndex] = useState<number | null>(0)
+    const { t } = useLanguage()
 
     const handleToggle = (index: number) => {
         if (openIndex === index) {
@@ -75,13 +73,13 @@ export const FAQ = () => {
 
             <div className="max-w-4xl mx-auto relative z-10">
                 <SectionHeader
-                    badge="FAQ"
+                    badge={t.faq.badge}
                     title={
                         <>
-                            Frequently Asked <span className="text-accent italic font-light">Questions</span>
+                            {t.faq.title} <span className="text-accent italic font-light">{t.faq.titleAccent}</span>
                         </>
                     }
-                    description="Everything you need to know about our transfer services"
+                    description={t.faq.subtitle}
                     isInView={isInView}
                 />
 
@@ -145,10 +143,10 @@ export const FAQ = () => {
                     className="text-center mt-12 sm:mt-14 p-6 sm:p-8 rounded-2xl bg-accent/5 border border-accent/20"
                 >
                     <p className="text-foreground font-medium text-base sm:text-lg mb-2">
-                        Still have questions?
+                        {t.faq.stillHaveQuestions}
                     </p>
                     <p className="text-muted-foreground font-light text-sm sm:text-base">
-                        Contact us via WhatsApp or email and we'll be happy to help!
+                        {t.faq.contactPrompt}
                     </p>
                 </motion.div>
             </div>

@@ -1,12 +1,11 @@
 export const CONTACT = {
-    whatsappNumber: '+306900000000',
-    phoneDisplay: '+30 690 000 0000',
-    email: 'info@koselitetransfers.com',
+    whatsappNumber: '+306972961560',
+    phoneDisplay: '+30 697 296 1560',
+    email: 'georgiaskostransport@gmail.com',
 } as const
 
 export const SOCIAL_MEDIA = {
-    instagram: '#',
-    facebook: '#',
+    instagram: 'https://www.instagram.com/georgia.transport?igsh=YThlNHJycmNpZXVt',
 } as const
 
 export const WHATSAPP_MESSAGES = {

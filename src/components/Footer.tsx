@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { EnvelopeSimple, FacebookLogo, InstagramLogo, MapPin, Phone, WhatsappLogo } from '@phosphor-icons/react'
+import { EnvelopeSimple, InstagramLogo, MapPin, Phone, WhatsappLogo } from '@phosphor-icons/react'
 import { Separator } from '@/components/ui/separator'
 import { CONTACT, SOCIAL_MEDIA } from '@/constants/contact'
 import { useContactLinks } from '@/hooks/useContactLinks'
@@ -16,11 +16,6 @@ const SOCIAL_LINKS: SocialLink[] = [
         href: SOCIAL_MEDIA.instagram,
         icon: InstagramLogo,
         label: 'Instagram',
-    },
-    {
-        href: SOCIAL_MEDIA.facebook,
-        icon: FacebookLogo,
-        label: 'Facebook',
     },
 ]
 
@@ -57,9 +52,12 @@ export const Footer = () => {
                             />
                         </div>
 
-                        <h3 className="text-2xl sm:text-3xl font-bold mb-5 sm:mb-5 md:mb-6 text-accent tracking-tight relative z-10">
+                        <h3 className="text-2xl sm:text-3xl font-bold mb-2 text-accent tracking-tight relative z-10">
                             {t.footer.companyName}
                         </h3>
+                        <p className="text-sm sm:text-base text-primary-foreground/60 font-light mb-5 sm:mb-5 md:mb-6 relative z-10">
+                            Georgia Kommata
+                        </p>
                         <p className="text-primary-foreground/75 leading-relaxed font-light text-base sm:text-base relative z-10">
                             {t.footer.description}
                         </p>

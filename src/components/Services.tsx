@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { useRef, useState, useEffect } from 'react'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { AirplaneTilt, Anchor, Buildings, MapPin, Sun, Umbrella } from '@phosphor-icons/react'
 import { Card } from '@/components/ui/card'
 import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
@@ -166,20 +166,15 @@ export const Services = () => {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 relative z-10">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 relative z-10">
                         {LOCATIONS.map((location, index) => {
                             return (
-                                <motion.div
+                                <FlipBoardItem
                                     key={location}
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={getScaleAnimationState(isInView)}
-                                    transition={{ duration: 0.5, delay: 1 + index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                                    whileHover={{ scale: 1.05, x: 2 }}
-                                    className="flex items-center gap-3 sm:gap-3 p-5 sm:p-5 rounded-xl sm:rounded-2xl bg-background/70 hover:bg-accent/8 transition-all duration-300 border border-transparent hover:border-accent/30 cursor-default shadow-sm hover:shadow-md"
-                                >
-                                    <MapPin size={20} weight="fill" className="text-accent flex-shrink-0" />
-                                    <span className="text-sm sm:text-sm font-medium text-foreground">{location}</span>
-                                </motion.div>
+                                    location={location}
+                                    index={index}
+                                    isInView={isInView}
+                                />
                             )
                         })}
                     </div>
@@ -201,4 +196,89 @@ const getScaleAnimationState = (isInView: boolean) => {
         return { opacity: 1, scale: 1 }
     }
     return {}
+}
+
+type FlipBoardItemProps = {
+    location: string
+    index: number
+    isInView: boolean
+}
+
+const FlipBoardItem = ({ location, index, isInView }: FlipBoardItemProps) => {
+    const [isFlipped, setIsFlipped] = useState(false)
+    const [displayText, setDisplayText] = useState('')
+
+    useEffect(() => {
+        if (!isInView) {
+            return
+        }
+
+        const startDelay = 800 + index * 150
+        const flipDuration = 80
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+
+        const timer = setTimeout(() => {
+            setIsFlipped(true)
+            let currentIndex = 0
+            let flipCount = 0
+            const maxFlips = 4
+
+            const flipInterval = setInterval(() => {
+                if (flipCount < maxFlips) {
+                    const randomText = location
+                        .split('')
+                        .map((char, i) => {
+                            if (i < currentIndex) {
+                                return location[i]
+                            }
+                            if (char === ' ') {
+                                return ' '
+                            }
+                            return characters[Math.floor(Math.random() * characters.length)]
+                        })
+                        .join('')
+                    setDisplayText(randomText)
+                    flipCount++
+                } else {
+                    if (currentIndex < location.length) {
+                        currentIndex++
+                        flipCount = 0
+                    } else {
+                        clearInterval(flipInterval)
+                        setDisplayText(location)
+                    }
+                }
+            }, flipDuration)
+
+            return () => {
+                clearInterval(flipInterval)
+            }
+        }, startDelay)
+
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [isInView, location, index])
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, rotateX: -90 }}
+            animate={isFlipped ? { opacity: 1, rotateX: 0 } : {}}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="relative overflow-hidden"
+            style={{ perspective: '1000px' }}
+        >
+            <div className="bg-gray-900 rounded-lg p-3 sm:p-4 border border-gray-700 shadow-lg">
+                <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                    <span
+                        className="text-xs sm:text-sm font-mono font-bold tracking-wider text-amber-400 uppercase"
+                        style={{ textShadow: '0 0 10px rgba(251, 191, 36, 0.5)' }}
+                    >
+                        {displayText || '\u00A0'.repeat(location.length)}
+                    </span>
+                </div>
+            </div>
+        </motion.div>
+    )
 }

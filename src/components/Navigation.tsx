@@ -75,19 +75,26 @@ export const Navigation = () => {
                                     e.preventDefault()
                                     window.scrollTo({ top: 0, behavior: 'smooth' })
                                 }}
-                                className="flex items-center gap-2"
+                                className="flex flex-col"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                             >
-                                <span className={`text-xl sm:text-2xl font-bold tracking-tight transition-colors ${
-                                    isScrolled ? 'text-accent' : 'text-accent'
+                                <div className="flex items-center gap-2">
+                                    <span className={`text-xl sm:text-2xl font-bold tracking-tight transition-colors ${
+                                        isScrolled ? 'text-accent' : 'text-accent'
+                                    }`}>
+                                        VIP Tour
+                                    </span>
+                                    <span className={`text-xl sm:text-2xl font-light transition-colors ${
+                                        isScrolled ? 'text-foreground' : 'text-white'
+                                    }`}>
+                                        Transfer
+                                    </span>
+                                </div>
+                                <span className={`text-xs sm:text-sm font-light tracking-wide transition-colors ${
+                                    isScrolled ? 'text-muted-foreground' : 'text-white/70'
                                 }`}>
-                                    Kos Elite
-                                </span>
-                                <span className={`text-xl sm:text-2xl font-light transition-colors ${
-                                    isScrolled ? 'text-foreground' : 'text-white'
-                                }`}>
-                                    Transfers
+                                    Georgia Kommata
                                 </span>
                             </motion.a>
                         </div>
