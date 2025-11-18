@@ -20,22 +20,34 @@ type Vehicle = {
 
 const VEHICLES: Vehicle[] = [
     {
-        name: 'Luxury Sedan',
-        image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070',
-        capacity: 4,
-        luggage: 3,
-        features: ['Premium Comfort', 'Air Conditioning', 'Professional Driver', 'Wi-Fi Available'],
-        description: 'Perfect for couples or small groups seeking elegant transportation around Kos',
+        name: 'Ford Transit Van',
+        image: '/ford-transit-2021.avif',
+        capacity: 8,
+        luggage: 6,
+        features: [
+            'Premium Comfort',
+            'Air Conditioning',
+            'Professional Driver',
+            'Complimentary Water'
+        ],
+        description:
+            'Ideal for families and groups looking for comfortable and reliable transport across Kos.'
     },
     {
-        name: 'Mercedes Van',
-        image: 'https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=2070',
-        capacity: 8,
-        luggage: 8,
-        features: ['Spacious Interior', 'Climate Control', 'Extra Luggage Space', 'Group Transport'],
-        description: 'Ideal for families and larger groups exploring the beaches of Kos',
-    },
-]
+        name: 'Peugeot 308 Sedan',
+        image: '/peugeot-308-2019.avif',
+        capacity: 4,
+        luggage: 3,
+        features: [
+            'Comfortable Interior',
+            'Climate Control',
+            'Smooth Ride',
+            'Complimentary Water'
+        ],
+        description:
+            'Perfect for couples or small groups who want an easy and comfortable way to explore the island.'
+    }
+];
 
 export const Fleet = () => {
     const ref = useRef(null)
