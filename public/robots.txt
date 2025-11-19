@@ -1,0 +1,14 @@
+# Robots.txt for VIP Tour Transfer - Kos Transfer Service
+# https://viptourtransfer.gr
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://viptourtransfer.gr/sitemap.xml
+
+# Disallow admin/private areas (none currently)
+# Disallow: /admin/
+
+# Crawl-delay (optional, helps with server load)
+Crawl-delay: 1

@@ -13,33 +13,33 @@ type Service = {
 const SERVICES: Service[] = [
     {
         icon: AirplaneTilt,
-        title: 'Airport Transfers',
-        description: 'Kos International Airport (KGS) pickups and drop-offs with real-time flight tracking',
+        title: 'Kos Airport Transfer',
+        description: 'Professional airport taxi service from Kos International Airport (KGS). Flight tracking, meet & greet, and door-to-door transfer included.',
     },
     {
         icon: Anchor,
-        title: 'Port Transfers',
-        description: 'Seamless transfers to and from Kos Port for cruise ship passengers and ferry travelers',
+        title: 'Kos Port Transfer',
+        description: 'Reliable port transfers to and from Kos Port for cruise ship passengers and ferry travelers. We track all arrivals.',
     },
     {
         icon: Buildings,
-        title: 'Hotel Transfers',
-        description: 'Direct transportation to any hotel or resort across the island of Kos',
+        title: 'Hotel Transfers in Kos',
+        description: 'Private transfer service to any hotel or resort in Kos Town, Kardamena, Tigaki, Kefalos, and all areas.',
     },
     {
         icon: MapPin,
-        title: 'Custom Island Tours',
-        description: 'Personalized itineraries to explore hidden beaches and traditional Greek villages',
+        title: 'Kos Island Tours',
+        description: 'Custom day trips and private tours across Kos. Visit hidden beaches, mountain villages, and local attractions.',
     },
     {
         icon: Umbrella,
-        title: 'Beach Paradise',
-        description: "Comfortable rides to Paradise Beach, Tigaki, and Kos' pristine Aegean coastline",
+        title: 'Beach Transfers',
+        description: "Comfortable rides to Paradise Beach, Tigaki Beach, Kefalos Beach, and all of Kos' beautiful coastline.",
     },
     {
         icon: Sun,
-        title: 'Historical Sites',
-        description: 'Visit the ancient Asklepion, Neratzia Castle, and the charming village of Zia',
+        title: 'Sightseeing Transfers',
+        description: 'Visit Asklepion, Neratzia Castle, Zia village and other historic sites with our knowledgeable drivers.',
     },
 ]
 

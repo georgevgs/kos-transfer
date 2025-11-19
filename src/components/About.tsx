@@ -13,23 +13,23 @@ type Feature = {
 const FEATURES: Feature[] = [
     {
         icon: Star,
-        title: 'Premium Service',
-        description: 'Luxury vehicles maintained to the highest standards',
+        title: 'Professional Kos Transfer',
+        description: 'Clean, comfortable vehicles and experienced local drivers who know Kos',
     },
     {
         icon: Shield,
-        title: 'Fully Licensed',
-        description: 'Certified drivers with comprehensive insurance coverage',
+        title: 'Fully Licensed & Insured',
+        description: 'All Kos transfers include comprehensive insurance and licensed drivers',
     },
     {
         icon: Clock,
-        title: '24/7 Availability',
-        description: 'Round-the-clock service for early flights and late arrivals',
+        title: '24/7 Transfer Service',
+        description: 'Early morning flights, late arrivals - we cover all Kos airport transfers',
     },
     {
         icon: CheckCircle,
-        title: 'Guaranteed Reliability',
-        description: 'Punctual pickups and flight tracking for peace of mind',
+        title: 'Flight Tracking Included',
+        description: 'We monitor your flight so your Kos transfer is always on time',
     },
 ]
 

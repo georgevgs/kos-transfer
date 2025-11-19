@@ -11,40 +11,40 @@ type FAQ = {
 
 const FAQS: FAQ[] = [
     {
-        question: 'How do I book a transfer?',
-        answer: 'You can book directly through our website using the booking form, or contact us via WhatsApp for instant confirmation. We recommend booking at least 24 hours in advance, especially during peak season.',
+        question: 'How do I book a Kos transfer?',
+        answer: 'You can book your Kos transfer directly through our website using the booking form, or contact us via WhatsApp for instant confirmation. We recommend booking at least 24 hours in advance, especially during peak season.',
     },
     {
-        question: 'What payment methods do you accept?',
-        answer: 'We accept cash (EUR) and card payments. Payment is made at the end of your ride - no prepayment required.',
+        question: 'How much does a Kos airport transfer cost?',
+        answer: 'Kos transfer prices vary by destination. We offer fixed prices with no hidden fees. Contact us via WhatsApp for an instant quote for your specific route from Kos Airport (KGS) to your hotel.',
     },
     {
-        question: 'What is your cancellation policy?',
-        answer: 'Free cancellation up to 24 hours before your scheduled pickup time. Cancellations within 24 hours are subject to a 50% charge. No-shows will be charged the full amount.',
+        question: 'What happens if my flight to Kos is delayed?',
+        answer: 'We monitor all flight arrivals at Kos Airport (KGS) in real-time and automatically adjust pickup times for delays. There are no extra charges for flight delays - your Kos transfer will be waiting when you land.',
     },
     {
-        question: 'What happens if my flight is delayed?',
-        answer: 'We monitor all flight arrivals in real-time and automatically adjust pickup times for delays. There are no extra charges for flight delays - we will be there when you land.',
-    },
-    {
-        question: 'How much luggage can I bring?',
-        answer: 'Our Peugeot 308 sedan accommodates 3 large suitcases plus hand luggage for up to 4 passengers. Our Ford Transit van can fit 6 large suitcases plus hand luggage for up to 8 passengers.',
-    },
-    {
-        question: 'Are your drivers licensed and insured?',
-        answer: 'Yes, all our drivers are fully licensed, professionally trained, and we carry comprehensive insurance coverage for all passengers and vehicles.',
-    },
-    {
-        question: 'Can I book a one-way transfer?',
-        answer: 'Absolutely! You can book one-way transfers or round trips. We also offer hourly rentals for island tours and multiple stops.',
-    },
-    {
-        question: 'Do you operate 24/7?',
-        answer: 'Yes, we provide transfers around the clock, including early morning flights and late-night arrivals. Simply specify your pickup time when booking.',
+        question: 'Do you provide Kos port transfers?',
+        answer: 'Yes, we provide Kos port transfers for cruise ship passengers and ferry travelers. We track all arrivals and will be waiting at the port when your ship docks.',
     },
     {
         question: 'What areas of Kos do you cover?',
-        answer: 'We cover the entire island of Kos, including the airport, port, all major hotels and resorts, beaches, and villages. From Kos Town to Kefalos and everywhere in between.',
+        answer: 'We provide Kos transfers to the entire island including Kos Airport (KGS), Kos Port, Kos Town, Kardamena, Kefalos, Tigaki, Mastichari, Marmari, and all hotels and resorts.',
+    },
+    {
+        question: 'Is your Kos transfer service available 24/7?',
+        answer: 'Yes, we provide Kos transfers around the clock, including early morning flights and late-night arrivals at Kos Airport. Simply specify your pickup time when booking.',
+    },
+    {
+        question: 'What payment methods do you accept for Kos transfers?',
+        answer: 'We accept cash (EUR) and card payments for all Kos transfers. Payment is made at the end of your ride - no prepayment required.',
+    },
+    {
+        question: 'How many passengers can your Kos transfer vehicles hold?',
+        answer: 'Our Peugeot 308 sedan accommodates up to 4 passengers with 3 large suitcases. Our Ford Transit van can fit up to 8 passengers with 6 large suitcases - perfect for families and groups.',
+    },
+    {
+        question: 'Can I book a Kos island tour with your transfer service?',
+        answer: 'Absolutely! Besides airport and port transfers, we offer Kos island tours to Asklepion, Zia village, beaches, and other attractions. Contact us for custom tour itineraries.',
     },
 ]
 

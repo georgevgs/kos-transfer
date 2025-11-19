@@ -15,14 +15,19 @@ const App = () => {
     return (
         <PageTransition>
             <div className="min-h-screen bg-background scroll-smooth">
+                <a href="#booking" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-accent focus:text-accent-foreground focus:px-4 focus:py-2 focus:rounded-md">
+                    Skip to booking form
+                </a>
                 <Navigation />
                 <Hero />
-                <BookingForm />
-                <Fleet />
-                <Services />
-                <About />
-                <Testimonials />
-                <FAQ />
+                <main id="main-content">
+                    <BookingForm />
+                    <Fleet />
+                    <Services />
+                    <About />
+                    <Testimonials />
+                    <FAQ />
+                </main>
                 <Footer />
                 <WhatsAppFloat />
                 <ScrollToTop />

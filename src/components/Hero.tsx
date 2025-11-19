@@ -22,7 +22,7 @@ export const Hero = () => {
     const { t } = useLanguage()
 
     return (
-        <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <header ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden" role="banner">
             <KosIslandSilhouette
                 className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] lg:w-[1200px] lg:h-[750px]"
                 opacity={0.05}
@@ -67,6 +67,7 @@ export const Hero = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     >
+                        <span className="sr-only">Kos Transfer - </span>
                         {t.hero.title} <span className="text-accent italic font-light">{t.hero.titleAccent}</span>
                     </motion.h1>
 
@@ -134,7 +135,7 @@ export const Hero = () => {
             />
             </div>
             </motion.div>
-        </section>
+        </header>
     )
 }
 
