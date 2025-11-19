@@ -47,6 +47,34 @@
         outline: 2px solid oklch(0.70 0.15 75);
         outline-offset: 2px;
     }
+
+    /* Prevent iOS zoom on input focus */
+    input,
+    select,
+    textarea {
+        font-size: 16px !important;
+    }
+
+    @media (min-width: 640px) {
+        input,
+        select,
+        textarea {
+            font-size: inherit !important;
+        }
+    }
+
+    /* Better touch targets */
+    button,
+    a,
+    [role="button"] {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Smooth momentum scrolling on iOS */
+    .overflow-y-auto,
+    .overflow-x-auto {
+        -webkit-overflow-scrolling: touch;
+    }
 }
 
 /* Utility Classes */

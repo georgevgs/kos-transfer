@@ -121,18 +121,18 @@ export const Hero = () => {
             </motion.div>
 
             <motion.div
-                className="hidden sm:block absolute bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer"
-                animate={{ y: [0, 14, 0] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-                onClick={handleScrollClick}
+            className="absolute bottom-6 sm:bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer"
+            animate={{ y: [0, 14, 0] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+            onClick={handleScrollClick}
             >
-                <div className="w-7 h-11 md:w-8 md:h-12 border-2 border-white/50 rounded-full flex items-start justify-center p-2 backdrop-blur-md bg-white/5 hover:border-accent/70 transition-colors duration-300">
-                    <motion.div
-                        className="w-1.5 h-1.5 bg-accent rounded-full shadow-xl shadow-accent/60"
-                        animate={{ y: [0, 20, 0] }}
-                        transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-                    />
-                </div>
+            <div className="w-6 h-10 sm:w-7 sm:h-11 md:w-8 md:h-12 border-2 border-white/50 rounded-full flex items-start justify-center p-1.5 sm:p-2 backdrop-blur-md bg-white/5 hover:border-accent/70 transition-colors duration-300">
+            <motion.div
+            className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-accent rounded-full shadow-xl shadow-accent/60"
+            animate={{ y: [0, 16, 0] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+            />
+            </div>
             </motion.div>
         </section>
     )

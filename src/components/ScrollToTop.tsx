@@ -37,16 +37,16 @@ export const ScrollToTop = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 20 }}
                     transition={{ duration: 0.3 }}
-                    className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 z-40"
+                    className="fixed bottom-20 left-4 sm:bottom-8 sm:left-8 z-40"
                 >
                     <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                         <Button
                             onClick={scrollToTop}
                             size="lg"
-                            className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-card/80 backdrop-blur-xl hover:bg-accent/95 border-2 border-border/60 hover:border-accent/40 shadow-xl hover:shadow-2xl transition-all duration-300 p-0 group"
+                            className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-card/80 backdrop-blur-xl hover:bg-accent/95 border-2 border-border/60 hover:border-accent/40 shadow-xl hover:shadow-2xl transition-all duration-300 p-0 group"
                             aria-label="Scroll to top"
                         >
-                            <CaretUp size={24} weight="bold" className="text-foreground group-hover:text-accent-foreground transition-colors" />
+                            <CaretUp size={20} weight="bold" className="text-foreground group-hover:text-accent-foreground transition-colors sm:size-6" />
                         </Button>
                     </motion.div>
                 </motion.div>

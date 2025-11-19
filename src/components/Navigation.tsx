@@ -66,9 +66,9 @@ export const Navigation = () => {
                 }`}
             >
                 <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-3 items-center h-20">
+                    <div className="flex items-center justify-between h-16 sm:h-20">
                         {/* Logo - Left */}
-                        <div className="flex justify-start">
+                        <div className="flex-shrink-0">
                             <motion.a
                                 href="#"
                                 onClick={(e) => {
@@ -79,19 +79,19 @@ export const Navigation = () => {
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                             >
-                                <div className="flex items-center gap-2">
-                                    <span className={`text-xl sm:text-2xl font-bold tracking-tight transition-colors ${
+                                <div className="flex items-center gap-1.5 sm:gap-2">
+                                    <span className={`text-lg sm:text-xl md:text-2xl font-bold tracking-tight transition-colors ${
                                         isScrolled ? 'text-accent' : 'text-accent'
                                     }`}>
                                         VIP Tour
                                     </span>
-                                    <span className={`text-xl sm:text-2xl font-light transition-colors ${
+                                    <span className={`text-lg sm:text-xl md:text-2xl font-light transition-colors ${
                                         isScrolled ? 'text-foreground' : 'text-white'
                                     }`}>
                                         Transfer
                                     </span>
                                 </div>
-                                <span className={`text-xs sm:text-sm font-light tracking-wide transition-colors ${
+                                <span className={`text-[10px] sm:text-xs md:text-sm font-light tracking-wide transition-colors ${
                                     isScrolled ? 'text-muted-foreground' : 'text-white/70'
                                 }`}>
                                     Georgia Kommata
@@ -100,7 +100,7 @@ export const Navigation = () => {
                         </div>
 
                         {/* Desktop Navigation - Center */}
-                        <div className="hidden lg:flex items-center justify-center">
+                        <div className="hidden lg:flex items-center justify-center flex-1">
                             <div className="flex items-center gap-8">
                                 {navLinks.map((link) => (
                                     <a
@@ -160,17 +160,21 @@ export const Navigation = () => {
                         </div>
 
                         {/* Mobile Menu Button */}
-                        <div className="flex lg:hidden justify-end">
+                        <div className="flex lg:hidden">
                             <motion.button
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => setIsOpen(!isOpen)}
-                                className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+                                className={`p-2.5 rounded-xl transition-colors ${
+                                    isScrolled 
+                                        ? 'hover:bg-accent/10' 
+                                        : 'hover:bg-white/10'
+                                }`}
                                 aria-label="Toggle menu"
                             >
                                 {isOpen ? (
-                                    <X size={28} weight="bold" className={isScrolled ? 'text-foreground' : 'text-white'} />
+                                    <X size={24} weight="bold" className={isScrolled ? 'text-foreground' : 'text-white'} />
                                 ) : (
-                                    <List size={28} weight="bold" className={isScrolled ? 'text-foreground' : 'text-white'} />
+                                    <List size={24} weight="bold" className={isScrolled ? 'text-foreground' : 'text-white'} />
                                 )}
                             </motion.button>
                         </div>
@@ -195,21 +199,26 @@ export const Navigation = () => {
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                            className="fixed top-0 right-0 bottom-0 w-[280px] sm:w-[320px] bg-background border-l border-border/60 shadow-2xl z-50 lg:hidden"
+                            className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-[320px] bg-background border-l border-border/60 shadow-2xl z-50 lg:hidden flex flex-col"
                         >
-                            <div className="p-6 sm:p-8">
-                                <div className="flex items-center justify-between mb-8">
-                                    <span className="text-xl font-bold text-accent">Menu</span>
+                            <div className="p-5 sm:p-6 border-b border-border/40">
+                                <div className="flex items-center justify-between">
+                                    <div className="flex flex-col">
+                                        <span className="text-lg font-bold text-accent">Menu</span>
+                                        <span className="text-xs text-muted-foreground">VIP Tour Transfer</span>
+                                    </div>
                                     <button
                                         onClick={() => setIsOpen(false)}
-                                        className="p-2 rounded-lg hover:bg-accent/10 transition-colors"
+                                        className="p-2 rounded-xl hover:bg-accent/10 transition-colors"
                                         aria-label="Close menu"
                                     >
-                                        <X size={24} weight="bold" className="text-foreground" />
+                                        <X size={22} weight="bold" className="text-foreground" />
                                     </button>
                                 </div>
+                            </div>
 
-                                <nav className="space-y-2">
+                            <div className="flex-1 overflow-y-auto p-5 sm:p-6">
+                                <nav className="space-y-1">
                                     {navLinks.map((link, index) => (
                                         <motion.a
                                             key={link.href}
@@ -221,29 +230,27 @@ export const Navigation = () => {
                                             initial={{ opacity: 0, x: 20 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ duration: 0.3, delay: index * 0.05 }}
-                                            className="block px-4 py-3 rounded-lg text-base font-medium text-foreground hover:bg-accent/10 hover:text-accent transition-colors"
+                                            className="block px-4 py-3.5 rounded-xl text-[15px] font-medium text-foreground hover:bg-accent/10 hover:text-accent transition-colors active:bg-accent/15"
                                         >
                                             {link.label}
                                         </motion.a>
                                     ))}
                                 </nav>
+                            </div>
 
+                            <div className="p-5 sm:p-6 border-t border-border/40 space-y-3">
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.3, delay: 0.25 }}
-                                    className="mt-6"
                                 >
                                     <button
                                         onClick={handleLanguageToggle}
-                                        className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-xl bg-card/80 border border-border/60 hover:border-accent/40 transition-all duration-300"
+                                        className="w-full flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-muted/50 border border-border/60 hover:border-accent/40 transition-all duration-300 active:bg-muted"
                                     >
-                                        <Globe size={20} weight="fill" className="text-accent" />
-                                        <span className="text-sm font-semibold text-foreground">
-                                            {language === 'en' ? 'Switch to Greek' : 'Αλλαγή σε Αγγλικά'}
-                                        </span>
-                                        <span className="text-sm text-muted-foreground">
-                                            ({language === 'en' ? 'ΕΛ' : 'EN'})
+                                        <Globe size={18} weight="fill" className="text-accent" />
+                                        <span className="text-sm font-medium text-foreground">
+                                            {language === 'en' ? 'Ελληνικά' : 'English'}
                                         </span>
                                     </button>
                                 </motion.div>
@@ -252,14 +259,13 @@ export const Navigation = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.3, delay: 0.3 }}
-                                    className="mt-4"
                                 >
                                     <Button
                                         onClick={() => {
                                             setIsOpen(false)
                                             openWhatsAppBooking()
                                         }}
-                                        className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3 rounded-xl shadow-lg"
+                                        className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3.5 rounded-xl shadow-lg text-[15px]"
                                     >
                                         {t.nav.booking}
                                     </Button>

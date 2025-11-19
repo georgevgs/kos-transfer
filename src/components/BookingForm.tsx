@@ -106,7 +106,7 @@ export const BookingForm = () => {
                                         value={formData.pickupLocation}
                                         onChange={(e) => handleInputChange('pickupLocation', e.target.value)}
                                         required
-                                        className="w-full px-4 py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none"
+                                        className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
                                     >
                                         <option value="">{t.booking.selectPickup}</option>
                                         {POPULAR_LOCATIONS.map((location) => (
@@ -127,7 +127,7 @@ export const BookingForm = () => {
                                         value={formData.dropoffLocation}
                                         onChange={(e) => handleInputChange('dropoffLocation', e.target.value)}
                                         required
-                                        className="w-full px-4 py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none"
+                                        className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
                                     >
                                         <option value="">{t.booking.selectDropoff}</option>
                                         {POPULAR_LOCATIONS.map((location) => (
@@ -152,7 +152,7 @@ export const BookingForm = () => {
                                         onChange={(e) => handleInputChange('date', e.target.value)}
                                         required
                                         min={getTodayDate()}
-                                        className="w-full px-4 py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none"
+                                        className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
                                     />
                                 </div>
 
@@ -166,7 +166,7 @@ export const BookingForm = () => {
                                         value={formData.time}
                                         onChange={(e) => handleInputChange('time', e.target.value)}
                                         required
-                                        className="w-full px-4 py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none"
+                                        className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
                                     />
                                 </div>
                             </div>
@@ -181,7 +181,7 @@ export const BookingForm = () => {
                                         value={formData.passengers}
                                         onChange={(e) => handleInputChange('passengers', e.target.value)}
                                         required
-                                        className="w-full px-4 py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none"
+                                        className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
                                     >
                                         {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
                                             <option key={num} value={num}>
@@ -200,7 +200,7 @@ export const BookingForm = () => {
                                         value={formData.vehicle}
                                         onChange={(e) => handleInputChange('vehicle', e.target.value)}
                                         required
-                                        className="w-full px-4 py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none"
+                                        className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
                                     >
                                         {VEHICLE_OPTIONS.map((option) => (
                                             <option key={option.value} value={option.value}>
