@@ -43,6 +43,28 @@ export const en = {
         bags: 'Bags',
         features: 'Features Included',
         bookVehicle: 'Book This Vehicle',
+        vehicles: {
+            fordTransit: {
+                name: 'Ford Transit Van',
+                description: 'Ideal for families and groups looking for comfortable and reliable transport across Kos.',
+                features: [
+                    'Premium Comfort',
+                    'Air Conditioning',
+                    'Professional Driver',
+                    'Complimentary Water',
+                ],
+            },
+            peugeot308: {
+                name: 'Peugeot 308 Sedan',
+                description: 'Perfect for couples or small groups who want an easy and comfortable way to explore the island.',
+                features: [
+                    'Comfortable Interior',
+                    'Climate Control',
+                    'Smooth Ride',
+                    'Complimentary Water',
+                ],
+            },
+        },
     },
     services: {
         badge: 'Kos Transfer Services',
@@ -52,6 +74,32 @@ export const en = {
         popularDestinations: 'Kos Transfer',
         popularDestinationsAccent: 'Destinations',
         destinationsSubtitle: 'We provide Kos transfers to all major locations and hotels',
+        items: [
+            {
+                title: 'Kos Airport Transfer',
+                description: 'Professional airport taxi service from Kos International Airport (KGS). Flight tracking, meet & greet, and door-to-door transfer included.',
+            },
+            {
+                title: 'Kos Port Transfer',
+                description: 'Reliable port transfers to and from Kos Port for cruise ship passengers and ferry travelers. We track all arrivals.',
+            },
+            {
+                title: 'Hotel Transfers in Kos',
+                description: 'Private transfer service to any hotel or resort in Kos Town, Kardamena, Tigaki, Kefalos, and all areas.',
+            },
+            {
+                title: 'Kos Island Tours',
+                description: 'Custom day trips and private tours across Kos. Visit hidden beaches, mountain villages, and local attractions.',
+            },
+            {
+                title: 'Beach Transfers',
+                description: "Comfortable rides to Paradise Beach, Tigaki Beach, Kefalos Beach, and all of Kos' beautiful coastline.",
+            },
+            {
+                title: 'Sightseeing Transfers',
+                description: 'Visit Asklepion, Neratzia Castle, Zia village and other historic sites with our knowledgeable drivers.',
+            },
+        ],
     },
     about: {
         badge: 'Why Choose Our Kos Transfer',
@@ -61,6 +109,24 @@ export const en = {
             'At VIP Tour Transfer, we provide professional Kos transfer services from the airport, port, and hotels. With flight tracking and 24/7 availability, we ensure you never wait.',
         intro2:
             "Whether you need a Kos airport transfer, port pickup, or island tour, we offer fixed prices with no hidden fees. Trusted by thousands of travelers visiting Kos.",
+        features: [
+            {
+                title: 'Professional Kos Transfer',
+                description: 'Clean, comfortable vehicles and experienced local drivers who know Kos',
+            },
+            {
+                title: 'Fully Licensed & Insured',
+                description: 'All Kos transfers include comprehensive insurance and licensed drivers',
+            },
+            {
+                title: '24/7 Transfer Service',
+                description: 'Early morning flights, late arrivals - we cover all Kos airport transfers',
+            },
+            {
+                title: 'Flight Tracking Included',
+                description: 'We monitor your flight so your Kos transfer is always on time',
+            },
+        ],
     },
     testimonials: {
         badge: 'Customer Reviews',
@@ -68,6 +134,50 @@ export const en = {
         titleAccent: 'Clients Say',
         subtitle: 'Real experiences from travelers who booked their Kos transfer with us',
         joinText: 'Join thousands of satisfied customers who trusted us with their Kos transfers',
+        items: [
+            {
+                name: 'Sarah M.',
+                location: 'United Kingdom',
+                rating: 5,
+                text: 'Georgia was already waiting when we came out of arrivals - such a relief after a long flight! Car was spotless and cool, and she knew exactly where our hotel was. Couldn\'t have asked for a better start to our holiday.',
+                date: 'October 2025',
+            },
+            {
+                name: 'Michael S.',
+                location: 'Germany',
+                rating: 5,
+                text: 'Traveled with my wife and 4 kids, so we needed the bigger van. Plenty of room for everyone and all our bags. The driver was patient with the kids and even helped us with the luggage. Very fair price too.',
+                date: 'August 2025',
+            },
+            {
+                name: 'Emma A.',
+                location: 'Sweden',
+                rating: 5,
+                text: 'Used them three times during our week in Kos - airport, a day trip to Zia, and back to the airport. Always on time, always friendly. Georgia even recommended a great taverna in Zia village!',
+                date: 'June 2025',
+            },
+            {
+                name: 'James O.',
+                location: 'Ireland',
+                rating: 5,
+                text: 'Our flight got delayed by almost 3 hours and I was worried, but they tracked it and were there when we finally landed. No fuss, no extra charge. That\'s proper service right there.',
+                date: 'September 2024',
+            },
+            {
+                name: 'Maria R.',
+                location: 'Italy',
+                rating: 5,
+                text: 'Booked last minute on WhatsApp - got a reply within minutes and everything was sorted. The Peugeot was comfortable and clean. Simple, easy, exactly what you want after traveling.',
+                date: 'August 2024',
+            },
+            {
+                name: 'Thomas D.',
+                location: 'France',
+                rating: 5,
+                text: 'Organised transfers for 12 of our wedding guests arriving on different flights. Georgia coordinated everything perfectly - everyone got picked up on time. One less thing to stress about on our big day!',
+                date: 'July 2024',
+            },
+        ],
     },
     faq: {
         badge: 'Kos Transfer FAQ',
@@ -76,6 +186,44 @@ export const en = {
         subtitle: 'Everything you need to know about booking a Kos transfer',
         stillHaveQuestions: 'Still have questions?',
         contactPrompt: "Contact us via WhatsApp or email and we'll be happy to help with your Kos transfer!",
+        items: [
+            {
+                question: 'How do I book a Kos transfer?',
+                answer: 'You can book your Kos transfer directly through our website using the booking form, or contact us via WhatsApp for instant confirmation. We recommend booking at least 24 hours in advance, especially during peak season.',
+            },
+            {
+                question: 'How much does a Kos airport transfer cost?',
+                answer: 'Kos transfer prices vary by destination. We offer fixed prices with no hidden fees. Contact us via WhatsApp for an instant quote for your specific route from Kos Airport (KGS) to your hotel.',
+            },
+            {
+                question: 'What happens if my flight to Kos is delayed?',
+                answer: 'We monitor all flight arrivals at Kos Airport (KGS) in real-time and automatically adjust pickup times for delays. There are no extra charges for flight delays - your Kos transfer will be waiting when you land.',
+            },
+            {
+                question: 'Do you provide Kos port transfers?',
+                answer: 'Yes, we provide Kos port transfers for cruise ship passengers and ferry travelers. We track all arrivals and will be waiting at the port when your ship docks.',
+            },
+            {
+                question: 'What areas of Kos do you cover?',
+                answer: 'We provide Kos transfers to the entire island including Kos Airport (KGS), Kos Port, Kos Town, Kardamena, Kefalos, Tigaki, Mastichari, Marmari, and all hotels and resorts.',
+            },
+            {
+                question: 'Is your Kos transfer service available 24/7?',
+                answer: 'Yes, we provide Kos transfers around the clock, including early morning flights and late-night arrivals at Kos Airport. Simply specify your pickup time when booking.',
+            },
+            {
+                question: 'What payment methods do you accept for Kos transfers?',
+                answer: 'We accept cash (EUR) and card payments for all Kos transfers. Payment is made at the end of your ride - no prepayment required.',
+            },
+            {
+                question: 'How many passengers can your Kos transfer vehicles hold?',
+                answer: 'Our Peugeot 308 sedan accommodates up to 4 passengers with 3 large suitcases. Our Ford Transit van can fit up to 8 passengers with 6 large suitcases - perfect for families and groups.',
+            },
+            {
+                question: 'Can I book a Kos island tour with your transfer service?',
+                answer: 'Absolutely! Besides airport and port transfers, we offer Kos island tours to Asklepion, Zia village, beaches, and other attractions. Contact us for custom tour itineraries.',
+            },
+        ],
     },
     footer: {
         companyName: 'VIP Tour Transfer',

@@ -5,59 +5,6 @@ import { Card } from '@/components/ui/card'
 import { SectionHeader } from '@/components/common/SectionHeader'
 import { useLanguage } from '@/i18n'
 
-type Testimonial = {
-    name: string
-    location: string
-    rating: number
-    text: string
-    date: string
-}
-
-const TESTIMONIALS: Testimonial[] = [
-    {
-        name: 'Sarah M.',
-        location: 'United Kingdom',
-        rating: 5,
-        text: 'Georgia was already waiting when we came out of arrivals - such a relief after a long flight! Car was spotless and cool, and she knew exactly where our hotel was. Couldn\'t have asked for a better start to our holiday.',
-        date: 'October 2025',
-    },
-    {
-        name: 'Michael S.',
-        location: 'Germany',
-        rating: 5,
-        text: 'Traveled with my wife and 4 kids, so we needed the bigger van. Plenty of room for everyone and all our bags. The driver was patient with the kids and even helped us with the luggage. Very fair price too.',
-        date: 'August 2025',
-    },
-    {
-        name: 'Emma A.',
-        location: 'Sweden',
-        rating: 5,
-        text: 'Used them three times during our week in Kos - airport, a day trip to Zia, and back to the airport. Always on time, always friendly. Georgia even recommended a great taverna in Zia village!',
-        date: 'June 2025',
-    },
-    {
-        name: 'James O.',
-        location: 'Ireland',
-        rating: 5,
-        text: 'Our flight got delayed by almost 3 hours and I was worried, but they tracked it and were there when we finally landed. No fuss, no extra charge. That\'s proper service right there.',
-        date: 'September 2024',
-    },
-    {
-        name: 'Maria R.',
-        location: 'Italy',
-        rating: 5,
-        text: 'Booked last minute on WhatsApp - got a reply within minutes and everything was sorted. The Peugeot was comfortable and clean. Simple, easy, exactly what you want after traveling.',
-        date: 'August 2024',
-    },
-    {
-        name: 'Thomas D.',
-        location: 'France',
-        rating: 5,
-        text: 'Organised transfers for 12 of our wedding guests arriving on different flights. Georgia coordinated everything perfectly - everyone got picked up on time. One less thing to stress about on our big day!',
-        date: 'July 2024',
-    },
-]
-
 export const Testimonials = () => {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, margin: '-50px' })
@@ -86,7 +33,7 @@ export const Testimonials = () => {
                 />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                    {TESTIMONIALS.map((testimonial, index) => {
+                    {t.testimonials.items.map((testimonial, index) => {
                         return (
                             <motion.div
                                 key={`${testimonial.name}-${index}`}

@@ -3,39 +3,16 @@ import { motion, useInView } from 'framer-motion'
 import { CheckCircle, Clock, Shield, Star } from '@phosphor-icons/react'
 import { Card } from '@/components/ui/card'
 import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
+import { useLanguage } from '@/i18n'
 
-type Feature = {
-    icon: typeof Star
-    title: string
-    description: string
-}
+type FeatureIcon = typeof Star
 
-const FEATURES: Feature[] = [
-    {
-        icon: Star,
-        title: 'Professional Kos Transfer',
-        description: 'Clean, comfortable vehicles and experienced local drivers who know Kos',
-    },
-    {
-        icon: Shield,
-        title: 'Fully Licensed & Insured',
-        description: 'All Kos transfers include comprehensive insurance and licensed drivers',
-    },
-    {
-        icon: Clock,
-        title: '24/7 Transfer Service',
-        description: 'Early morning flights, late arrivals - we cover all Kos airport transfers',
-    },
-    {
-        icon: CheckCircle,
-        title: 'Flight Tracking Included',
-        description: 'We monitor your flight so your Kos transfer is always on time',
-    },
-]
+const FEATURE_ICONS: FeatureIcon[] = [Star, Shield, Clock, CheckCircle]
 
 export const About = () => {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, margin: '-50px' })
+    const { t } = useLanguage()
 
     return (
         <section
@@ -68,7 +45,7 @@ export const About = () => {
                             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         >
                             <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.15em] text-xs sm:text-xs uppercase">
-                                Why Choose Us
+                                {t.about.badge}
                             </span>
                         </motion.div>
                         <motion.h2
@@ -77,7 +54,7 @@ export const About = () => {
                             animate={getAnimationState(isInView)}
                             transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            Experience the <span className="text-accent italic font-light">Difference</span>
+                            {t.about.title} <span className="text-accent italic font-light">{t.about.titleAccent}</span>
                         </motion.h2>
                         <motion.div
                             className="space-y-6 sm:space-y-6 md:space-y-7"
@@ -86,14 +63,10 @@ export const About = () => {
                             transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
                         >
                             <p className="text-base leading-[1.7] sm:text-lg md:text-xl text-muted-foreground font-light">
-                                At Kos Elite Transfers, we understand that your journey begins the moment you arrive.
-                                With our premium fleet and professional service, we ensure every transfer is smooth,
-                                comfortable, and memorable.
+                                {t.about.intro1}
                             </p>
                             <p className="text-base leading-[1.7] sm:text-lg md:text-xl text-muted-foreground font-light">
-                                Whether you're visiting for business or pleasure, traveling solo or with a group, we
-                                provide tailored transportation solutions that match your needs and exceed your
-                                expectations.
+                                {t.about.intro2}
                             </p>
                         </motion.div>
                     </motion.div>
@@ -104,8 +77,8 @@ export const About = () => {
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6"
                     >
-                        {FEATURES.map((feature, index) => {
-                            const Icon = feature.icon
+                        {t.about.features.map((feature, index) => {
+                            const Icon = FEATURE_ICONS[index]
                             return (
                                 <motion.div
                                     key={feature.title}

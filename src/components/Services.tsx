@@ -3,45 +3,11 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { AirplaneTilt, Anchor, Buildings, MapPin, Sun, Umbrella } from '@phosphor-icons/react'
 import { Card } from '@/components/ui/card'
 import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
+import { useLanguage } from '@/i18n'
 
-type Service = {
-    icon: typeof AirplaneTilt
-    title: string
-    description: string
-}
+type ServiceIcon = typeof AirplaneTilt
 
-const SERVICES: Service[] = [
-    {
-        icon: AirplaneTilt,
-        title: 'Kos Airport Transfer',
-        description: 'Professional airport taxi service from Kos International Airport (KGS). Flight tracking, meet & greet, and door-to-door transfer included.',
-    },
-    {
-        icon: Anchor,
-        title: 'Kos Port Transfer',
-        description: 'Reliable port transfers to and from Kos Port for cruise ship passengers and ferry travelers. We track all arrivals.',
-    },
-    {
-        icon: Buildings,
-        title: 'Hotel Transfers in Kos',
-        description: 'Private transfer service to any hotel or resort in Kos Town, Kardamena, Tigaki, Kefalos, and all areas.',
-    },
-    {
-        icon: MapPin,
-        title: 'Kos Island Tours',
-        description: 'Custom day trips and private tours across Kos. Visit hidden beaches, mountain villages, and local attractions.',
-    },
-    {
-        icon: Umbrella,
-        title: 'Beach Transfers',
-        description: "Comfortable rides to Paradise Beach, Tigaki Beach, Kefalos Beach, and all of Kos' beautiful coastline.",
-    },
-    {
-        icon: Sun,
-        title: 'Sightseeing Transfers',
-        description: 'Visit Asklepion, Neratzia Castle, Zia village and other historic sites with our knowledgeable drivers.',
-    },
-]
+const SERVICE_ICONS: ServiceIcon[] = [AirplaneTilt, Anchor, Buildings, MapPin, Umbrella, Sun]
 
 const LOCATIONS: string[] = [
     'Kos Town',
@@ -61,6 +27,7 @@ const LOCATIONS: string[] = [
 export const Services = () => {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, margin: '-50px' })
+    const { t } = useLanguage()
 
     return (
         <section
@@ -91,7 +58,7 @@ export const Services = () => {
                         transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     >
                         <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.15em] text-xs sm:text-xs uppercase">
-                            Our Services
+                            {t.services.badge}
                         </span>
                     </motion.div>
                     <motion.h2
@@ -100,7 +67,7 @@ export const Services = () => {
                         animate={getAnimationState(isInView)}
                         transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        Comprehensive <span className="text-accent italic font-light">Coverage</span>
+                        {t.services.title} <span className="text-accent italic font-light">{t.services.titleAccent}</span>
                     </motion.h2>
                     <motion.p
                         className="text-base leading-[1.6] sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto font-light px-4"
@@ -108,13 +75,13 @@ export const Services = () => {
                         animate={getAnimationState(isInView)}
                         transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        Professional transfer services to every corner of Kos island
+                        {t.services.subtitle}
                     </motion.p>
                 </motion.div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8 mb-20 sm:mb-20 md:mb-28">
-                    {SERVICES.map((service, index) => {
-                        const Icon = service.icon
+                    {t.services.items.map((service, index) => {
+                        const Icon = SERVICE_ICONS[index]
                         return (
                             <motion.div
                                 key={service.title}
@@ -159,10 +126,11 @@ export const Services = () => {
 
                     <div className="text-center mb-10 sm:mb-10 md:mb-12 relative z-10">
                         <h3 className="text-[1.75rem] leading-[1.15] sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-4 md:mb-5 tracking-tight">
-                            Popular <span className="text-accent italic font-light">Destinations</span>
+                            {t.services.popularDestinations}{' '}
+                            <span className="text-accent italic font-light">{t.services.popularDestinationsAccent}</span>
                         </h3>
                         <p className="text-muted-foreground font-light text-base sm:text-base md:text-lg lg:text-xl px-4 leading-relaxed">
-                            We serve all major locations across Kos island
+                            {t.services.destinationsSubtitle}
                         </p>
                     </div>
 

@@ -10,43 +10,25 @@ import { useLanguage } from '@/i18n'
 import { SectionHeader } from '@/components/common/SectionHeader'
 
 type Vehicle = {
-    name: string
+    key: 'fordTransit' | 'peugeot308'
     image: string
     capacity: number
     luggage: number
-    features: string[]
-    description: string
 }
 
 const VEHICLES: Vehicle[] = [
     {
-        name: 'Ford Transit Van',
+        key: 'fordTransit',
         image: '/ford-transit-2021.avif',
         capacity: 8,
         luggage: 6,
-        features: [
-            'Premium Comfort',
-            'Air Conditioning',
-            'Professional Driver',
-            'Complimentary Water'
-        ],
-        description:
-            'Ideal for families and groups looking for comfortable and reliable transport across Kos.'
     },
     {
-        name: 'Peugeot 308 Sedan',
+        key: 'peugeot308',
         image: '/peugeot-308-2019.avif',
         capacity: 4,
         luggage: 3,
-        features: [
-            'Comfortable Interior',
-            'Climate Control',
-            'Smooth Ride',
-            'Complimentary Water'
-        ],
-        description:
-            'Perfect for couples or small groups who want an easy and comfortable way to explore the island.'
-    }
+    },
 ];
 
 export const Fleet = () => {
@@ -90,9 +72,10 @@ export const Fleet = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 md:gap-12 lg:gap-14">
                     {VEHICLES.map((vehicle, index) => {
+                        const vehicleData = t.fleet.vehicles[vehicle.key]
                         return (
                             <motion.div
-                                key={vehicle.name}
+                                key={vehicle.key}
                                 initial={{ opacity: 0, y: 50 }}
                                 animate={getAnimationState(isInView)}
                                 transition={{ duration: 0.9, delay: 0.5 + index * 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -101,7 +84,7 @@ export const Fleet = () => {
                                     <div className="relative h-64 sm:h-72 md:h-80 overflow-hidden">
                                         <motion.img
                                             src={vehicle.image}
-                                            alt={vehicle.name}
+                                            alt={vehicleData.name}
                                             className="w-full h-full object-cover"
                                             whileHover={{ scale: 1.08 }}
                                             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -114,7 +97,7 @@ export const Fleet = () => {
                                             transition={{ duration: 0.7, delay: 0.8 + index * 0.2 }}
                                         >
                                             <h3 className="text-3xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-4 tracking-tight">
-                                                {vehicle.name}
+                                                {vehicleData.name}
                                             </h3>
                                             <div className="flex gap-2.5 sm:gap-3 flex-wrap">
                                                 <Badge className="bg-accent/95 text-accent-foreground border-0 px-4 sm:px-4 py-2 sm:py-2 font-semibold shadow-xl shadow-accent/30 hover:bg-accent transition-colors text-sm sm:text-sm">
@@ -131,7 +114,7 @@ export const Fleet = () => {
 
                                     <div className="p-7 sm:p-8 md:p-9 bg-card/95 backdrop-blur-sm">
                                         <p className="text-muted-foreground mb-7 sm:mb-7 md:mb-9 leading-relaxed text-base sm:text-lg font-light">
-                                            {vehicle.description}
+                                            {vehicleData.description}
                                         </p>
 
                                         <div className="mb-7 sm:mb-8 md:mb-9">
@@ -144,7 +127,7 @@ export const Fleet = () => {
                                                 {t.fleet.features}
                                             </h4>
                                             <ul className="grid grid-cols-1 gap-4 sm:gap-4">
-                                                {vehicle.features.map((feature) => {
+                                                {vehicleData.features.map((feature) => {
                                                     return (
                                                         <motion.li
                                                             key={feature}
@@ -167,7 +150,7 @@ export const Fleet = () => {
                                         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                                             <Button
                                                 className="w-full bg-accent hover:bg-accent/95 text-accent-foreground font-semibold tracking-wide transition-all duration-300 hover:shadow-xl hover:shadow-accent/30 text-base sm:text-base rounded-2xl relative overflow-hidden group/btn h-[56px]"
-                                                onClick={() => handleVehicleBooking(vehicle.name)}
+                                                onClick={() => handleVehicleBooking(vehicleData.name)}
                                             >
                                                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
                                                 <WhatsappLogo className="mr-2.5 sm:mr-2.5" weight="fill" size={22} />
