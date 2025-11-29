@@ -1,9 +1,9 @@
 import { createContext, useContext, useState, ReactNode } from 'react'
+import type { Translations } from './types'
 import { en } from './en'
 import { el } from './el'
 
 type Language = 'en' | 'el'
-type Translations = typeof en
 
 const translations: Record<Language, Translations> = {
     en,

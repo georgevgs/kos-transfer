@@ -1,4 +1,6 @@
-export const el = {
+import type { Translations } from './types'
+
+export const el: Translations = {
     nav: {
         fleet: 'Στόλος',
         services: 'Υπηρεσίες',
@@ -243,4 +245,4 @@ export const el = {
         error: 'Παρουσιάστηκε κάποιο πρόβλημα',
         tryAgain: 'Δοκιμάστε Ξανά',
     },
-} as const
+}

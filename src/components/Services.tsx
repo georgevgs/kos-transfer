@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { AirplaneTilt, Anchor, Buildings, MapPin, Sun, Umbrella } from '@phosphor-icons/react'
 import { Card } from '@/components/ui/card'
 import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'

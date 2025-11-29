@@ -1,4 +1,6 @@
-export const en = {
+import type { Translations } from './types'
+
+export const en: Translations = {
     nav: {
         fleet: 'Our Fleet',
         services: 'Services',
@@ -242,4 +244,4 @@ export const en = {
         error: 'An error occurred',
         tryAgain: 'Try Again',
     },
-} as const
+}
