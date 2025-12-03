@@ -15,11 +15,6 @@ type BookingFormData = {
     vehicle: string
 }
 
-const VEHICLE_OPTIONS = [
-    { value: 'sedan', label: 'Luxury Sedan (1-4 passengers)', capacity: 4 },
-    { value: 'van', label: 'Mercedes Van (1-8 passengers)', capacity: 8 },
-]
-
 const POPULAR_LOCATIONS = [
     'Kos Airport (KGS)',
     'Kos Port',
@@ -33,20 +28,20 @@ const POPULAR_LOCATIONS = [
 
 export const BookingForm = () => {
     const { openWhatsApp } = useWhatsApp()
-    const { t } = useLanguage()
+    const { t, language } = useLanguage()
     const [formData, setFormData] = useState<BookingFormData>({
         pickupLocation: '',
         dropoffLocation: '',
         date: '',
         time: '',
         passengers: '1',
-        vehicle: 'sedan',
+        vehicle: 'peugeot308',
     })
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
 
-        const message = buildWhatsAppMessage(formData)
+        const message = buildWhatsAppMessage(formData, t, language)
         openWhatsApp(message)
     }
 
@@ -62,6 +57,21 @@ export const BookingForm = () => {
             return `1 ${t.booking.passenger}`
         }
         return `${count} ${t.booking.passengersPlural}`
+    }
+
+    const getVehicleOptions = () => {
+        return [
+            { 
+                value: 'peugeot308', 
+                label: `${t.fleet.vehicles.peugeot308.name} (1-4 ${t.booking.passengersPlural.toLowerCase()})`,
+                capacity: 4 
+            },
+            { 
+                value: 'fordTransit', 
+                label: `${t.fleet.vehicles.fordTransit.name} (1-8 ${t.booking.passengersPlural.toLowerCase()})`,
+                capacity: 8 
+            },
+        ]
     }
 
     return (
@@ -153,14 +163,16 @@ export const BookingForm = () => {
                                         <Calendar size={18} weight="fill" className="text-accent" />
                                         {t.booking.date}
                                     </label>
-                                    <input
-                                        type="date"
-                                        value={formData.date}
-                                        onChange={(e) => handleInputChange('date', e.target.value)}
-                                        required
-                                        min={getTodayDate()}
-                                        className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
-                                    />
+                                    <div className="relative">
+                                        <input
+                                            type="date"
+                                            value={formData.date}
+                                            onChange={(e) => handleInputChange('date', e.target.value)}
+                                            required
+                                            min={getTodayDate()}
+                                            className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base [&::-webkit-calendar-picker-indicator]:cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-70 hover:[&::-webkit-calendar-picker-indicator]:opacity-100"
+                                        />
+                                    </div>
                                 </div>
 
                                 <div className="space-y-2">
@@ -168,13 +180,15 @@ export const BookingForm = () => {
                                         <Clock size={18} weight="fill" className="text-accent" />
                                         {t.booking.time}
                                     </label>
-                                    <input
-                                        type="time"
-                                        value={formData.time}
-                                        onChange={(e) => handleInputChange('time', e.target.value)}
-                                        required
-                                        className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
-                                    />
+                                    <div className="relative">
+                                        <input
+                                            type="time"
+                                            value={formData.time}
+                                            onChange={(e) => handleInputChange('time', e.target.value)}
+                                            required
+                                            className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base [&::-webkit-calendar-picker-indicator]:cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-70 hover:[&::-webkit-calendar-picker-indicator]:opacity-100"
+                                        />
+                                    </div>
                                 </div>
                             </div>
 
@@ -209,7 +223,7 @@ export const BookingForm = () => {
                                         required
                                         className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
                                     >
-                                        {VEHICLE_OPTIONS.map((option) => (
+                                        {getVehicleOptions().map((option) => (
                                             <option key={option.value} value={option.value}>
                                                 {option.label}
                                             </option>
@@ -245,16 +259,16 @@ const getTodayDate = (): string => {
     return `${year}-${month}-${day}`
 }
 
-const buildWhatsAppMessage = (data: BookingFormData): string => {
+const buildWhatsAppMessage = (data: BookingFormData, t: any, language: string): string => {
     const lines = [
         '🚗 *TRANSFER BOOKING REQUEST*',
         '',
         `📍 *Pickup:* ${data.pickupLocation}`,
         `📍 *Drop-off:* ${data.dropoffLocation}`,
-        `📅 *Date:* ${formatDate(data.date)}`,
+        `📅 *Date:* ${formatDate(data.date, language)}`,
         `🕐 *Time:* ${data.time}`,
         `👥 *Passengers:* ${data.passengers}`,
-        `🚙 *Vehicle:* ${getVehicleName(data.vehicle)}`,
+        `🚙 *Vehicle:* ${getVehicleName(data.vehicle, t)}`,
         '',
         'Please confirm availability and pricing. Thank you!',
     ]
@@ -262,12 +276,18 @@ const buildWhatsAppMessage = (data: BookingFormData): string => {
     return lines.join('\n')
 }
 
-const formatDate = (dateString: string): string => {
+const formatDate = (dateString: string, language: string): string => {
     const date = new Date(dateString)
-    return date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+    const locale = language === 'el' ? 'el-GR' : 'en-US'
+    return date.toLocaleDateString(locale, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
 }
 
-const getVehicleName = (vehicleValue: string): string => {
-    const vehicle = VEHICLE_OPTIONS.find((v) => v.value === vehicleValue)
-    return vehicle ? vehicle.label : vehicleValue
+const getVehicleName = (vehicleValue: string, t: any): string => {
+    if (vehicleValue === 'peugeot308') {
+        return t.fleet.vehicles.peugeot308.name
+    }
+    if (vehicleValue === 'fordTransit') {
+        return t.fleet.vehicles.fordTransit.name
+    }
+    return vehicleValue
 }
