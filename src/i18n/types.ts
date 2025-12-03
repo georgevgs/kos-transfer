@@ -27,6 +27,7 @@ export type Translations = {
         passengers: string
         vehicle: string
         passenger: string
+        passengersPlural: string
         selectPickup: string
         selectDropoff: string
         other: string

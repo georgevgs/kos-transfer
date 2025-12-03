@@ -57,6 +57,13 @@ export const BookingForm = () => {
         }))
     }
 
+    const getPassengerLabel = (count: number): string => {
+        if (count === 1) {
+            return `1 ${t.booking.passenger}`
+        }
+        return `${count} ${t.booking.passengersPlural}`
+    }
+
     return (
         <section id="booking" className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 bg-muted/20 relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent" />
@@ -185,7 +192,7 @@ export const BookingForm = () => {
                                     >
                                         {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
                                             <option key={num} value={num}>
-                                                {num} {num === 1 ? t.booking.passenger : `${t.booking.passenger}s`}
+                                                {getPassengerLabel(num)}
                                             </option>
                                         ))}
                                     </select>
