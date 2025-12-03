@@ -163,16 +163,14 @@ export const BookingForm = () => {
                                         <Calendar size={18} weight="fill" className="text-accent" />
                                         {t.booking.date}
                                     </label>
-                                    <div className="relative">
-                                        <input
-                                            type="date"
-                                            value={formData.date}
-                                            onChange={(e) => handleInputChange('date', e.target.value)}
-                                            required
-                                            min={getTodayDate()}
-                                            className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base [&::-webkit-calendar-picker-indicator]:cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-70 hover:[&::-webkit-calendar-picker-indicator]:opacity-100"
-                                        />
-                                    </div>
+                                    <input
+                                        type="date"
+                                        value={formData.date}
+                                        onChange={(e) => handleInputChange('date', e.target.value)}
+                                        required
+                                        min={getTodayDate()}
+                                        className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
+                                    />
                                 </div>
 
                                 <div className="space-y-2">
@@ -180,15 +178,13 @@ export const BookingForm = () => {
                                         <Clock size={18} weight="fill" className="text-accent" />
                                         {t.booking.time}
                                     </label>
-                                    <div className="relative">
-                                        <input
-                                            type="time"
-                                            value={formData.time}
-                                            onChange={(e) => handleInputChange('time', e.target.value)}
-                                            required
-                                            className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base [&::-webkit-calendar-picker-indicator]:cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-70 hover:[&::-webkit-calendar-picker-indicator]:opacity-100"
-                                        />
-                                    </div>
+                                    <input
+                                        type="time"
+                                        value={formData.time}
+                                        onChange={(e) => handleInputChange('time', e.target.value)}
+                                        required
+                                        className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
+                                    />
                                 </div>
                             </div>
 
