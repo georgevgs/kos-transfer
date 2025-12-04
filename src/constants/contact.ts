@@ -1,7 +1,7 @@
 export const CONTACT = {
     whatsappNumber: '+306972961560',
     phoneDisplay: '+30 697 296 1560',
-    email: 'georgiaskostransport@gmail.com',
+    email: 'gkommata@gmail.com',
 } as const
 
 export const SOCIAL_MEDIA = {
