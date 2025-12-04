@@ -1,7 +1,7 @@
 {
   "name": "Kos Transfer - Airport & Port Transfers",
   "short_name": "Kos Transfer",
-  "description": "Professional Kos transfer service. Airport taxi, port transfers & private transportation across Kos Island, Greece.",
+  "description": "Professional Kos transfer service. Airport transfer, port transfers & private transportation across Kos Island, Greece.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f8fafc",

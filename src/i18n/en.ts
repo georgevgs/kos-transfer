@@ -14,7 +14,7 @@ export const en: Translations = {
         title: 'Kos',
         titleAccent: 'Transfers',
         subtitle:
-            'Book your Kos transfer today. Airport taxi from KGS, port pickups & hotel transfers. 24/7 service, flight tracking, fixed prices.',
+            'Book your Kos transfer today. Transfer from KGS, port pickups & hotel transfers. 24/7 service, flight tracking, fixed prices.',
         bookWhatsApp: 'Book Kos Transfer',
         callNow: 'Call Now',
     },
@@ -73,14 +73,14 @@ export const en: Translations = {
         badge: 'Kos Transfer Services',
         title: 'Complete Kos',
         titleAccent: 'Transfer Coverage',
-        subtitle: 'Airport taxi, port transfers & private transportation across Kos Island',
+        subtitle: 'Airport transfer, port transfers & private transportation across Kos Island',
         popularDestinations: 'Kos Transfer',
         popularDestinationsAccent: 'Destinations',
         destinationsSubtitle: 'We provide Kos transfers to all major locations and hotels',
         items: [
             {
                 title: 'Kos Airport Transfer',
-                description: 'Professional airport taxi service from Kos International Airport (KGS). Flight tracking, meet & greet, and door-to-door transfer included.',
+                description: 'Professional transfer service from Kos International Airport (KGS). Flight tracking, meet & greet, and door-to-door transfer included.',
             },
             {
                 title: 'Kos Port Transfer',
@@ -231,7 +231,7 @@ export const en: Translations = {
     footer: {
         companyName: 'VIP Tour Transfer',
         description:
-            'Professional Kos transfer service. Airport taxi from KGS, port transfers & private transportation. 24/7 availability, flight tracking, fixed prices.',
+            'Professional Kos transfer service. Transfer from KGS, port transfers & private transportation. 24/7 availability, flight tracking, fixed prices.',
         quickLinks: 'Quick Links',
         contact: 'Book Kos Transfer',
         location: 'Location',
