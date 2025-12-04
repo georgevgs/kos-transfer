@@ -10,7 +10,7 @@ export const el: Translations = {
         booking: 'Κράτηση',
     },
     hero: {
-        badge: '#1 Κως Transfer',
+        badge: '#1 Transfer Κως',
         title: 'Transfer',
         titleAccent: 'Κως',
         subtitle:
