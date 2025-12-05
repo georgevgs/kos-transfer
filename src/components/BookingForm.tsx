@@ -93,11 +93,11 @@ export const BookingForm = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <span className="text-accent font-semibold tracking-[0.15em] text-xs uppercase">
+                        <span className="text-accent font-semibold tracking-wide text-xs sm:text-sm">
                             {t.booking.badge}
                         </span>
                     </motion.div>
-                    <h2 className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-5 tracking-tight">
+                    <h2 className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-5 tracking-tight text-center px-4">
                         {t.booking.title} <span className="text-accent italic font-light">{t.booking.titleAccent}</span>
                     </h2>
                     <p className="text-base sm:text-lg text-muted-foreground font-light max-w-2xl mx-auto">
@@ -231,10 +231,10 @@ export const BookingForm = () => {
                             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                                 <Button
                                     type="submit"
-                                    className="w-full bg-accent hover:bg-accent/95 text-accent-foreground font-semibold tracking-wide text-base sm:text-lg py-6 sm:py-7 rounded-xl shadow-xl shadow-accent/30 hover:shadow-2xl hover:shadow-accent/40 transition-all duration-300 relative overflow-hidden group"
+                                    className="w-full bg-accent hover:bg-accent/95 text-accent-foreground font-semibold tracking-wide text-base sm:text-lg py-6 sm:py-7 rounded-xl shadow-xl shadow-accent/30 hover:shadow-2xl hover:shadow-accent/40 transition-all duration-300 relative overflow-hidden group min-h-[56px] sm:min-h-[64px]"
                                 >
                                     <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                                    <span className="relative z-10">{t.booking.submitButton}</span>
+                                    <span className="relative z-10 whitespace-normal text-center leading-tight px-2">{t.booking.submitButton}</span>
                                 </Button>
                             </motion.div>
 

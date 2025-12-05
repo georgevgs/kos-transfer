@@ -57,12 +57,12 @@ export const Services = () => {
                         animate={getScaleAnimationState(isInView)}
                         transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.15em] text-xs sm:text-xs uppercase">
+                        <span className="text-accent font-semibold tracking-wide text-xs sm:text-sm">
                             {t.services.badge}
                         </span>
                     </motion.div>
                     <motion.h2
-                        className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-5 sm:mb-6 md:mb-7 tracking-tight px-4"
+                        className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-5 sm:mb-6 md:mb-7 tracking-tight px-4 text-center"
                         initial={{ opacity: 0, y: 20 }}
                         animate={getAnimationState(isInView)}
                         transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
@@ -93,10 +93,10 @@ export const Services = () => {
                                     whileHover={{ y: -8 }}
                                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                 >
-                                    <Card className="p-7 sm:p-8 md:p-9 border border-border/60 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 group h-full bg-card/80 backdrop-blur-sm relative overflow-hidden">
+                                    <Card className="p-7 sm:p-8 md:p-9 border border-border/60 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 group h-full bg-card/80 backdrop-blur-sm relative overflow-hidden text-center">
                                         <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-accent/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-colors duration-500" />
                                         <motion.div
-                                            className="mb-6 sm:mb-6 w-16 h-16 sm:w-16 sm:h-16 rounded-2xl bg-accent/10 flex items-center justify-center relative z-10"
+                                            className="mb-6 sm:mb-6 w-16 h-16 sm:w-16 sm:h-16 rounded-2xl bg-accent/10 flex items-center justify-center relative z-10 mx-auto"
                                             whileHover={{ scale: 1.15, rotate: 5 }}
                                             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                         >

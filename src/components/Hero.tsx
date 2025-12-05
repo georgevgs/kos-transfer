@@ -56,13 +56,13 @@ export const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         whileHover={{ scale: 1.05 }}
                     >
-                        <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-xs uppercase">
+                        <span className="text-accent font-semibold tracking-wide text-xs sm:text-sm">
                             {t.hero.badge}
                         </span>
                     </motion.div>
 
                     <motion.h1
-                        className="text-[2.75rem] leading-[1.05] sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-7 sm:mb-8 md:mb-10 tracking-tight px-2"
+                        className="text-[2.75rem] leading-[1.05] sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-7 sm:mb-8 md:mb-10 tracking-tight px-2 text-center"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}

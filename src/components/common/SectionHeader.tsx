@@ -22,12 +22,12 @@ export const SectionHeader = ({ badge, title, description, isInView }: SectionHe
                 animate={getScaleAnimationState(isInView)}
                 transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-                <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.15em] text-xs sm:text-xs uppercase">
+                <span className="text-accent font-semibold tracking-wide text-xs sm:text-sm">
                     {badge}
                 </span>
             </motion.div>
             <motion.h2
-                className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-5 sm:mb-6 md:mb-7 tracking-tight px-4"
+                className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-5 sm:mb-6 md:mb-7 tracking-tight px-4 text-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={getAnimationState(isInView)}
                 transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}

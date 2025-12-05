@@ -33,7 +33,7 @@ export const en: Translations = {
         passengersPlural: 'Passengers',
         selectPickup: 'Select pickup location',
         selectDropoff: 'Select drop-off location',
-        other: 'Other (specify in message)',
+        other: 'Other (specify in WhatsApp message)',
         submitButton: 'Complete Booking via WhatsApp',
         noteText: 'Your Kos transfer details will be sent via WhatsApp for confirmation',
     },

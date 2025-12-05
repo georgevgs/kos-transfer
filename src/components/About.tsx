@@ -37,6 +37,7 @@ export const About = () => {
                         initial={{ opacity: 0, x: -50 }}
                         animate={getSlideAnimationState(isInView)}
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-center lg:text-left"
                     >
                         <motion.div
                             className="inline-block mb-5 sm:mb-6 md:mb-7 px-6 sm:px-6 md:px-7 py-2.5 sm:py-2.5 border border-accent/40 rounded-full bg-accent/8 backdrop-blur-xl shadow-lg shadow-accent/10"
@@ -44,12 +45,12 @@ export const About = () => {
                             animate={getScaleAnimationState(isInView)}
                             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            <span className="text-accent font-semibold tracking-[0.15em] sm:tracking-[0.15em] text-xs sm:text-xs uppercase">
+                            <span className="text-accent font-semibold tracking-wide text-xs sm:text-sm">
                                 {t.about.badge}
                             </span>
                         </motion.div>
                         <motion.h2
-                            className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-7 sm:mb-8 md:mb-10 tracking-tight"
+                            className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-7 sm:mb-8 md:mb-10 tracking-tight px-4 lg:px-0"
                             initial={{ opacity: 0, y: 20 }}
                             animate={getAnimationState(isInView)}
                             transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
@@ -57,7 +58,7 @@ export const About = () => {
                             {t.about.title} <span className="text-accent italic font-light">{t.about.titleAccent}</span>
                         </motion.h2>
                         <motion.div
-                            className="space-y-6 sm:space-y-6 md:space-y-7"
+                            className="space-y-6 sm:space-y-6 md:space-y-7 px-4 lg:px-0"
                             initial={{ opacity: 0, y: 20 }}
                             animate={getAnimationState(isInView)}
                             transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
@@ -94,10 +95,10 @@ export const About = () => {
                                         whileHover={{ y: -8 }}
                                         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                     >
-                                        <Card className="p-7 sm:p-7 md:p-8 border border-border/60 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 h-full group bg-card/80 backdrop-blur-sm relative overflow-hidden">
+                                        <Card className="p-7 sm:p-7 md:p-8 border border-border/60 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 h-full group bg-card/80 backdrop-blur-sm relative overflow-hidden text-center">
                                             <div className="absolute top-0 right-0 w-20 h-20 sm:w-24 sm:h-24 bg-accent/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-colors duration-500" />
                                             <motion.div
-                                                className="mb-6 sm:mb-6 w-16 h-16 sm:w-16 sm:h-16 rounded-2xl bg-accent/10 flex items-center justify-center relative z-10"
+                                                className="mb-6 sm:mb-6 w-16 h-16 sm:w-16 sm:h-16 rounded-2xl bg-accent/10 flex items-center justify-center relative z-10 mx-auto"
                                                 whileHover={{ scale: 1.15, rotate: 5 }}
                                                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                             >

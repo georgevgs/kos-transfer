@@ -113,6 +113,21 @@ export const Fleet = () => {
                                     </div>
 
                                     <div className="p-7 sm:p-8 md:p-9 bg-card/95 backdrop-blur-sm">
+                                        <div className="mb-6 sm:mb-7 pb-6 sm:pb-7 border-b border-border/40">
+                                            <div className="grid grid-cols-2 gap-4 sm:gap-5">
+                                                <div className="flex flex-col items-center justify-center p-4 sm:p-5 bg-accent/5 rounded-xl border border-accent/20 hover:border-accent/40 transition-colors">
+                                                    <Users className="text-accent mb-2 sm:mb-3" size={32} weight="fill" />
+                                                    <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">{vehicle.capacity}</div>
+                                                    <div className="text-sm sm:text-base text-muted-foreground font-medium">{t.fleet.passengers}</div>
+                                                </div>
+                                                <div className="flex flex-col items-center justify-center p-4 sm:p-5 bg-accent/5 rounded-xl border border-accent/20 hover:border-accent/40 transition-colors">
+                                                    <Briefcase className="text-accent mb-2 sm:mb-3" size={32} weight="fill" />
+                                                    <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">{vehicle.luggage}</div>
+                                                    <div className="text-sm sm:text-base text-muted-foreground font-medium">{t.fleet.bags}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <p className="text-muted-foreground mb-7 sm:mb-7 md:mb-9 leading-relaxed text-base sm:text-lg font-light">
                                             {vehicleData.description}
                                         </p>

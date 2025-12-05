@@ -45,19 +45,19 @@ export const Testimonials = () => {
                                     whileHover={{ y: -8 }}
                                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                 >
-                                    <Card className="p-6 sm:p-7 md:p-8 border border-border/60 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 h-full group bg-card/80 backdrop-blur-sm relative overflow-hidden">
+                                    <Card className="p-6 sm:p-7 md:p-8 border border-border/60 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 h-full group bg-card/80 backdrop-blur-sm relative overflow-hidden text-center">
                                         <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-accent/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-colors duration-500" />
 
                                         <div className="relative z-10">
                                             <motion.div
-                                                className="mb-5 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center"
+                                                className="mb-5 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto"
                                                 whileHover={{ rotate: 180, scale: 1.1 }}
                                                 transition={{ duration: 0.5 }}
                                             >
                                                 <Quotes size={24} weight="fill" className="text-accent" />
                                             </motion.div>
 
-                                            <div className="flex gap-1 mb-4">
+                                            <div className="flex gap-1 mb-4 justify-center">
                                                 {Array.from({ length: testimonial.rating }).map((_, i) => (
                                                     <Star
                                                         key={i}
