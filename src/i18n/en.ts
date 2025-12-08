@@ -10,12 +10,12 @@ export const en: Translations = {
         booking: 'Book Now',
     },
     hero: {
-        badge: '#1 Kos Transfer Service',
-        title: 'Kos',
-        titleAccent: 'Transfers',
+        badge: '#1 Transfer Kos Service',
+        title: 'Transfer Kos',
+        titleAccent: '- Premium Airport & Island Transport',
         subtitle:
-            'Book your Kos transfer today. Transfer from KGS, port pickups & hotel transfers. 24/7 service, flight tracking, fixed prices.',
-        bookWhatsApp: 'Book Kos Transfer',
+            'Book your transfer Kos service today. Airport transfers from KGS, port pickups & hotel transfers across the island. 24/7 availability, flight tracking, fixed prices.',
+        bookWhatsApp: 'Book Transfer Now',
         callNow: 'Call Now',
     },
     booking: {
@@ -111,13 +111,13 @@ export const en: Translations = {
         ],
     },
     about: {
-        badge: 'Why Choose Our Kos Transfer',
-        title: 'Reliable Kos',
-        titleAccent: 'Transfers',
+        badge: 'Why Choose Transfer Kos',
+        title: 'Reliable Transfer Kos',
+        titleAccent: 'Service',
         intro1:
-            'At VIP Tour Transfer, we provide professional Kos transfer services from the airport, port, and hotels. With flight tracking and 24/7 availability, we ensure you never wait.',
+            'At VIP Tour Transfer, we provide professional transfer Kos services from the airport, port, and hotels across the island. With flight tracking and 24/7 availability, we ensure you never wait for your transfer Kos needs.',
         intro2:
-            "Whether you need a Kos airport transfer, port pickup, or island tour, we offer fixed prices with no hidden fees. Trusted by thousands of travelers visiting Kos.",
+            "Whether you need transfer Kos from the airport, port pickup, or island tour, we offer fixed prices with no hidden fees. Trusted by hundreds of travelers visiting Kos.",
         features: [
             {
                 title: 'Professional Kos Transfer',
@@ -138,11 +138,11 @@ export const en: Translations = {
         ],
     },
     testimonials: {
-        badge: 'Customer Reviews',
+        badge: 'Transfer Kos Reviews',
         title: 'What Our',
         titleAccent: 'Clients Say',
-        subtitle: 'Real experiences from travelers who booked their Kos transfer with us',
-        joinText: 'Join thousands of satisfied customers who trusted us with their Kos transfers',
+        subtitle: 'Real experiences from travelers who booked their transfer Kos service with us',
+        joinText: 'Join thousands of satisfied customers who trusted us with their transfer Kos needs',
         items: [
             {
                 name: 'Sarah M.',

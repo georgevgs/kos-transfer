@@ -12,8 +12,8 @@ export const getLocalBusinessSchema = (): StructuredDataSchema => {
         '@type': 'LocalBusiness',
         '@id': `${BASE_URL}/#business`,
         name: BUSINESS_NAME,
-        alternateName: ['Kos Transfer', 'Kos Airport Transfer', 'VIP Transfer Kos'],
-        description: 'Professional airport and port transfer services in Kos Island, Greece. 24/7 availability, flight tracking, and fixed prices.',
+        alternateName: ['Transfer Kos', 'Kos Transfer', 'Kos Airport Transfer', 'VIP Transfer Kos', 'Transfer Kos Service'],
+        description: 'Professional transfer Kos services - airport and port transfers in Kos Island, Greece. 24/7 availability, flight tracking, and fixed prices.',
         url: BASE_URL,
         telephone: BUSINESS_PHONE,
         email: BUSINESS_EMAIL,
@@ -88,13 +88,6 @@ export const getLocalBusinessSchema = (): StructuredDataSchema => {
         employee: {
             '@type': 'Person',
             name: OWNER_NAME,
-        },
-        aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: '5',
-            reviewCount: '127',
-            bestRating: '5',
-            worstRating: '1',
         },
         potentialAction: [
             {
