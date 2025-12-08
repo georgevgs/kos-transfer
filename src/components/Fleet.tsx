@@ -80,40 +80,30 @@ export const Fleet = () => {
                                 animate={getAnimationState(isInView)}
                                 transition={{ duration: 0.9, delay: 0.5 + index * 0.2, ease: [0.16, 1, 0.3, 1] }}
                             >
-                                <Card className="overflow-hidden border border-border/60 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/15 group bg-card/80 backdrop-blur-sm">
-                                    <div className="relative h-64 sm:h-72 md:h-80 overflow-hidden">
+                                <Card className="overflow-hidden border border-border/60 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/15 group bg-card/80 backdrop-blur-sm p-0">
+                                    <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
                                         <motion.img
                                             src={vehicle.image}
                                             alt={vehicleData.name}
-                                            className="w-full h-full object-cover"
+                                            className="w-full h-full object-cover object-[center_35%]"
                                             whileHover={{ scale: 1.08 }}
                                             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
                                         <motion.div
-                                            className="absolute bottom-6 sm:bottom-6 md:bottom-7 left-5 sm:left-6 md:left-7 right-5 sm:right-6 md:right-7"
+                                            className="absolute bottom-5 sm:bottom-6 left-5 sm:left-6 right-5 sm:right-6"
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={getAnimationState(isInView)}
                                             transition={{ duration: 0.7, delay: 0.8 + index * 0.2 }}
                                         >
-                                            <h3 className="text-3xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-4 tracking-tight">
+                                            <h3 className="text-2xl sm:text-3xl md:text-3xl font-bold text-white tracking-tight text-center">
                                                 {vehicleData.name}
                                             </h3>
-                                            <div className="flex gap-2.5 sm:gap-3 flex-wrap">
-                                                <Badge className="bg-accent/95 text-accent-foreground border-0 px-4 sm:px-4 py-2 sm:py-2 font-semibold shadow-xl shadow-accent/30 hover:bg-accent transition-colors text-sm sm:text-sm">
-                                                    <Users className="mr-2 sm:mr-2" size={18} weight="fill" />
-                                                    {vehicle.capacity} {t.fleet.passengers}
-                                                </Badge>
-                                                <Badge className="bg-accent/95 text-accent-foreground border-0 px-4 sm:px-4 py-2 sm:py-2 font-semibold shadow-xl shadow-accent/30 hover:bg-accent transition-colors text-sm sm:text-sm">
-                                                    <Briefcase className="mr-2 sm:mr-2" size={18} weight="fill" />
-                                                    {vehicle.luggage} {t.fleet.bags}
-                                                </Badge>
-                                            </div>
                                         </motion.div>
                                     </div>
 
-                                    <div className="p-7 sm:p-8 md:p-9 bg-card/95 backdrop-blur-sm">
-                                        <div className="mb-6 sm:mb-7 pb-6 sm:pb-7 border-b border-border/40">
+                                    <div className="p-6 sm:p-7 bg-card/95 backdrop-blur-sm">
+                                        <div className="mt-0 mb-5 sm:mb-6">
                                             <div className="grid grid-cols-2 gap-4 sm:gap-5">
                                                 <div className="flex flex-col items-center justify-center p-4 sm:p-5 bg-accent/5 rounded-xl border border-accent/20 hover:border-accent/40 transition-colors">
                                                     <Users className="text-accent mb-2 sm:mb-3" size={32} weight="fill" />
@@ -128,12 +118,12 @@ export const Fleet = () => {
                                             </div>
                                         </div>
 
-                                        <p className="text-muted-foreground mb-7 sm:mb-7 md:mb-9 leading-relaxed text-base sm:text-lg font-light">
+                                        <p className="text-muted-foreground mb-6 sm:mb-7 leading-relaxed text-base sm:text-lg font-light">
                                             {vehicleData.description}
                                         </p>
 
-                                        <div className="mb-7 sm:mb-8 md:mb-9">
-                                            <h4 className="font-semibold text-foreground mb-5 sm:mb-5 flex items-center text-lg sm:text-lg">
+                                        <div className="mb-6 sm:mb-7">
+                                            <h4 className="font-semibold text-foreground mb-4 sm:mb-4 flex items-center text-lg sm:text-lg">
                                                 <Shield
                                                     className="mr-2.5 sm:mr-2.5 text-accent"
                                                     size={22}

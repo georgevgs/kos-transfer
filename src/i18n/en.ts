@@ -62,8 +62,8 @@ export const en: Translations = {
                 description: 'Perfect for couples or small groups who want an easy and comfortable way to explore the island.',
                 features: [
                     'Comfortable Interior',
-                    'Climate Control',
-                    'Smooth Ride',
+                    'Air Conditioning',
+                    'Professional Driver',
                     'Complimentary Water',
                 ],
             },
