@@ -71,36 +71,42 @@ export const en: Translations = {
     },
     services: {
         badge: 'Kos Transfer Services',
-        title: 'Complete Kos',
-        titleAccent: 'Transfer Coverage',
-        subtitle: 'Airport transfer, port transfers & private transportation across Kos Island',
-        popularDestinations: 'Kos Transfer',
+        title: 'Complete Island',
+        titleAccent: 'Coverage',
+        subtitle: 'Professional transfers to every corner of Kos',
+        popularDestinations: 'Popular',
         popularDestinationsAccent: 'Destinations',
-        destinationsSubtitle: 'We provide Kos transfers to all major locations and hotels',
+        destinationsSubtitle: 'We serve all areas of the island',
         items: [
             {
-                title: 'Kos Airport Transfer',
-                description: 'Professional transfer service from Kos International Airport (KGS). Flight tracking, meet & greet, and door-to-door transfer included.',
+                title: 'Kos Airport Transfer (KGS)',
+                description:
+                    'Enjoy reliable, premium private transfer services from Kos International Airport (KGS). We track your flight in real-time, greet you at the arrivals area, and transport you safely and comfortably right to your destination.',
             },
             {
                 title: 'Kos Port Transfer',
-                description: 'Reliable port transfers to and from Kos Port for cruise ship passengers and ferry travelers. We track all arrivals.',
+                description:
+                    'We provide reliable and comfortable private transfers to and from Kos Port, serving both cruise ship and ferry passengers. We track all vessel arrivals in real-time to greet you promptly and ensure a smooth, hassle-free journey.',
             },
             {
-                title: 'Hotel Transfers in Kos',
-                description: 'Private transfer service to any hotel or resort in Kos Town, Kardamena, Tigaki, Kefalos, and all areas.',
+                title: 'Hotel Transfers',
+                description:
+                    'We provide private transfer services to any hotel or resort across Kos island. We serve all areas including Kos Town, Kardamena, Tigaki, Kefalos, and every other destination, ensuring comfortable, safe, and reliable transportation.',
             },
             {
-                title: 'Kos Island Tours',
-                description: 'Custom day trips and private tours across Kos. Visit hidden beaches, mountain villages, and local attractions.',
+                title: 'Island Tours',
+                description:
+                    'We offer personalized day trips across Kos, designed around your interests. Discover hidden beaches, traditional villages, and local landmarks while enjoying an authentic island experience.',
             },
             {
                 title: 'Beach Transfers',
-                description: "Comfortable rides to Paradise Beach, Tigaki Beach, Kefalos Beach, and all of Kos' beautiful coastline.",
+                description:
+                    'Enjoy comfortable and reliable transfers to Paradise Beach, Tigaki, Kefalos, and along Kos\'s beautiful coastline, with services designed for comfort and convenience.',
             },
             {
                 title: 'Sightseeing Transfers',
-                description: 'Visit Asklepion, Neratzia Castle, Zia village and other historic sites with our knowledgeable drivers.',
+                description:
+                    'Visit the Asklepion, Neratzia Castle, Zia village, and other historic sites with our experienced drivers.',
             },
         ],
     },
