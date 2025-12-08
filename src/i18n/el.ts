@@ -33,7 +33,7 @@ export const el: Translations = {
         passengersPlural: 'Επιβάτες',
         selectPickup: 'Επιλέξτε σημείο παραλαβής',
         selectDropoff: 'Επιλέξτε προορισμό',
-        other: 'Άλλο (διευκρινίστε στο μήνυμα)',
+        other: 'Άλλο (διευκρινίστε στο WhatsApp μήνυμα)',
         submitButton: 'Κράτηση μέσω WhatsApp',
         noteText: 'Τα στοιχεία της μεταφοράς θα σταλούν μέσω WhatsApp για επιβεβαίωση',
     },

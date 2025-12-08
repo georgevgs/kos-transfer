@@ -95,7 +95,7 @@ export const BookingForm = () => {
     return (
         <section 
             id="booking" 
-            className="py-20 sm:py-24 md:py-32 px-5 sm:px-6 bg-muted/20 relative overflow-hidden"
+            className="py-20 sm:py-24 md:py-32 px-4 sm:px-6 bg-muted/20 relative overflow-hidden"
             aria-labelledby="booking-heading"
         >
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent" aria-hidden="true" />
@@ -126,7 +126,7 @@ export const BookingForm = () => {
                     >
                         {t.booking.title} <span className="text-accent italic font-light">{t.booking.titleAccent}</span>
                     </h2>
-                    <p className="text-base sm:text-lg text-muted-foreground font-light max-w-2xl mx-auto">
+                    <p className="text-base sm:text-lg text-muted-foreground font-light max-w-2xl mx-auto px-4">
                         {t.booking.subtitle}
                     </p>
                 </motion.div>
@@ -137,21 +137,21 @@ export const BookingForm = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 >
-                    <Card className="p-6 sm:p-8 md:p-10 border border-border/60 shadow-2xl bg-card/80 backdrop-blur-sm">
+                    <Card className="p-5 sm:p-8 md:p-10 border border-border/60 shadow-2xl bg-card/80 backdrop-blur-sm">
                         <form 
                             onSubmit={handleSubmit} 
-                            className="space-y-6 sm:space-y-7"
+                            className="space-y-5 sm:space-y-7"
                             aria-label="Transfer booking form"
                             noValidate
                         >
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                                 <div className="space-y-2">
                                     <label 
                                         htmlFor={pickupId}
                                         className="flex items-center gap-2 text-sm font-semibold text-foreground"
                                     >
-                                        <MapPin size={18} weight="fill" className="text-accent" aria-hidden="true" />
-                                        {t.booking.pickupLocation}
+                                        <MapPin size={18} weight="fill" className="text-accent flex-shrink-0" aria-hidden="true" />
+                                        <span className="truncate">{t.booking.pickupLocation}</span>
                                         <span className="sr-only">(required)</span>
                                     </label>
                                     <select
@@ -161,7 +161,8 @@ export const BookingForm = () => {
                                         required
                                         aria-required="true"
                                         aria-describedby={formData.pickupLocation ? undefined : `${pickupId}-hint`}
-                                        className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
+                                        className="w-full px-3.5 py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-[16px] appearance-none"
+                                        style={{ maxWidth: '100%' }}
                                     >
                                         <option value="">{t.booking.selectPickup}</option>
                                         {POPULAR_LOCATIONS.map((location) => (
@@ -183,8 +184,8 @@ export const BookingForm = () => {
                                         htmlFor={dropoffId}
                                         className="flex items-center gap-2 text-sm font-semibold text-foreground"
                                     >
-                                        <MapPin size={18} weight="fill" className="text-accent" aria-hidden="true" />
-                                        {t.booking.dropoffLocation}
+                                        <MapPin size={18} weight="fill" className="text-accent flex-shrink-0" aria-hidden="true" />
+                                        <span className="truncate">{t.booking.dropoffLocation}</span>
                                         <span className="sr-only">(required)</span>
                                     </label>
                                     <select
@@ -194,7 +195,8 @@ export const BookingForm = () => {
                                         required
                                         aria-required="true"
                                         aria-describedby={formData.dropoffLocation ? undefined : `${dropoffId}-hint`}
-                                        className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
+                                        className="w-full px-3.5 py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-[16px] appearance-none"
+                                        style={{ maxWidth: '100%' }}
                                     >
                                         <option value="">{t.booking.selectDropoff}</option>
                                         {POPULAR_LOCATIONS.map((location) => (
@@ -212,14 +214,14 @@ export const BookingForm = () => {
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                                 <div className="space-y-2">
                                     <label 
                                         htmlFor={dateId}
                                         className="flex items-center gap-2 text-sm font-semibold text-foreground"
                                     >
-                                        <Calendar size={18} weight="fill" className="text-accent" aria-hidden="true" />
-                                        {t.booking.date}
+                                        <Calendar size={18} weight="fill" className="text-accent flex-shrink-0" aria-hidden="true" />
+                                        <span className="truncate">{t.booking.date}</span>
                                         <span className="sr-only">(required)</span>
                                     </label>
                                     <input
@@ -230,7 +232,8 @@ export const BookingForm = () => {
                                         required
                                         aria-required="true"
                                         min={getTodayDate()}
-                                        className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
+                                        className="w-full px-3.5 py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-[16px]"
+                                        style={{ maxWidth: '100%' }}
                                     />
                                 </div>
 
@@ -239,8 +242,8 @@ export const BookingForm = () => {
                                         htmlFor={timeId}
                                         className="flex items-center gap-2 text-sm font-semibold text-foreground"
                                     >
-                                        <Clock size={18} weight="fill" className="text-accent" aria-hidden="true" />
-                                        {t.booking.time}
+                                        <Clock size={18} weight="fill" className="text-accent flex-shrink-0" aria-hidden="true" />
+                                        <span className="truncate">{t.booking.time}</span>
                                         <span className="sr-only">(required)</span>
                                     </label>
                                     <input
@@ -250,19 +253,20 @@ export const BookingForm = () => {
                                         onChange={(e) => handleInputChange('time', e.target.value)}
                                         required
                                         aria-required="true"
-                                        className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
+                                        className="w-full px-3.5 py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-[16px]"
+                                        style={{ maxWidth: '100%' }}
                                     />
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                                 <div className="space-y-2">
                                     <label 
                                         htmlFor={passengersId}
                                         className="flex items-center gap-2 text-sm font-semibold text-foreground"
                                     >
-                                        <Users size={18} weight="fill" className="text-accent" aria-hidden="true" />
-                                        {t.booking.passengers}
+                                        <Users size={18} weight="fill" className="text-accent flex-shrink-0" aria-hidden="true" />
+                                        <span className="truncate">{t.booking.passengers}</span>
                                         <span className="sr-only">(required)</span>
                                     </label>
                                     <select
@@ -271,7 +275,8 @@ export const BookingForm = () => {
                                         onChange={(e) => handleInputChange('passengers', e.target.value)}
                                         required
                                         aria-required="true"
-                                        className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
+                                        className="w-full px-3.5 py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-[16px] appearance-none"
+                                        style={{ maxWidth: '100%' }}
                                     >
                                         {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
                                             <option key={num} value={num}>
@@ -286,8 +291,8 @@ export const BookingForm = () => {
                                         htmlFor={vehicleId}
                                         className="flex items-center gap-2 text-sm font-semibold text-foreground"
                                     >
-                                        <Car size={18} weight="fill" className="text-accent" aria-hidden="true" />
-                                        {t.booking.vehicle}
+                                        <Car size={18} weight="fill" className="text-accent flex-shrink-0" aria-hidden="true" />
+                                        <span className="truncate">{t.booking.vehicle}</span>
                                         <span className="sr-only">(required)</span>
                                     </label>
                                     <select
@@ -296,7 +301,8 @@ export const BookingForm = () => {
                                         onChange={(e) => handleInputChange('vehicle', e.target.value)}
                                         required
                                         aria-required="true"
-                                        className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-base"
+                                        className="w-full px-3.5 py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-[16px] appearance-none"
+                                        style={{ maxWidth: '100%' }}
                                     >
                                         {getVehicleOptions().map((option) => (
                                             <option key={option.value} value={option.value}>
@@ -321,7 +327,7 @@ export const BookingForm = () => {
                                 </Button>
                             </motion.div>
 
-                            <p className="text-center text-sm text-muted-foreground" role="note">
+                            <p className="text-center text-sm text-muted-foreground px-4" role="note">
                                 {t.booking.noteText}
                             </p>
                         </form>
