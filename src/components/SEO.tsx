@@ -44,7 +44,7 @@ export const SEO = ({
             {/* Additional SEO */}
             <meta name="robots" content="index, follow" />
             <meta name="language" content="English" />
-            <meta name="geo.region" content="GR-K" />
+            <meta name="geo.region" content="GR-KOS" />
             <meta name="geo.placename" content="Kos, Dodecanese, Greece" />
             <link rel="canonical" href="https://viptourtransfer.gr/" />
         </>

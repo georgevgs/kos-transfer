@@ -4,6 +4,7 @@ import { List, X, Globe } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/i18n'
 import { useWhatsApp } from '@/hooks/useWhatsApp'
+import { useFocusTrap, useRestoreFocus } from '@/hooks/useFocusManagement'
 
 type NavLink = {
     href: string
@@ -15,6 +16,9 @@ export const Navigation = () => {
     const [isScrolled, setIsScrolled] = useState(false)
     const { t, language, setLanguage } = useLanguage()
     const { openWhatsAppBooking } = useWhatsApp()
+    const mobileMenuRef = useFocusTrap(isOpen)
+    
+    useRestoreFocus(isOpen)
 
     const navLinks: NavLink[] = [
         { href: '#fleet', label: t.nav.fleet },
@@ -39,6 +43,14 @@ export const Navigation = () => {
         }
     }, [])
 
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden'
+            return
+        }
+        document.body.style.overflow = ''
+    }, [isOpen])
+
     const handleNavClick = (href: string) => {
         setIsOpen(false)
         const element = document.querySelector(href)
@@ -48,11 +60,15 @@ export const Navigation = () => {
     }
 
     const handleLanguageToggle = () => {
+        const newLanguage = language === 'en' ? 'el' : 'en'
+        setLanguage(newLanguage)
+    }
+
+    const getLanguageLabel = (): string => {
         if (language === 'en') {
-            setLanguage('el')
-            return
+            return 'Switch to Greek'
         }
-        setLanguage('en')
+        return 'Αλλαγή σε Αγγλικά'
     }
 
     return (
@@ -64,10 +80,11 @@ export const Navigation = () => {
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
                     isScrolled ? 'bg-background/95 backdrop-blur-xl shadow-lg border-b border-border/60' : 'bg-black/20 backdrop-blur-md'
                 }`}
+                role="navigation"
+                aria-label="Main navigation"
             >
                 <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16 sm:h-20">
-                        {/* Logo - Left */}
                         <div className="flex-shrink-0">
                             <motion.a
                                 href="#"
@@ -78,6 +95,7 @@ export const Navigation = () => {
                                 className="flex flex-col"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
+                                aria-label="VIP Tour Transfer - Go to homepage"
                             >
                                 <div className="flex items-center gap-1.5 sm:gap-2">
                                     <span className={`text-lg sm:text-xl md:text-2xl font-bold tracking-tight transition-colors ${
@@ -99,9 +117,8 @@ export const Navigation = () => {
                             </motion.a>
                         </div>
 
-                        {/* Desktop Navigation - Center */}
                         <div className="hidden lg:flex items-center justify-center flex-1">
-                            <div className="flex items-center gap-8">
+                            <nav className="flex items-center gap-8" aria-label="Primary navigation links">
                                 {navLinks.map((link) => (
                                     <a
                                         key={link.href}
@@ -115,13 +132,12 @@ export const Navigation = () => {
                                         }`}
                                     >
                                         {link.label}
-                                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
+                                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" aria-hidden="true" />
                                     </a>
                                 ))}
-                            </div>
+                            </nav>
                         </div>
 
-                        {/* Language Switcher & Book Now Button - Right */}
                         <div className="hidden lg:flex items-center justify-end gap-4">
                             <motion.button
                                 onClick={handleLanguageToggle}
@@ -132,8 +148,9 @@ export const Navigation = () => {
                                 }`}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
+                                aria-label={getLanguageLabel()}
                             >
-                                <Globe size={18} weight="fill" className={isScrolled ? 'text-accent' : 'text-white'} />
+                                <Globe size={18} weight="fill" className={isScrolled ? 'text-accent' : 'text-white'} aria-hidden="true" />
                                 <span className={`text-sm font-semibold ${
                                     isScrolled ? 'text-foreground' : 'text-white'
                                 }`}>
@@ -141,7 +158,7 @@ export const Navigation = () => {
                                 </span>
                                 <div className={`h-3 w-px ${
                                     isScrolled ? 'bg-border/60' : 'bg-white/30'
-                                }`} />
+                                }`} aria-hidden="true" />
                                 <span className={`text-sm ${
                                     isScrolled ? 'text-muted-foreground' : 'text-white/70'
                                 }`}>
@@ -153,13 +170,13 @@ export const Navigation = () => {
                                 <Button
                                     onClick={openWhatsAppBooking}
                                     className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 whitespace-nowrap"
+                                    aria-label="Book transfer now"
                                 >
                                     {t.nav.booking}
                                 </Button>
                             </motion.div>
                         </div>
 
-                        {/* Mobile Menu Button */}
                         <div className="flex lg:hidden">
                             <motion.button
                                 whileTap={{ scale: 0.95 }}
@@ -169,12 +186,14 @@ export const Navigation = () => {
                                         ? 'hover:bg-accent/10' 
                                         : 'hover:bg-white/10'
                                 }`}
-                                aria-label="Toggle menu"
+                                aria-label={isOpen ? 'Close menu' : 'Open menu'}
+                                aria-expanded={isOpen}
+                                aria-controls="mobile-menu"
                             >
                                 {isOpen ? (
-                                    <X size={24} weight="bold" className={isScrolled ? 'text-foreground' : 'text-white'} />
+                                    <X size={24} weight="bold" className={isScrolled ? 'text-foreground' : 'text-white'} aria-hidden="true" />
                                 ) : (
-                                    <List size={24} weight="bold" className={isScrolled ? 'text-foreground' : 'text-white'} />
+                                    <List size={24} weight="bold" className={isScrolled ? 'text-foreground' : 'text-white'} aria-hidden="true" />
                                 )}
                             </motion.button>
                         </div>
@@ -182,7 +201,6 @@ export const Navigation = () => {
                 </div>
             </motion.nav>
 
-            {/* Mobile Menu */}
             <AnimatePresence>
                 {isOpen && (
                     <>
@@ -193,13 +211,19 @@ export const Navigation = () => {
                             transition={{ duration: 0.2 }}
                             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
                             onClick={() => setIsOpen(false)}
+                            aria-hidden="true"
                         />
                         <motion.div
+                            id="mobile-menu"
+                            ref={mobileMenuRef as React.RefObject<HTMLDivElement>}
                             initial={{ x: '100%' }}
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                             className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-[320px] bg-background border-l border-border/60 shadow-2xl z-50 lg:hidden flex flex-col"
+                            role="dialog"
+                            aria-modal="true"
+                            aria-label="Mobile navigation menu"
                         >
                             <div className="p-5 sm:p-6 border-b border-border/40">
                                 <div className="flex items-center justify-between">
@@ -212,13 +236,13 @@ export const Navigation = () => {
                                         className="p-2 rounded-xl hover:bg-accent/10 transition-colors"
                                         aria-label="Close menu"
                                     >
-                                        <X size={22} weight="bold" className="text-foreground" />
+                                        <X size={22} weight="bold" className="text-foreground" aria-hidden="true" />
                                     </button>
                                 </div>
                             </div>
 
                             <div className="flex-1 overflow-y-auto p-5 sm:p-6">
-                                <nav className="space-y-1">
+                                <nav className="space-y-1" aria-label="Mobile navigation links">
                                     {navLinks.map((link, index) => (
                                         <motion.a
                                             key={link.href}
@@ -247,8 +271,9 @@ export const Navigation = () => {
                                     <button
                                         onClick={handleLanguageToggle}
                                         className="w-full flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-muted/50 border border-border/60 hover:border-accent/40 transition-all duration-300 active:bg-muted"
+                                        aria-label={getLanguageLabel()}
                                     >
-                                        <Globe size={18} weight="fill" className="text-accent" />
+                                        <Globe size={18} weight="fill" className="text-accent" aria-hidden="true" />
                                         <span className="text-sm font-medium text-foreground">
                                             {language === 'en' ? 'Ελληνικά' : 'English'}
                                         </span>
@@ -266,6 +291,7 @@ export const Navigation = () => {
                                             openWhatsAppBooking()
                                         }}
                                         className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3.5 rounded-xl shadow-lg text-[15px]"
+                                        aria-label="Book transfer now"
                                     >
                                         {t.nav.booking}
                                     </Button>
