@@ -7,11 +7,11 @@ type SEOProps = {
 }
 
 const DEFAULT_SEO = {
-    title: 'Kos Elite Transfers - Premium Luxury Transportation Services in Kos Island',
+    title: 'VIP Tour Transfer Kos | Private Transfers in Kos Island Greece',
     description:
-        'Experience luxury transfers in Kos with professional drivers, premium vehicles, and 24/7 availability. Airport pickups, hotel transfers, and island tours across Kos, Greece.',
+        '#1 Kos transfer service. Book airport transfers from KGS, port pickups, hotel transfers & island tours. 24/7 service, flight tracking, fixed prices. WhatsApp booking. Trusted by 1000+ travelers in Kos Greece.',
     keywords:
-        'Kos transfers, Kos airport taxi, Kos transportation, luxury transfers Kos, Kos Elite Transfers, airport transfers Kos, Kos port transfers, Kos taxi service, private transfers Kos Greece',
+        'kos transfer, kos airport transfer, kos taxi, transfer kos, kos airport taxi, airport transfer kos, taxi kos, kos transfers, kos port transfer, private transfer kos, kos island transfer, kos shuttle, kos transportation, KGS airport taxi, kos town transfer, kardamena transfer, tigaki transfer, kefalos transfer, mastichari transfer',
     ogImage: '/kos-scenery.avif',
     ogType: 'website',
 }
@@ -44,9 +44,9 @@ export const SEO = ({
             {/* Additional SEO */}
             <meta name="robots" content="index, follow" />
             <meta name="language" content="English" />
-            <meta name="geo.region" content="GR-KOS" />
-            <meta name="geo.placename" content="Kos" />
-            <link rel="canonical" href="https://koselitetransfers.com" />
+            <meta name="geo.region" content="GR-K" />
+            <meta name="geo.placename" content="Kos, Dodecanese, Greece" />
+            <link rel="canonical" href="https://viptourtransfer.gr/" />
         </>
     )
 }
