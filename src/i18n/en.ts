@@ -260,5 +260,8 @@ export const en: Translations = {
         passengers: 'Passengers:',
         vehicle: 'Vehicle:',
         confirmation: 'Please confirm availability and pricing. Thank you!',
+        quickBooking: 'Hello! I would like to book a transfer in Kos.',
+        inquiry: 'Hello! I have a question about your services.',
+        vehicleBooking: 'Hello! I would like to book the {vehicleName} for a transfer in Kos.',
     },
 }

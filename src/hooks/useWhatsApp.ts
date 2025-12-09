@@ -1,4 +1,5 @@
-import { CONTACT, WHATSAPP_MESSAGES } from '@/constants/contact'
+import { CONTACT } from '@/constants/contact'
+import { useLanguage } from '@/i18n'
 
 type UseWhatsAppReturn = {
     openWhatsApp: (message?: string) => void
@@ -8,23 +9,26 @@ type UseWhatsAppReturn = {
 }
 
 export const useWhatsApp = (): UseWhatsAppReturn => {
+    const { t } = useLanguage()
+
     const openWhatsApp = (message?: string) => {
-        const messageToUse = message || WHATSAPP_MESSAGES.booking
+        const messageToUse = message || t.whatsappMessage.quickBooking
         const encodedMessage = encodeURIComponent(messageToUse)
         const whatsappUrl = `https://wa.me/${CONTACT.whatsappNumber}?text=${encodedMessage}`
         window.open(whatsappUrl, '_blank')
     }
 
     const openWhatsAppBooking = () => {
-        openWhatsApp(WHATSAPP_MESSAGES.booking)
+        openWhatsApp(t.whatsappMessage.quickBooking)
     }
 
     const openWhatsAppInquiry = () => {
-        openWhatsApp(WHATSAPP_MESSAGES.inquiry)
+        openWhatsApp(t.whatsappMessage.inquiry)
     }
 
     const openWhatsAppVehicleBooking = (vehicleName: string) => {
-        openWhatsApp(WHATSAPP_MESSAGES.vehicleBooking(vehicleName))
+        const message = t.whatsappMessage.vehicleBooking.replace('{vehicleName}', vehicleName)
+        openWhatsApp(message)
     }
 
     return {

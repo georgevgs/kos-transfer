@@ -131,5 +131,8 @@ export type Translations = {
         passengers: string
         vehicle: string
         confirmation: string
+        quickBooking: string
+        inquiry: string
+        vehicleBooking: string
     }
 }
