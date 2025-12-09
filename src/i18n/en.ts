@@ -251,4 +251,14 @@ export const en: Translations = {
         error: 'An error occurred',
         tryAgain: 'Try Again',
     },
+    whatsappMessage: {
+        title: 'TRANSFER BOOKING REQUEST',
+        pickup: 'Pickup:',
+        dropoff: 'Drop-off:',
+        date: 'Date:',
+        time: 'Time:',
+        passengers: 'Passengers:',
+        vehicle: 'Vehicle:',
+        confirmation: 'Please confirm availability and pricing. Thank you!',
+    },
 }

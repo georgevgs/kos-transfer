@@ -246,4 +246,14 @@ export const el: Translations = {
         error: 'Παρουσιάστηκε κάποιο πρόβλημα',
         tryAgain: 'Δοκιμάστε Ξανά',
     },
+    whatsappMessage: {
+        title: 'ΑΙΤΗΜΑ ΚΡΑΤΗΣΗΣ ΜΕΤΑΦΟΡΑΣ',
+        pickup: 'Παραλαβή:',
+        dropoff: 'Προορισμός:',
+        date: 'Ημερομηνία:',
+        time: 'Ώρα:',
+        passengers: 'Επιβάτες:',
+        vehicle: 'Όχημα:',
+        confirmation: 'Παρακαλώ επιβεβαιώστε τη διαθεσιμότητα και την τιμή. Ευχαριστώ!',
+    },
 }

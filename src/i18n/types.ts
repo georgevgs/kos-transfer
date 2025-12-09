@@ -122,4 +122,14 @@ export type Translations = {
         error: string
         tryAgain: string
     }
+    whatsappMessage: {
+        title: string
+        pickup: string
+        dropoff: string
+        date: string
+        time: string
+        passengers: string
+        vehicle: string
+        confirmation: string
+    }
 }

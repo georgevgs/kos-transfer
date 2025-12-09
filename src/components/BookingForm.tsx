@@ -342,16 +342,16 @@ const getTodayDate = (): string => {
 
 const buildWhatsAppMessage = (data: BookingFormData, t: any, language: string): string => {
     const lines = [
-        '🚗 *TRANSFER BOOKING REQUEST*',
+        `🚗 *${t.whatsappMessage.title}*`,
         '',
-        `📍 *Pickup:* ${data.pickupLocation}`,
-        `📍 *Drop-off:* ${data.dropoffLocation}`,
-        `📅 *Date:* ${formatDate(data.date, language)}`,
-        `🕐 *Time:* ${data.time}`,
-        `👥 *Passengers:* ${data.passengers}`,
-        `🚙 *Vehicle:* ${getVehicleName(data.vehicle, t)}`,
+        `📍 *${t.whatsappMessage.pickup}* ${data.pickupLocation}`,
+        `📍 *${t.whatsappMessage.dropoff}* ${data.dropoffLocation}`,
+        `📅 *${t.whatsappMessage.date}* ${formatDate(data.date, language)}`,
+        `🕐 *${t.whatsappMessage.time}* ${data.time}`,
+        `👥 *${t.whatsappMessage.passengers}* ${data.passengers}`,
+        `🚙 *${t.whatsappMessage.vehicle}* ${getVehicleName(data.vehicle, t)}`,
         '',
-        'Please confirm availability and pricing. Thank you!',
+        t.whatsappMessage.confirmation,
     ]
 
     return lines.join('\n')
