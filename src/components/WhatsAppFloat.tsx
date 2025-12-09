@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { MessageCircle } from 'lucide-react'
+import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon'
 import { Button } from '@/components/ui/button'
 import { useWhatsApp } from '@/hooks/useWhatsApp'
 
@@ -31,10 +31,8 @@ export const WhatsAppFloat = () => {
                         aria-label="Contact via WhatsApp"
                     >
                         <span className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent -translate-x-full -translate-y-full group-hover:translate-x-full group-hover:translate-y-full transition-transform duration-1000" />
-                        <MessageCircle
-                            size={28}
-                            fill="currentColor"
-                            className="text-accent-foreground relative z-10 sm:size-9 md:size-10"
+                        <WhatsAppIcon
+                            className="w-7 h-7 sm:w-9 sm:h-9 md:w-10 md:h-10 text-accent-foreground relative z-10"
                         />
                     </Button>
                 </motion.div>

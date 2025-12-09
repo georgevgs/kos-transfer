@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Briefcase, CheckCircle, Shield, Users, MessageCircle } from 'lucide-react'
+import { Briefcase, CheckCircle, Shield, Users } from 'lucide-react'
+import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
@@ -157,7 +158,7 @@ export const Fleet = () => {
                                                 onClick={() => handleVehicleBooking(vehicleData.name)}
                                             >
                                                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
-                                                <MessageCircle className="mr-2.5 sm:mr-2.5" size={22} />
+                                                <WhatsAppIcon className="mr-2.5 sm:mr-2.5 w-[22px] h-[22px]" />
                                                 {t.fleet.bookVehicle}
                                             </Button>
                                         </motion.div>

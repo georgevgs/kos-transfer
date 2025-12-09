@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { Mail, Instagram, MapPin, Phone, MessageCircle } from 'lucide-react'
+import { Mail, Instagram, MapPin, Phone } from 'lucide-react'
+import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon'
 import { Separator } from '@/components/ui/separator'
 import { CONTACT, SOCIAL_MEDIA } from '@/constants/contact'
 import { useContactLinks } from '@/hooks/useContactLinks'
@@ -103,8 +104,7 @@ export const Footer = () => {
                             <li className="flex items-center gap-3 sm:gap-3 group">
                                 <Phone
                                     size={22}
-                                    fill="currentColor"
-                                    className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform"
+                                                                        className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform"
                                 />
                                 <a
                                     href={getPhoneLink()}
@@ -114,10 +114,8 @@ export const Footer = () => {
                                 </a>
                             </li>
                             <li className="flex items-center gap-3 sm:gap-3 group">
-                                <MessageCircle
-                                    size={22}
-                                    fill="currentColor"
-                                    className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform"
+                                <WhatsAppIcon
+                                    className="w-[22px] h-[22px] text-accent flex-shrink-0 group-hover:scale-110 transition-transform"
                                 />
                                 <a
                                     href={getWhatsAppLink()}
@@ -131,8 +129,7 @@ export const Footer = () => {
                             <li className="flex items-center gap-3 sm:gap-3 group">
                                 <Mail
                                     size={22}
-                                    fill="currentColor"
-                                    className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform"
+                                                                        className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform"
                                 />
                                 <a
                                     href={getEmailLink()}
@@ -175,8 +172,7 @@ export const Footer = () => {
                                     >
                                         <Icon
                                             size={22}
-                                            fill="currentColor"
-                                            className="text-primary-foreground hover:text-accent transition-colors"
+                                                                                        className="text-primary-foreground hover:text-accent transition-colors"
                                         />
                                     </motion.a>
                                 )
