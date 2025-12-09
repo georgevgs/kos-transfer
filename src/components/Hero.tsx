@@ -46,9 +46,9 @@ export const Hero = () => {
                 style={{ opacity }}
             >
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 1, y: 0 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0 }}
                 >
                     <motion.div
                         className="inline-block mb-7 sm:mb-8 px-6 sm:px-8 py-3 sm:py-3 border border-accent/50 rounded-full bg-accent/8 backdrop-blur-xl shadow-2xl shadow-accent/15"
@@ -64,9 +64,9 @@ export const Hero = () => {
 
                     <motion.h1
                         className="text-[2.75rem] leading-[1.05] sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-7 sm:mb-8 md:mb-10 tracking-tight px-2 text-center"
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 1, y: 0 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0 }}
                     >
                         <span className="sr-only">Kos Transfer - </span>
                         {t.hero.title} <span className="text-accent italic font-light">{t.hero.titleAccent}</span>
@@ -76,7 +76,7 @@ export const Hero = () => {
                         className="text-lg leading-[1.6] sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-12 sm:mb-14 md:mb-16 max-w-3xl mx-auto font-light tracking-wide px-4"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                     >
                         {t.hero.subtitle}
                     </motion.p>
@@ -85,7 +85,7 @@ export const Hero = () => {
                         className="flex flex-col sm:flex-row gap-4 sm:gap-4 md:gap-5 justify-center items-stretch sm:items-center px-4 max-w-2xl mx-auto"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     >
                         <motion.div
                             className="w-full sm:w-auto"
