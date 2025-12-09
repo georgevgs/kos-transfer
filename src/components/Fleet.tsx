@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Briefcase, CheckCircle, Shield, Users } from 'lucide-react'
+import { Briefcase, BadgeCheck, Shield, Users } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -140,10 +140,10 @@ export const Fleet = () => {
                                                             whileHover={{ x: 4 }}
                                                             transition={{ duration: 0.2 }}
                                                         >
-                                                            <CheckCircle
+                                                            <BadgeCheck
                                                                 className="mr-3 sm:mr-3 text-accent flex-shrink-0 group-hover/item:scale-110 transition-transform"
-                                                                size={20}
-                                                                fill="currentColor"
+                                                                size={22}
+                                                                strokeWidth={2}
                                                             />
                                                             {feature}
                                                         </motion.li>
