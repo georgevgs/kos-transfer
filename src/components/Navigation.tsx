@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { List, X, Globe } from '@phosphor-icons/react'
+import { Menu, X, Globe } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/i18n'
 import { useWhatsApp } from '@/hooks/useWhatsApp'
@@ -150,7 +150,7 @@ export const Navigation = () => {
                                 whileTap={{ scale: 0.95 }}
                                 aria-label={getLanguageLabel()}
                             >
-                                <Globe size={18} weight="fill" className={isScrolled ? 'text-accent' : 'text-white'} aria-hidden="true" />
+                                <Globe size={18} className={isScrolled ? 'text-accent' : 'text-white'} aria-hidden="true" />
                                 <span className={`text-sm font-semibold ${
                                     isScrolled ? 'text-foreground' : 'text-white'
                                 }`}>
@@ -191,9 +191,9 @@ export const Navigation = () => {
                                 aria-controls="mobile-menu"
                             >
                                 {isOpen ? (
-                                    <X size={24} weight="bold" className={isScrolled ? 'text-foreground' : 'text-white'} aria-hidden="true" />
+                                    <X size={24} strokeWidth={3} className={isScrolled ? 'text-foreground' : 'text-white'} aria-hidden="true" />
                                 ) : (
-                                    <List size={24} weight="bold" className={isScrolled ? 'text-foreground' : 'text-white'} aria-hidden="true" />
+                                    <Menu size={24} strokeWidth={3} className={isScrolled ? 'text-foreground' : 'text-white'} aria-hidden="true" />
                                 )}
                             </motion.button>
                         </div>
@@ -236,7 +236,7 @@ export const Navigation = () => {
                                         className="p-2 rounded-xl hover:bg-accent/10 transition-colors"
                                         aria-label="Close menu"
                                     >
-                                        <X size={22} weight="bold" className="text-foreground" aria-hidden="true" />
+                                        <X size={22} strokeWidth={3} className="text-foreground" aria-hidden="true" />
                                     </button>
                                 </div>
                             </div>
@@ -273,7 +273,7 @@ export const Navigation = () => {
                                         className="w-full flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-muted/50 border border-border/60 hover:border-accent/40 transition-all duration-300 active:bg-muted"
                                         aria-label={getLanguageLabel()}
                                     >
-                                        <Globe size={18} weight="fill" className="text-accent" aria-hidden="true" />
+                                        <Globe size={18} className="text-accent" aria-hidden="true" />
                                         <span className="text-sm font-medium text-foreground">
                                             {language === 'en' ? 'Ελληνικά' : 'English'}
                                         </span>

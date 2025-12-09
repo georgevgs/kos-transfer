@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { CheckCircle, Clock, Shield, Star } from '@phosphor-icons/react'
+import { CheckCircle, Clock, Shield, Star } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
 import { useLanguage } from '@/i18n'
@@ -102,7 +102,7 @@ export const About = () => {
                                                 whileHover={{ scale: 1.15, rotate: 5 }}
                                                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                             >
-                                                <Icon size={32} weight="fill" className="text-accent" />
+                                                <Icon size={32} className="text-accent" />
                                             </motion.div>
                                             <h3 className="text-lg sm:text-lg font-semibold text-foreground mb-4 sm:mb-4 tracking-tight relative z-10">
                                                 {feature.title}

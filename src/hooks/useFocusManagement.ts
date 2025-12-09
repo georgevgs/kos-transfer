@@ -46,18 +46,6 @@ export const useFocusTrap = (isActive: boolean) => {
     return containerRef
 }
 
-export const useFocusOnMount = () => {
-    const elementRef = useRef<HTMLElement | null>(null)
-
-    useEffect(() => {
-        if (elementRef.current) {
-            elementRef.current.focus()
-        }
-    }, [])
-
-    return elementRef
-}
-
 export const useRestoreFocus = (isOpen: boolean) => {
     const previousActiveElement = useRef<HTMLElement | null>(null)
 

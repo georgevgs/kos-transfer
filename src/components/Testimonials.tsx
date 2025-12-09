@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Star, Quotes } from '@phosphor-icons/react'
+import { Star, Quote } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { SectionHeader } from '@/components/common/SectionHeader'
 import { useLanguage } from '@/i18n'
@@ -54,7 +54,7 @@ export const Testimonials = () => {
                                                 whileHover={{ rotate: 180, scale: 1.1 }}
                                                 transition={{ duration: 0.5 }}
                                             >
-                                                <Quotes size={24} weight="fill" className="text-accent" />
+                                                <Quote size={24} className="text-accent" />
                                             </motion.div>
 
                                             <div className="flex gap-1 mb-4 justify-center">
@@ -62,7 +62,7 @@ export const Testimonials = () => {
                                                     <Star
                                                         key={i}
                                                         size={18}
-                                                        weight="fill"
+                                                        fill="currentColor"
                                                         className="text-accent"
                                                     />
                                                 ))}

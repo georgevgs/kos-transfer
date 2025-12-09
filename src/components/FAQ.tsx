@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { CaretDown } from '@phosphor-icons/react'
+import { ChevronDown } from 'lucide-react'
 import { SectionHeader } from '@/components/common/SectionHeader'
 import { useLanguage } from '@/i18n'
 
@@ -68,7 +68,7 @@ export const FAQ = () => {
                                         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                         className="flex-shrink-0"
                                     >
-                                        <CaretDown size={24} weight="bold" className="text-accent" />
+                                        <ChevronDown size={24} strokeWidth={3} className="text-accent" />
                                     </motion.div>
                                 </button>
 

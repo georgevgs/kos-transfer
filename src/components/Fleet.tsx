@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Briefcase, CheckCircle, Shield, Users, WhatsappLogo } from '@phosphor-icons/react'
+import { Briefcase, CheckCircle, Shield, Users, MessageCircle } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
@@ -105,12 +105,12 @@ export const Fleet = () => {
                                         <div className="mt-0 mb-5 sm:mb-6">
                                             <div className="grid grid-cols-2 gap-4 sm:gap-5">
                                                 <div className="flex flex-col items-center justify-center p-4 sm:p-5 bg-accent/5 rounded-xl border border-accent/20 hover:border-accent/40 transition-colors">
-                                                    <Users className="text-accent mb-2 sm:mb-3" size={32} weight="fill" />
+                                                    <Users className="text-accent mb-2 sm:mb-3" size={32} />
                                                     <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">{vehicle.capacity}</div>
                                                     <div className="text-sm sm:text-base text-muted-foreground font-medium">{t.fleet.passengers}</div>
                                                 </div>
                                                 <div className="flex flex-col items-center justify-center p-4 sm:p-5 bg-accent/5 rounded-xl border border-accent/20 hover:border-accent/40 transition-colors">
-                                                    <Briefcase className="text-accent mb-2 sm:mb-3" size={32} weight="fill" />
+                                                    <Briefcase className="text-accent mb-2 sm:mb-3" size={32} />
                                                     <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">{vehicle.luggage}</div>
                                                     <div className="text-sm sm:text-base text-muted-foreground font-medium">{t.fleet.bags}</div>
                                                 </div>
@@ -126,7 +126,7 @@ export const Fleet = () => {
                                                 <Shield
                                                     className="mr-2.5 sm:mr-2.5 text-accent"
                                                     size={22}
-                                                    weight="fill"
+                                                    fill="currentColor"
                                                 />
                                                 {t.fleet.features}
                                             </h4>
@@ -142,7 +142,7 @@ export const Fleet = () => {
                                                             <CheckCircle
                                                                 className="mr-3 sm:mr-3 text-accent flex-shrink-0 group-hover/item:scale-110 transition-transform"
                                                                 size={20}
-                                                                weight="fill"
+                                                                fill="currentColor"
                                                             />
                                                             {feature}
                                                         </motion.li>
@@ -157,7 +157,7 @@ export const Fleet = () => {
                                                 onClick={() => handleVehicleBooking(vehicleData.name)}
                                             >
                                                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
-                                                <WhatsappLogo className="mr-2.5 sm:mr-2.5" weight="fill" size={22} />
+                                                <MessageCircle className="mr-2.5 sm:mr-2.5" size={22} />
                                                 {t.fleet.bookVehicle}
                                             </Button>
                                         </motion.div>

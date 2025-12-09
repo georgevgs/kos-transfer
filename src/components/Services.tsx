@@ -1,13 +1,13 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { AirplaneTilt, Anchor, Buildings, MapPin, Sun, Umbrella } from '@phosphor-icons/react'
+import { Plane, Anchor, Building, MapPin, Sun, Umbrella } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
 import { useLanguage } from '@/i18n'
 
-type ServiceIcon = typeof AirplaneTilt
+type ServiceIcon = typeof Plane
 
-const SERVICE_ICONS: ServiceIcon[] = [AirplaneTilt, Anchor, Buildings, MapPin, Umbrella, Sun]
+const SERVICE_ICONS: ServiceIcon[] = [Plane, Anchor, Building, MapPin, Umbrella, Sun]
 
 const LOCATIONS: string[] = [
     'Kos Town',
@@ -100,7 +100,7 @@ export const Services = () => {
                                             whileHover={{ scale: 1.15, rotate: 5 }}
                                             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                         >
-                                            <Icon size={32} weight="fill" className="text-accent" />
+                                            <Icon size={32} className="text-accent" />
                                         </motion.div>
                                         <h3 className="text-xl sm:text-xl font-semibold text-foreground mb-4 sm:mb-4 tracking-tight relative z-10">
                                             {service.title}

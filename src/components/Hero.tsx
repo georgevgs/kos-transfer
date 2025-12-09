@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Phone, WhatsappLogo } from '@phosphor-icons/react'
+import { Phone, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { KosIslandSilhouette } from '@/components/decorative/KosElements'
 import { useWhatsApp } from '@/hooks/useWhatsApp'
@@ -97,7 +97,7 @@ export const Hero = () => {
                                 onClick={openWhatsAppBooking}
                             >
                                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                                <WhatsappLogo className="mr-2.5 sm:mr-2.5" weight="fill" size={22} />
+                                <MessageCircle className="mr-2.5 sm:mr-2.5" size={22} />
                                 {t.hero.bookWhatsApp}
                             </Button>
                         </motion.div>
@@ -113,7 +113,7 @@ export const Hero = () => {
                                 className="w-full sm:w-auto border-2 border-white/50 bg-white/8 hover:bg-white/20 text-white backdrop-blur-xl font-semibold tracking-wide text-base sm:text-base px-10 sm:px-10 md:px-12 transition-all duration-300 hover:border-white/70 rounded-full h-[60px]"
                                 onClick={openPhone}
                             >
-                                <Phone className="mr-2.5 sm:mr-2.5" weight="fill" size={22} />
+                                <Phone className="mr-2.5 sm:mr-2.5" size={22} />
                                 {t.hero.callNow}
                             </Button>
                         </motion.div>

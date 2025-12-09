@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { WhatsappLogo } from '@phosphor-icons/react'
+import { MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useWhatsApp } from '@/hooks/useWhatsApp'
 
@@ -31,9 +31,9 @@ export const WhatsAppFloat = () => {
                         aria-label="Contact via WhatsApp"
                     >
                         <span className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent -translate-x-full -translate-y-full group-hover:translate-x-full group-hover:translate-y-full transition-transform duration-1000" />
-                        <WhatsappLogo
+                        <MessageCircle
                             size={28}
-                            weight="fill"
+                            fill="currentColor"
                             className="text-accent-foreground relative z-10 sm:size-9 md:size-10"
                         />
                     </Button>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { EnvelopeSimple, InstagramLogo, MapPin, Phone, WhatsappLogo } from '@phosphor-icons/react'
+import { Mail, Instagram, MapPin, Phone, MessageCircle } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import { CONTACT, SOCIAL_MEDIA } from '@/constants/contact'
 import { useContactLinks } from '@/hooks/useContactLinks'
@@ -7,14 +7,14 @@ import { useLanguage } from '@/i18n'
 
 type SocialLink = {
     href: string
-    icon: typeof InstagramLogo
+    icon: typeof Instagram
     label: string
 }
 
 const SOCIAL_LINKS: SocialLink[] = [
     {
         href: SOCIAL_MEDIA.instagram,
-        icon: InstagramLogo,
+        icon: Instagram,
         label: 'Instagram',
     },
 ]
@@ -103,7 +103,7 @@ export const Footer = () => {
                             <li className="flex items-center gap-3 sm:gap-3 group">
                                 <Phone
                                     size={22}
-                                    weight="fill"
+                                    fill="currentColor"
                                     className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform"
                                 />
                                 <a
@@ -114,9 +114,9 @@ export const Footer = () => {
                                 </a>
                             </li>
                             <li className="flex items-center gap-3 sm:gap-3 group">
-                                <WhatsappLogo
+                                <MessageCircle
                                     size={22}
-                                    weight="fill"
+                                    fill="currentColor"
                                     className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform"
                                 />
                                 <a
@@ -129,9 +129,9 @@ export const Footer = () => {
                                 </a>
                             </li>
                             <li className="flex items-center gap-3 sm:gap-3 group">
-                                <EnvelopeSimple
+                                <Mail
                                     size={22}
-                                    weight="fill"
+                                    fill="currentColor"
                                     className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform"
                                 />
                                 <a
@@ -154,7 +154,7 @@ export const Footer = () => {
                             {t.footer.location}
                         </h4>
                         <div className="flex items-start gap-3 sm:gap-3 mb-10 sm:mb-10">
-                            <MapPin size={22} weight="fill" className="text-accent flex-shrink-0 mt-0.5 sm:mt-1" />
+                            <MapPin size={22} className="text-accent flex-shrink-0 mt-0.5 sm:mt-1" />
                             <p className="text-base sm:text-base text-primary-foreground/75 font-light">
                                 {t.footer.island}
                                 <br />
@@ -175,7 +175,7 @@ export const Footer = () => {
                                     >
                                         <Icon
                                             size={22}
-                                            weight="fill"
+                                            fill="currentColor"
                                             className="text-primary-foreground hover:text-accent transition-colors"
                                         />
                                     </motion.a>

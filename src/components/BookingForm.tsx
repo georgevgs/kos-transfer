@@ -1,6 +1,6 @@
 import { useState, FormEvent, useId } from 'react'
 import { motion } from 'framer-motion'
-import { Calendar, Clock, MapPin, Users, Car } from '@phosphor-icons/react'
+import { Calendar, Clock, MapPin, Users, Car } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { useWhatsApp } from '@/hooks/useWhatsApp'
@@ -150,7 +150,7 @@ export const BookingForm = () => {
                                         htmlFor={pickupId}
                                         className="flex items-center gap-2 text-sm font-semibold text-foreground"
                                     >
-                                        <MapPin size={18} weight="fill" className="text-accent" aria-hidden="true" />
+                                        <MapPin size={18} className="text-accent" aria-hidden="true" />
                                         {t.booking.pickupLocation}
                                         <span className="sr-only">(required)</span>
                                     </label>
@@ -183,7 +183,7 @@ export const BookingForm = () => {
                                         htmlFor={dropoffId}
                                         className="flex items-center gap-2 text-sm font-semibold text-foreground"
                                     >
-                                        <MapPin size={18} weight="fill" className="text-accent" aria-hidden="true" />
+                                        <MapPin size={18} className="text-accent" aria-hidden="true" />
                                         {t.booking.dropoffLocation}
                                         <span className="sr-only">(required)</span>
                                     </label>
@@ -218,7 +218,7 @@ export const BookingForm = () => {
                                         htmlFor={dateId}
                                         className="flex items-center gap-2 text-sm font-semibold text-foreground"
                                     >
-                                        <Calendar size={18} weight="fill" className="text-accent" aria-hidden="true" />
+                                        <Calendar size={18} className="text-accent" aria-hidden="true" />
                                         {t.booking.date}
                                         <span className="sr-only">(required)</span>
                                     </label>
@@ -239,7 +239,7 @@ export const BookingForm = () => {
                                         htmlFor={timeId}
                                         className="flex items-center gap-2 text-sm font-semibold text-foreground"
                                     >
-                                        <Clock size={18} weight="fill" className="text-accent" aria-hidden="true" />
+                                        <Clock size={18} className="text-accent" aria-hidden="true" />
                                         {t.booking.time}
                                         <span className="sr-only">(required)</span>
                                     </label>
@@ -261,7 +261,7 @@ export const BookingForm = () => {
                                         htmlFor={passengersId}
                                         className="flex items-center gap-2 text-sm font-semibold text-foreground"
                                     >
-                                        <Users size={18} weight="fill" className="text-accent" aria-hidden="true" />
+                                        <Users size={18} className="text-accent" aria-hidden="true" />
                                         {t.booking.passengers}
                                         <span className="sr-only">(required)</span>
                                     </label>
@@ -286,7 +286,7 @@ export const BookingForm = () => {
                                         htmlFor={vehicleId}
                                         className="flex items-center gap-2 text-sm font-semibold text-foreground"
                                     >
-                                        <Car size={18} weight="fill" className="text-accent" aria-hidden="true" />
+                                        <Car size={18} className="text-accent" aria-hidden="true" />
                                         {t.booking.vehicle}
                                         <span className="sr-only">(required)</span>
                                     </label>
