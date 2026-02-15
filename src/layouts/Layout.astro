@@ -1,0 +1,107 @@
+---
+import { ViewTransitions } from 'astro:transitions'
+import { getAllStructuredData } from '@/seo/structuredData'
+import '@/styles.css'
+
+interface Props {
+  title: string
+  description: string
+  lang?: 'en' | 'el'
+  ogImage?: string
+  keywords?: string
+}
+
+const {
+  title,
+  description,
+  lang = 'en',
+  ogImage = '/kos-scenery.avif',
+  keywords = 'transfer kos, kos transfer, kos airport transfer, transfer kos airport, kos taxi transfer, private transfer kos, kos transfers, kos port transfer, airport transfer kos, kos island transfer, kos taxi, kos shuttle, kos transportation, transfer service kos, KGS airport transfer, kos town transfer, kardamena transfer, tigaki transfer, kefalos transfer, mastichari transfer'
+} = Astro.props
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const schemas = getAllStructuredData()
+const ogImageURL = new URL(ogImage, Astro.site)
+---
+
+<!DOCTYPE html>
+<html lang={lang} prefix="og: http://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta Tags -->
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+  <meta name="keywords" content={keywords} />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImageURL} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content={lang === 'el' ? 'el_GR' : 'en_GB'} />
+  <meta property="og:site_name" content="VIP Tour Transfer Kos" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content={canonicalURL} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageURL} />
+
+  <!-- Additional SEO -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="language" content={lang === 'el' ? 'Greek' : 'English'} />
+  <meta name="revisit-after" content="7 days" />
+  <meta name="author" content="VIP Tour Transfer - Georgia Kommata" />
+
+  <!-- Geo Tags -->
+  <meta name="geo.region" content="GR-K" />
+  <meta name="geo.placename" content="Kos, Dodecanese, Greece" />
+  <meta name="geo.position" content="36.8935;26.9861" />
+  <meta name="ICBM" content="36.8935, 26.9861" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Alternate Languages -->
+  <link rel="alternate" hreflang="en" href={new URL('/', Astro.site)} />
+  <link rel="alternate" hreflang="el" href={new URL('/el/', Astro.site)} />
+  <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#1a365d" />
+  <meta name="msapplication-TileColor" content="#1a365d" />
+
+  <!-- DNS Prefetch for Performance -->
+  <link rel="dns-prefetch" href="https://wa.me" />
+
+  <!-- Preload Critical Resources for LCP -->
+  <link rel="preload" href="/kos-scenery.avif" as="image" type="image/avif" fetchpriority="high" />
+
+  <!-- Structured Data -->
+  {schemas.map((schema) => (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  ))}
+
+  <!-- View Transitions for smooth navigation -->
+  <ViewTransitions />
+</head>
+<body>
+  <slot />
+</body>
+</html>

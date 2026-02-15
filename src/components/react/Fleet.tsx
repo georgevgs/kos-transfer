@@ -1,13 +1,13 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Briefcase, BadgeCheck, Shield, Users } from 'lucide-react'
-import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon'
-import { Card } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
+import { WhatsAppIcon } from '@/components/react/icons/WhatsAppIcon'
+import { Card } from '@/components/react/ui/card'
+import { Button } from '@/components/react/ui/button'
+import { KosIslandSilhouette, GreekWavePattern } from '@/components/react/decorative/KosElements'
 import { useWhatsApp } from '@/hooks/useWhatsApp'
 import { useLanguage } from '@/i18n'
-import { SectionHeader } from '@/components/common/SectionHeader'
+import { SectionHeader } from '@/components/react/common/SectionHeader'
 
 type Vehicle = {
     key: 'fordTransit' | 'peugeot308'

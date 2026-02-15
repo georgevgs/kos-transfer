@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { CheckCircle, Clock, Shield, Star } from 'lucide-react'
-import { Card } from '@/components/ui/card'
-import { KosIslandSilhouette, GreekWavePattern } from '@/components/decorative/KosElements'
+import { Card } from '@/components/react/ui/card'
+import { KosIslandSilhouette, GreekWavePattern } from '@/components/react/decorative/KosElements'
 import { useLanguage } from '@/i18n'
 
 type FeatureIcon = typeof Star

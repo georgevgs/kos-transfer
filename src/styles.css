@@ -14,10 +14,16 @@
     }
 
     body {
+        position: relative;
         font-family: 'Montserrat', 'Family', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         @apply bg-background text-foreground;
+    }
+
+    /* Fix for Framer Motion scroll calculations with Astro islands */
+    astro-island {
+        display: contents;
     }
 
     ::selection {

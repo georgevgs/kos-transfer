@@ -1,0 +1,13 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { App } from '@/components/react/App'
+
+const title = 'VIP Tour Transfer | Μεταφορές Κως - Υπηρεσία Αεροδρομίου & Νησιού'
+const description = 'Η #1 υπηρεσία μεταφορών στην Κω από την VIP Tour Transfer. Κράτηση αξιόπιστων μεταφορών από το αεροδρόμιο KGS, παραλαβές από το λιμάνι, μεταφορές ξενοδοχείων και περιηγήσεις στο νησί. Διαθεσιμότητα 24/7, παρακολούθηση πτήσεων, σταθερές τιμές.'
+const keywords = 'μεταφορές κως, κως μεταφορές, μεταφορά αεροδρομίου κως, κως ταξί, ιδιωτική μεταφορά κως, μεταφορά λιμάνι κως, υπηρεσία μεταφοράς κως, KGS αεροδρόμιο μεταφορά'
+---
+
+<Layout title={title} description={description} lang="el" keywords={keywords}>
+  <!-- Use client:only to prevent SSR context issues, but metadata is still server-rendered -->
+  <App client:only="react" initialLanguage="el" />
+</Layout>

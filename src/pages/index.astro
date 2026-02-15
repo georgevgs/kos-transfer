@@ -1,0 +1,12 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { App } from '@/components/react/App'
+
+const title = 'VIP Tour Transfer | Transfer Kos - Airport & Island Service'
+const description = '#1 Transfer Kos service by VIP Tour Transfer. Book reliable airport transfers from KGS, port pickups, hotel transfers & island tours. 24/7 availability, flight tracking, fixed prices. Trusted by hundreds of travelers.'
+---
+
+<Layout title={title} description={description} lang="en">
+  <!-- Use client:only to prevent SSR context issues, but metadata is still server-rendered -->
+  <App client:only="react" initialLanguage="en" />
+</Layout>

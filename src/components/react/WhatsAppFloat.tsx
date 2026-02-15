@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon'
-import { Button } from '@/components/ui/button'
+import { WhatsAppIcon } from '@/components/react/icons/WhatsAppIcon'
+import { Button } from '@/components/react/ui/button'
 import { useWhatsApp } from '@/hooks/useWhatsApp'
 
 export const WhatsAppFloat = () => {

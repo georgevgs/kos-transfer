@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
-import { SectionHeader } from '@/components/common/SectionHeader'
+import { SectionHeader } from '@/components/react/common/SectionHeader'
 import { useLanguage } from '@/i18n'
 
 export const FAQ = () => {

@@ -1,5 +1,45 @@
+# ====================================
+# Dependencies
+# ====================================
+node_modules/
+.pnp
+.pnp.js
+
+# ====================================
+# Astro
+# ====================================
+dist/
+.astro/
+.vercel/
+.netlify/
+.cloudflare/
+
+# ====================================
+# Build Outputs
+# ====================================
+build/
+.output/
+.cache/
+dist-ssr/
+*.local
+
+# ====================================
+# Environment Variables
+# ====================================
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+.env*.local
+
+# ====================================
 # Logs
-logs
+# ====================================
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,33 +47,159 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependencies
-node_modules
-dist
-dist-ssr
-*.local
+# ====================================
+# Testing & Coverage
+# ====================================
+coverage/
+.nyc_output/
+*.lcov
+.vitest/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# ====================================
+# TypeScript
+# ====================================
+*.tsbuildinfo
+.tsbuildinfo
+.ts-cache/
+
+# ====================================
+# Package Managers
+# ====================================
+# npm
+package-lock.json
+npm-debug.log*
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+yarn-error.log
+yarn-debug.log
+
+# pnpm
+pnpm-lock.yaml
+pnpm-debug.log*
+
+# Bun
+bun.lockb
+
+# ====================================
+# Operating Systems
+# ====================================
+# macOS
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
 
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
 
-# Testing
-coverage
+# Linux
+*~
+.directory
+.Trash-*
+.nfs*
 
-# Build outputs
-build
-.cache
+# ====================================
+# IDEs & Editors
+# ====================================
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+.history/
+*.vsix
+
+# JetBrains (WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+.idea_modules/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+Session.vim
+Sessionx.vim
+.netrwhist
+tags
+[._]*.un~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ====================================
+# Temporary & Misc
+# ====================================
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.cache
+.temp/
+tmp/
+temp/
+
+# ====================================
+# Optional: Lock Files (Uncomment if needed)
+# ====================================
+# Uncomment to ignore lock files (not recommended for production)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# ====================================
+# Project Specific (Optional)
+# ====================================
+# Claude AI local directory
+.claude/
+
+# Add any other project-specific files or directories here

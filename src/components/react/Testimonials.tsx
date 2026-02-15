@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Star, Quote } from 'lucide-react'
-import { Card } from '@/components/ui/card'
-import { SectionHeader } from '@/components/common/SectionHeader'
+import { Card } from '@/components/react/ui/card'
+import { SectionHeader } from '@/components/react/common/SectionHeader'
 import { useLanguage } from '@/i18n'
 
 export const Testimonials = () => {

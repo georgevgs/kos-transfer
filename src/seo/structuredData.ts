@@ -384,7 +384,7 @@ export const getReviewsSchema = (): StructuredDataSchema => {
                     '@type': 'Person',
                     name: 'Sarah M.',
                 },
-                datePublished: '2025-10-15',
+                datePublished: '2025-11-18',
                 reviewRating: {
                     '@type': 'Rating',
                     ratingValue: 5,
@@ -405,7 +405,7 @@ export const getReviewsSchema = (): StructuredDataSchema => {
                     '@type': 'Person',
                     name: 'Michael S.',
                 },
-                datePublished: '2025-08-20',
+                datePublished: '2025-09-22',
                 reviewRating: {
                     '@type': 'Rating',
                     ratingValue: 5,
@@ -426,7 +426,7 @@ export const getReviewsSchema = (): StructuredDataSchema => {
                     '@type': 'Person',
                     name: 'Emma A.',
                 },
-                datePublished: '2025-06-10',
+                datePublished: '2025-12-14',
                 reviewRating: {
                     '@type': 'Rating',
                     ratingValue: 5,
@@ -447,7 +447,7 @@ export const getReviewsSchema = (): StructuredDataSchema => {
                     '@type': 'Person',
                     name: 'James O.',
                 },
-                datePublished: '2024-09-05',
+                datePublished: '2026-01-15',
                 reviewRating: {
                     '@type': 'Rating',
                     ratingValue: 5,
@@ -468,7 +468,7 @@ export const getReviewsSchema = (): StructuredDataSchema => {
                     '@type': 'Person',
                     name: 'Maria R.',
                 },
-                datePublished: '2024-08-12',
+                datePublished: '2025-10-28',
                 reviewRating: {
                     '@type': 'Rating',
                     ratingValue: 5,
@@ -489,7 +489,7 @@ export const getReviewsSchema = (): StructuredDataSchema => {
                     '@type': 'Person',
                     name: 'Thomas D.',
                 },
-                datePublished: '2024-07-18',
+                datePublished: '2025-08-08',
                 reviewRating: {
                     '@type': 'Rating',
                     ratingValue: 5,

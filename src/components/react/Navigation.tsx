@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Globe } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/react/ui/button'
 import { useLanguage } from '@/i18n'
 import { useWhatsApp } from '@/hooks/useWhatsApp'
 import { useFocusTrap, useRestoreFocus } from '@/hooks/useFocusManagement'
