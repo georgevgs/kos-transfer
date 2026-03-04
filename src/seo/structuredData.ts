@@ -593,7 +593,7 @@ export const getAggregateRatingSchema = (): StructuredDataSchema => {
     return {
         '@context': 'https://schema.org',
         '@type': 'LocalBusiness',
-        '@id': `${BASE_URL}/#business-with-rating`,
+        '@id': `${BASE_URL}/#business`,
         name: BUSINESS_NAME,
         aggregateRating: {
             '@type': 'AggregateRating',
