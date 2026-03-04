@@ -2,11 +2,30 @@
 import Layout from '@/layouts/Layout.astro'
 import { App } from '@/components/react/App'
 
-const title = 'VIP Tour Transfer | Transfer Kos - Airport & Island Service'
-const description = '#1 Transfer Kos service by VIP Tour Transfer. Book reliable airport transfers from KGS, port pickups, hotel transfers & island tours. 24/7 availability, flight tracking, fixed prices. Trusted by hundreds of travelers.'
+const title = 'VIP Tour Transfer - Kos Airport, Port & Island Service'
+const description = '#1 Kos Transfer service. Airport pickups from KGS, port & hotel transfers, island tours. Fixed prices, 24/7 availability, flight tracking. Book now.'
 ---
 
 <Layout title={title} description={description} lang="en">
+  <!-- Static server-rendered content for SEO crawlers -->
+  <div class="sr-only" aria-hidden="true">
+    <h1>Kos Airport Transfer &amp; Island Transport Service</h1>
+    <p>VIP Tour Transfer is the #1 transfer service in Kos, Greece. We provide premium private transfers across the island, available 24 hours a day, 7 days a week. All vehicles are modern, air-conditioned, and driven by professional, licensed drivers.</p>
+    <p>We offer reliable airport transfers from Kos International Airport (KGS) to any hotel, resort or destination on the island. Our service includes real-time flight tracking so we are always there when you land, even if your flight is delayed.</p>
+    <p>Our transfer services cover all major routes in Kos: Kos Town, Kardamena, Tigaki, Kefalos, Mastichari, Lambi, Psalidi, Marmari, Antimachia and the ferry port. Whether you need a taxi transfer, a group shuttle or a private tour, we have the right vehicle for you.</p>
+    <p>We operate a modern fleet including minivans and sedans, suitable for couples, families and large groups of up to 9 passengers. All prices are fixed with no hidden fees. You can book your transfer instantly via WhatsApp or phone.</p>
+    <p>In addition to airport and hotel transfers, we offer island tour packages. Explore the castles of Kefalos, the ancient ruins of Asklepion, the natural spa of Empros Thermes, and the pristine beaches of Kos with a private driver who knows the island.</p>
+    <nav aria-label="Page sections">
+      <ul>
+        <li><a href="#booking">Book a Kos Transfer</a></li>
+        <li><a href="#services">Transfer Services in Kos</a></li>
+        <li><a href="#fleet">Our Transfer Fleet</a></li>
+        <li><a href="#about">About VIP Tour Transfer</a></li>
+        <li><a href="#testimonials">Customer Reviews</a></li>
+        <li><a href="#faq">Frequently Asked Questions</a></li>
+      </ul>
+    </nav>
+  </div>
   <!-- Use client:only to prevent SSR context issues, but metadata is still server-rendered -->
   <App client:only="react" initialLanguage="en" />
 </Layout>
