@@ -111,7 +111,7 @@ export const en: Translations = {
         ],
     },
     about: {
-        badge: 'Why Choose Kos Transfer',
+        badge: 'Why Choose GK Vip Transfer',
         title: 'Reliable Kos Transfer',
         titleAccent: 'Service',
         intro1:
