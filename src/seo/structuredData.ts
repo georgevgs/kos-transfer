@@ -1,7 +1,7 @@
 type StructuredDataSchema = Record<string, unknown>
 
 const BASE_URL = 'https://viptourtransfer.gr'
-const BUSINESS_NAME = 'VIP Tour Transfer Kos'
+const BUSINESS_NAME = 'GK Vip Transfer Kos'
 const BUSINESS_PHONE = '+306972961560'
 const BUSINESS_EMAIL = 'gkommata@gmail.com'
 const OWNER_NAME = 'Georgia Kommata'
@@ -12,7 +12,7 @@ export const getLocalBusinessSchema = (): StructuredDataSchema => {
         '@type': 'LocalBusiness',
         '@id': `${BASE_URL}/#business`,
         name: BUSINESS_NAME,
-        alternateName: ['Transfer Kos', 'Kos Transfer', 'Kos Airport Transfer', 'VIP Transfer Kos', 'Transfer Kos Service'],
+        alternateName: ['Transfer Kos', 'Kos Transfer', 'Kos Airport Transfer', 'GK Vip Transfer Kos', 'Transfer Kos Service'],
         description: 'Professional transfer Kos services - airport and port transfers in Kos Island, Greece. 24/7 availability, flight tracking, and fixed prices.',
         url: BASE_URL,
         telephone: BUSINESS_PHONE,
@@ -203,7 +203,7 @@ export const getVehicleListingSchema = (): StructuredDataSchema => {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
         '@id': `${BASE_URL}/#vehicles`,
-        name: 'VIP Tour Transfer Fleet',
+        name: 'GK Vip Transfer Fleet',
         description: 'Our fleet of modern, well-maintained vehicles for comfortable transfers in Kos',
         itemListElement: [
             {
@@ -335,14 +335,14 @@ export const getWebPageSchema = (): StructuredDataSchema => {
         '@type': 'WebPage',
         '@id': `${BASE_URL}/#webpage`,
         url: BASE_URL,
-        name: 'VIP Tour Transfer Kos | Private Transfers in Kos Island Greece',
+        name: 'GK Vip Transfer Kos | Private Transfers in Kos Island Greece',
         description: '#1 Kos transfer service. Book airport transfers from KGS, port pickups, hotel transfers & island tours. 24/7 service, flight tracking, fixed prices.',
         inLanguage: ['en', 'el'],
         isPartOf: {
             '@type': 'WebSite',
             '@id': `${BASE_URL}/#website`,
             url: BASE_URL,
-            name: 'VIP Tour Transfer Kos',
+            name: 'GK Vip Transfer Kos',
         },
         about: {
             '@type': 'Thing',
@@ -374,7 +374,7 @@ export const getReviewsSchema = (): StructuredDataSchema => {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
         '@id': `${BASE_URL}/#reviews`,
-        name: 'Customer Reviews - VIP Tour Transfer Kos',
+        name: 'Customer Reviews - GK Vip Transfer Kos',
         description: 'Real customer reviews from travelers who used our Kos transfer services',
         itemListElement: [
             {

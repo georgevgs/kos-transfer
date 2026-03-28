@@ -95,13 +95,13 @@ export const Navigation = () => {
                                 className="flex flex-col"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
-                                aria-label="VIP Tour Transfer - Go to homepage"
+                                aria-label="GK Vip Transfer - Go to homepage"
                             >
                                 <div className="flex items-center gap-1.5 sm:gap-2">
                                     <span className={`text-lg sm:text-xl md:text-2xl font-bold tracking-tight transition-colors ${
                                         isScrolled ? 'text-accent' : 'text-accent'
                                     }`}>
-                                        VIP Tour
+                                        GK Vip
                                     </span>
                                     <span className={`text-lg sm:text-xl md:text-2xl font-light transition-colors ${
                                         isScrolled ? 'text-foreground' : 'text-white'
@@ -229,7 +229,7 @@ export const Navigation = () => {
                                 <div className="flex items-center justify-between">
                                     <div className="flex flex-col">
                                         <span className="text-lg font-bold text-accent">Menu</span>
-                                        <span className="text-xs text-muted-foreground">VIP Tour Transfer</span>
+                                        <span className="text-xs text-muted-foreground">GK Vip Transfer</span>
                                     </div>
                                     <button
                                         onClick={() => setIsOpen(false)}

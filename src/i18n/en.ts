@@ -115,7 +115,7 @@ export const en: Translations = {
         title: 'Reliable Kos Transfer',
         titleAccent: 'Service',
         intro1:
-            'At VIP Tour Transfer, we provide professional Kos transfer services from the airport, port, and hotels across the island. With flight tracking and 24/7 availability, we ensure you never wait for your transfer needs.',
+            'At GK Vip Transfer, we provide professional Kos transfer services from the airport, port, and hotels across the island. With flight tracking and 24/7 availability, we ensure you never wait for your transfer needs.',
         intro2:
             "Whether you need airport transfer from KGS, port pickup, or island tour, we offer fixed prices with no hidden fees. Trusted by hundreds of travelers visiting Kos.",
         features: [
@@ -235,7 +235,7 @@ export const en: Translations = {
         ],
     },
     footer: {
-        companyName: 'VIP Tour Transfer',
+        companyName: 'GK Vip Transfer',
         description:
             'Professional Kos transfer service. Transfer from KGS, port transfers & private transportation. 24/7 availability, flight tracking, fixed prices.',
         quickLinks: 'Quick Links',
@@ -244,7 +244,7 @@ export const en: Translations = {
         whatsapp: 'WhatsApp',
         island: 'Kos Island',
         region: 'Dodecanese, Greece',
-        copyright: 'VIP Tour Transfer - Kos Transfer Service. All rights reserved.',
+        copyright: 'GK Vip Transfer - Kos Transfer Service. All rights reserved.',
     },
     common: {
         loading: 'Loading...',
