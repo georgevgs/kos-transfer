@@ -87,6 +87,15 @@ const ogImageURL = new URL(ogImage, Astro.site)
   <meta name="theme-color" content="#1a365d" />
   <meta name="msapplication-TileColor" content="#1a365d" />
 
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XESQCD1RB6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XESQCD1RB6');
+  </script>
+
   <!-- DNS Prefetch for Performance -->
   <link rel="dns-prefetch" href="https://wa.me" />
 
