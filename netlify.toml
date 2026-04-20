@@ -4,8 +4,8 @@
 
 # Redirect www to non-www
 [[redirects]]
-  from = "https://www.viptourtransfer.gr/*"
-  to = "https://viptourtransfer.gr/:splat"
+  from = "https://www.gkviptransfer.gr/*"
+  to = "https://gkviptransfer.gr/:splat"
   status = 301
   force = true
 

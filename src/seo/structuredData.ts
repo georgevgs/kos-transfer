@@ -1,6 +1,6 @@
 type StructuredDataSchema = Record<string, unknown>
 
-const BASE_URL = 'https://viptourtransfer.gr'
+const BASE_URL = 'https://gkviptransfer.gr'
 const BUSINESS_NAME = 'GK Vip Transfer Kos'
 const BUSINESS_PHONE = '+306972961560'
 const BUSINESS_EMAIL = 'gkommata@gmail.com'

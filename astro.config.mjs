@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://viptourtransfer.gr',
+  site: 'https://gkviptransfer.gr',
 
   integrations: [
     react(),
