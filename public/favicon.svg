@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25 -55 220 220" role="img" aria-labelledby="title">
+  <title id="title">GK Vip Transfer</title>
+  <g fill="#d48e00">
+    <rect x="0"  y="0"  width="96" height="24"/>
+    <rect x="0"  y="0"  width="24" height="110"/>
+    <rect x="0"  y="86" width="96" height="24"/>
+    <rect x="38" y="43" width="58" height="24"/>
+    <rect x="72" y="67" width="24" height="19"/>
+    <polygon points="150,0 170,0 116,55 96,55"/>
+    <polygon points="96,55 116,55 170,110 150,110"/>
+  </g>
+</svg>

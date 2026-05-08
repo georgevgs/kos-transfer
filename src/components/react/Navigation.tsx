@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Globe } from 'lucide-react'
 import { Button } from '@/components/react/ui/button'
+import { Monogram } from '@/components/react/icons/Monogram'
 import { useLanguage } from '@/i18n'
 import { useWhatsApp } from '@/hooks/useWhatsApp'
 import { useFocusTrap, useRestoreFocus } from '@/hooks/useFocusManagement'
@@ -92,28 +93,20 @@ export const Navigation = () => {
                                     e.preventDefault()
                                     window.scrollTo({ top: 0, behavior: 'smooth' })
                                 }}
-                                className="flex flex-col"
+                                className="flex items-center gap-2.5 sm:gap-3"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                                 aria-label="GK Vip Transfer - Go to homepage"
                             >
-                                <div className="flex items-center gap-1.5 sm:gap-2">
-                                    <span className={`text-lg sm:text-xl md:text-2xl font-bold tracking-tight transition-colors ${
-                                        isScrolled ? 'text-accent' : 'text-accent'
-                                    }`}>
-                                        GK Vip
-                                    </span>
-                                    <span className={`text-lg sm:text-xl md:text-2xl font-light transition-colors ${
+                                <Monogram className="h-9 sm:h-10 md:h-11 w-auto text-accent flex-shrink-0" />
+                                <span
+                                    className={`text-base sm:text-lg md:text-xl font-light tracking-wide transition-colors ${
                                         isScrolled ? 'text-foreground' : 'text-white'
-                                    }`}>
-                                        Transfer
-                                    </span>
-                                </div>
-                                <span className={`text-[10px] sm:text-xs md:text-sm font-light tracking-wide transition-colors ${
-                                    isScrolled ? 'text-muted-foreground' : 'text-white/70'
-                                }`}>
-                                    Georgia Kommata
+                                    }`}
+                                >
+                                    Vip Transfer
                                 </span>
+                                <span className="sr-only">GK Vip Transfer</span>
                             </motion.a>
                         </div>
 
@@ -227,10 +220,8 @@ export const Navigation = () => {
                         >
                             <div className="p-5 sm:p-6 border-b border-border/40">
                                 <div className="flex items-center justify-between">
-                                    <div className="flex flex-col">
-                                        <span className="text-lg font-bold text-accent">Menu</span>
-                                        <span className="text-xs text-muted-foreground">GK Vip Transfer</span>
-                                    </div>
+                                    <Monogram className="h-9 w-auto text-accent flex-shrink-0" />
+                                    <span className="sr-only">GK Vip Transfer menu</span>
                                     <button
                                         onClick={() => setIsOpen(false)}
                                         className="p-2 rounded-xl hover:bg-accent/10 transition-colors"

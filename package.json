@@ -18,18 +18,18 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/react": "^4.4.2",
+    "@astrojs/react": "^5.0.4",
     "@astrojs/sitemap": "^3.7.2",
     "@astrojs/tailwind": "^6.0.2",
     "@radix-ui/react-separator": "^1.1.8",
     "@radix-ui/react-slot": "^1.2.4",
-    "astro": "^5.18.1",
+    "astro": "^6.3.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.38.0",
     "lucide-react": "^0.556.0",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "react-error-boundary": "^4.1.2",
     "tailwind-merge": "^3.5.0"
   },
@@ -43,11 +43,11 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.26",
     "globals": "^16.5.0",
-    "postcss": "^8.5.10",
+    "postcss": "^8.5.14",
     "prettier": "^3.8.3",
     "tailwindcss": "^3.4.19",
     "typescript": "~5.7.3",
-    "typescript-eslint": "^8.58.2",
+    "typescript-eslint": "^8.59.2",
     "vite": "^6.4.2"
   }
 }

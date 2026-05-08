@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Mail, Instagram, MapPin, Phone } from 'lucide-react'
+import { Monogram } from '@/components/react/icons/Monogram'
 import { WhatsAppIcon } from '@/components/react/icons/WhatsAppIcon'
 import { Separator } from '@/components/react/ui/separator'
 import { CONTACT, SOCIAL_MEDIA } from '@/constants/contact'
@@ -53,9 +54,8 @@ export const Footer = () => {
                             />
                         </div>
 
-                        <h3 className="text-2xl sm:text-3xl font-bold mb-2 text-accent tracking-tight relative z-10">
-                            {t.footer.companyName}
-                        </h3>
+                        <Monogram className="h-14 sm:h-16 w-auto mb-5 text-accent relative z-10" />
+                        <h3 className="sr-only">{t.footer.companyName}</h3>
                         <p className="text-sm sm:text-base text-primary-foreground/60 font-light mb-5 sm:mb-5 md:mb-6 relative z-10">
                             Georgia Kommata
                         </p>

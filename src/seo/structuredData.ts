@@ -19,15 +19,15 @@ export const getLocalBusinessSchema = (): StructuredDataSchema => {
         email: BUSINESS_EMAIL,
         image: {
             '@type': 'ImageObject',
-            url: `${BASE_URL}/kos-scenery.avif`,
+            url: `${BASE_URL}/kos-scenery.jpg`,
             width: 1200,
             height: 630,
         },
         logo: {
             '@type': 'ImageObject',
-            url: `${BASE_URL}/logo.png`,
-            width: 512,
-            height: 512,
+            url: `${BASE_URL}/gk-monogram-geometric.svg`,
+            width: 215,
+            height: 150,
         },
         priceRange: '€€',
         currenciesAccepted: 'EUR',
@@ -350,7 +350,7 @@ export const getWebPageSchema = (): StructuredDataSchema => {
         },
         primaryImageOfPage: {
             '@type': 'ImageObject',
-            url: `${BASE_URL}/kos-scenery.avif`,
+            url: `${BASE_URL}/kos-scenery.jpg`,
             width: 1200,
             height: 630,
         },

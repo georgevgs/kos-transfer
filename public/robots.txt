@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://gkviptransfer.gr/sitemap.xml
+Sitemap: https://gkviptransfer.gr/sitemap-index.xml
 
 # Crawl-delay for nice behavior
 Crawl-delay: 1
