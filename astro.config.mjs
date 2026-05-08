@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
-import tailwind from '@astrojs/tailwind'
+import tailwindcss from '@tailwindcss/vite'
 import sitemap from '@astrojs/sitemap'
 
 // https://astro.build/config
@@ -9,10 +9,6 @@ export default defineConfig({
 
   integrations: [
     react(),
-    tailwind({
-      // Use your existing Tailwind config and styles
-      applyBaseStyles: false,
-    }),
     sitemap({
       i18n: {
         defaultLocale: 'en',
@@ -38,6 +34,7 @@ export default defineConfig({
 
   // Vite configuration (for compatibility with existing setup)
   vite: {
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         '@': '/src',
