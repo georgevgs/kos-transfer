@@ -27,6 +27,9 @@ export default defineConfig({
   // Static Site Generation (SSG)
   output: 'static',
 
+  // Always serve URLs with a trailing slash so canonical, sitemap, and Netlify routing agree
+  trailingSlash: 'always',
+
   // Build configuration
   build: {
     inlineStylesheets: 'auto',

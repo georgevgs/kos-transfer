@@ -9,11 +9,18 @@
   status = 301
   force = true
 
-# SPA fallback
+# Canonicalize index.html → directory (avoids duplicate homepages in Google index)
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/el/index.html"
+  to = "/el/"
+  status = 301
+  force = true
 
 [[headers]]
   for = "/*"
