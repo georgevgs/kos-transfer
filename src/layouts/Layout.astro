@@ -28,8 +28,8 @@ const ogImageURL = new URL(ogImage, Astro.site)
 <html lang={lang} prefix="og: http://ogp.me/ns#">
 <head>
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XESQCD1RB6"></script>
-  <script>
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XESQCD1RB6"></script>
+  <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -53,7 +53,9 @@ const ogImageURL = new URL(ogImage, Astro.site)
   <meta property="og:image" content={ogImageURL} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Scenic coastline of Kos island, Greece - GK Vip Transfer" />
   <meta property="og:locale" content={lang === 'el' ? 'el_GR' : 'en_GB'} />
+  <meta property="og:locale:alternate" content={lang === 'el' ? 'en_GB' : 'el_GR'} />
   <meta property="og:site_name" content="GK Vip Transfer Kos" />
 
   <!-- Twitter -->
@@ -62,6 +64,7 @@ const ogImageURL = new URL(ogImage, Astro.site)
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImageURL} />
+  <meta name="twitter:image:alt" content="Scenic coastline of Kos island, Greece - GK Vip Transfer" />
 
   <!-- Additional SEO -->
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -104,7 +107,7 @@ const ogImageURL = new URL(ogImage, Astro.site)
 
   <!-- Structured Data -->
   {schemas.map((schema) => (
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
   ))}
 
   <!-- View Transitions for smooth navigation -->

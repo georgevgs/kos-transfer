@@ -1,4 +1,4 @@
-import { useState, useId } from 'react'
+import { useState, useId, useEffect } from 'react'
 import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import { Calendar, Clock, MapPin, Users, Car } from 'lucide-react'
@@ -41,6 +41,13 @@ export const BookingForm = () => {
         vehicle: 'peugeot308',
     })
     const [isSubmitting, setIsSubmitting] = useState(false)
+    const [minDate, setMinDate] = useState('')
+
+    // Compute the earliest selectable date on the client. A statically built
+    // page would otherwise bake in the build date and let users pick past days.
+    useEffect(() => {
+        setMinDate(getTodayDate())
+    }, [])
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
@@ -230,7 +237,7 @@ export const BookingForm = () => {
                                         onChange={(e) => handleInputChange('date', e.target.value)}
                                         required
                                         aria-required="true"
-                                        min={getTodayDate()}
+                                        min={minDate || undefined}
                                         className="w-full px-2 py-3 rounded-xl border border-border/60 bg-background focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all outline-none text-[16px] text-left"
                                     />
                                 </div>
