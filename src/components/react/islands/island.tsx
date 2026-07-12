@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react'
-import { LazyMotion, domAnimation } from 'framer-motion'
+import { domAnimation, LazyMotion } from 'framer-motion'
 import { LanguageProvider } from '@/i18n'
 
 export interface IslandProps {

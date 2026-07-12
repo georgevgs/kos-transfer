@@ -1,11 +1,12 @@
-import { useState, useId, useEffect } from 'react'
+import { useEffect, useId, useState } from 'react'
 import type { FormEvent } from 'react'
 import { m } from 'framer-motion'
-import { Calendar, Clock, MapPin, Users, Car } from 'lucide-react'
+import { Calendar, Car, Clock, MapPin, Users } from 'lucide-react'
 import { Button } from '@/components/react/ui/button'
 import { Card } from '@/components/react/ui/card'
 import { useWhatsApp } from '@/hooks/useWhatsApp'
 import { useLanguage } from '@/i18n'
+import type { Translations } from '@/i18n'
 import { announceToScreenReader } from '@/utils/accessibility'
 
 type BookingFormData = {
@@ -49,7 +50,7 @@ export const BookingForm = () => {
         setMinDate(getTodayDate())
     }, [])
 
-    const handleSubmit = async (e: FormEvent) => {
+    const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
         setIsSubmitting(true)
 
@@ -348,7 +349,7 @@ const getTodayDate = (): string => {
     return `${year}-${month}-${day}`
 }
 
-const buildWhatsAppMessage = (data: BookingFormData, t: any, language: string): string => {
+const buildWhatsAppMessage = (data: BookingFormData, t: Translations, language: string): string => {
     const lines = [
         `🚗 *${t.whatsappMessage.title}*`,
         '',
@@ -371,7 +372,7 @@ const formatDate = (dateString: string, language: string): string => {
     return date.toLocaleDateString(locale, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
 }
 
-const getVehicleName = (vehicleValue: string, t: any): string => {
+const getVehicleName = (vehicleValue: string, t: Translations): string => {
     if (vehicleValue === 'peugeot308') {
         return t.fleet.vehicles.peugeot308.name
     }

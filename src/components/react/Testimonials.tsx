@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { m, useInView } from 'framer-motion'
-import { Star, Quote } from 'lucide-react'
+import { Quote, Star } from 'lucide-react'
 import { Card } from '@/components/react/ui/card'
 import { SectionHeader } from '@/components/react/common/SectionHeader'
 import { useLanguage } from '@/i18n'

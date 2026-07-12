@@ -1,8 +1,8 @@
-import { useRef, useState, useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { m, useInView } from 'framer-motion'
-import { Plane, Anchor, Building, MapPin, Sun, Umbrella } from 'lucide-react'
+import { Anchor, Building, MapPin, Plane, Sun, Umbrella } from 'lucide-react'
 import { Card } from '@/components/react/ui/card'
-import { KosIslandSilhouette, GreekWavePattern } from '@/components/react/decorative/KosElements'
+import { GreekWavePattern, KosIslandSilhouette } from '@/components/react/decorative/KosElements'
 import { useLanguage } from '@/i18n'
 
 type ServiceIcon = typeof Plane

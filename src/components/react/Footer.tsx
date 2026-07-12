@@ -1,5 +1,5 @@
 import { m } from 'framer-motion'
-import { Mail, Instagram, MapPin, Phone } from 'lucide-react'
+import { Instagram, Mail, MapPin, Phone } from 'lucide-react'
 import { Monogram } from '@/components/react/icons/Monogram'
 import { ObfuscatedEmail } from '@/components/react/common/ObfuscatedEmail'
 import { WhatsAppIcon } from '@/components/react/icons/WhatsAppIcon'

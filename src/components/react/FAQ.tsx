@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useRef, useState } from 'react'
 import { m, useInView } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { SectionHeader } from '@/components/react/common/SectionHeader'

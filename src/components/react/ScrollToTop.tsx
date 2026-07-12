@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { m, AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { AnimatePresence, m } from 'framer-motion'
 import { ChevronUp } from 'lucide-react'
 import { Button } from '@/components/react/ui/button'
 
