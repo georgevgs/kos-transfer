@@ -1,13 +1,12 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import { App } from '@/components/react/App'
+import HomePage from '@/components/HomePage.astro'
 
 const title = 'GK Vip Transfer - Μεταφορές Κως | Αεροδρόμιο, Λιμάνι & Νησί'
-const description = '#1 υπηρεσία μεταφορών Κως. Αεροδρόμιο KGS, λιμάνι & ξενοδοχεία. Σταθερές τιμές, διαθεσιμότητα 24/7, παρακολούθηση πτήσεων. Κράτηση τώρα.'
-const keywords = 'μεταφορές κως, κως μεταφορές, μεταφορά αεροδρομίου κως, κως ταξί, ιδιωτική μεταφορά κως, μεταφορά λιμάνι κως, υπηρεσία μεταφοράς κως, KGS αεροδρόμιο μεταφορά'
+const description = 'Ιδιωτικές μεταφορές στην Κω με βαθμολογία 5.0 στο Google. Αεροδρόμιο KGS, λιμάνι & ξενοδοχεία. Σταθερές τιμές, 24/7, παρακολούθηση πτήσεων.'
 ---
 
-<Layout title={title} description={description} lang="el" keywords={keywords}>
-  <!-- Server-rendered React (SSR + hydration) so crawlers get the real content -->
-  <App client:load initialLanguage="el" />
+<Layout title={title} description={description} lang="el">
+  <!-- Server-rendered React islands (SSR + staged hydration) so crawlers get the real content -->
+  <HomePage lang="el" />
 </Layout>

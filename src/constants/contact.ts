@@ -1,7 +1,9 @@
 export const CONTACT = {
     whatsappNumber: '+306972961560',
     phoneDisplay: '+30 697 296 1560',
-    email: 'gkommata@gmail.com',
+    // Assembled from parts so the plain address never appears as a literal in
+    // the shipped JS, where harvesting bots could regex it out.
+    email: ['gkommata', 'gmail.com'].join('@'),
 } as const
 
 export const SOCIAL_MEDIA = {

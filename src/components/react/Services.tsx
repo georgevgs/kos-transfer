@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { Plane, Anchor, Building, MapPin, Sun, Umbrella } from 'lucide-react'
 import { Card } from '@/components/react/ui/card'
 import { KosIslandSilhouette, GreekWavePattern } from '@/components/react/decorative/KosElements'
@@ -45,13 +45,13 @@ export const Services = () => {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={getAnimationState(isInView)}
                     transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                     className="text-center mb-14 sm:mb-16 md:mb-24"
                 >
-                    <motion.div
+                    <m.div
                         className="inline-block mb-5 sm:mb-6 md:mb-7 px-6 sm:px-6 md:px-7 py-2.5 sm:py-2.5 border border-accent/40 rounded-full bg-accent/8 backdrop-blur-xl shadow-lg shadow-accent/10"
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={getScaleAnimationState(isInView)}
@@ -60,48 +60,48 @@ export const Services = () => {
                         <span className="text-accent font-semibold tracking-wide text-xs sm:text-sm">
                             {t.services.badge}
                         </span>
-                    </motion.div>
-                    <motion.h2
+                    </m.div>
+                    <m.h2
                         className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-5 sm:mb-6 md:mb-7 tracking-tight px-4 text-center"
                         initial={{ opacity: 0, y: 20 }}
                         animate={getAnimationState(isInView)}
                         transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     >
                         {t.services.title} <span className="text-accent italic font-light">{t.services.titleAccent}</span>
-                    </motion.h2>
-                    <motion.p
+                    </m.h2>
+                    <m.p
                         className="text-base leading-[1.6] sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto font-light px-4"
                         initial={{ opacity: 0, y: 20 }}
                         animate={getAnimationState(isInView)}
                         transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     >
                         {t.services.subtitle}
-                    </motion.p>
-                </motion.div>
+                    </m.p>
+                </m.div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8 mb-20 sm:mb-20 md:mb-28">
                     {t.services.items.map((service, index) => {
                         const Icon = SERVICE_ICONS[index]
                         return (
-                            <motion.div
+                            <m.div
                                 key={service.title}
                                 initial={{ opacity: 0, y: 40 }}
                                 animate={getAnimationState(isInView)}
                                 transition={{ duration: 0.8, delay: 0.5 + index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                             >
-                                <motion.div
+                                <m.div
                                     whileHover={{ y: -8 }}
                                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                 >
                                     <Card className="p-7 sm:p-8 md:p-9 border border-border/60 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 group h-full bg-card/80 backdrop-blur-sm relative overflow-hidden text-center">
                                         <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-accent/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-colors duration-500" />
-                                        <motion.div
+                                        <m.div
                                             className="mb-6 sm:mb-6 w-16 h-16 sm:w-16 sm:h-16 rounded-2xl bg-accent/10 flex items-center justify-center relative z-10 mx-auto"
                                             whileHover={{ scale: 1.15, rotate: 5 }}
                                             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                         >
                                             <Icon size={32} className="text-accent" />
-                                        </motion.div>
+                                        </m.div>
                                         <h3 className="text-xl sm:text-xl font-semibold text-foreground mb-4 sm:mb-4 tracking-tight relative z-10">
                                             {service.title}
                                         </h3>
@@ -109,13 +109,13 @@ export const Services = () => {
                                             {service.description}
                                         </p>
                                     </Card>
-                                </motion.div>
-                            </motion.div>
+                                </m.div>
+                            </m.div>
                         )
                     })}
                 </div>
 
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={getAnimationState(isInView)}
                     transition={{ duration: 0.9, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -146,7 +146,7 @@ export const Services = () => {
                             )
                         })}
                     </div>
-                </motion.div>
+                </m.div>
             </div>
         </section>
     )
@@ -229,7 +229,7 @@ const FlipBoardItem = ({ location, index, isInView }: FlipBoardItemProps) => {
     }, [isInView, location, index])
 
     return (
-        <motion.div
+        <m.div
             initial={{ opacity: 0, rotateX: -90 }}
             animate={isFlipped ? { opacity: 1, rotateX: 0 } : {}}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
@@ -247,6 +247,6 @@ const FlipBoardItem = ({ location, index, isInView }: FlipBoardItemProps) => {
                     </span>
                 </div>
             </div>
-        </motion.div>
+        </m.div>
     )
 }

@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { CheckCircle, Clock, Shield, Star } from 'lucide-react'
 import { Card } from '@/components/react/ui/card'
 import { KosIslandSilhouette, GreekWavePattern } from '@/components/react/decorative/KosElements'
@@ -33,13 +33,13 @@ export const About = () => {
 
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 sm:gap-16 md:gap-20 items-center">
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, x: -50 }}
                         animate={getSlideAnimationState(isInView)}
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         className="text-center lg:text-left"
                     >
-                        <motion.div
+                        <m.div
                             className="inline-block mb-5 sm:mb-6 md:mb-7 px-6 sm:px-6 md:px-7 py-2.5 sm:py-2.5 border border-accent/40 rounded-full bg-accent/8 backdrop-blur-xl shadow-lg shadow-accent/10"
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={getScaleAnimationState(isInView)}
@@ -48,16 +48,16 @@ export const About = () => {
                             <span className="text-accent font-semibold tracking-wide text-xs sm:text-sm">
                                 {t.about.badge}
                             </span>
-                        </motion.div>
-                        <motion.h2
+                        </m.div>
+                        <m.h2
                             className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-7 sm:mb-8 md:mb-10 tracking-tight px-4 lg:px-0"
                             initial={{ opacity: 0, y: 20 }}
                             animate={getAnimationState(isInView)}
                             transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         >
                             {t.about.title} <span className="text-accent italic font-light">{t.about.titleAccent}</span>
-                        </motion.h2>
-                        <motion.div
+                        </m.h2>
+                        <m.div
                             className="space-y-6 sm:space-y-6 md:space-y-7 px-4 lg:px-0"
                             initial={{ opacity: 0, y: 20 }}
                             animate={getAnimationState(isInView)}
@@ -69,10 +69,10 @@ export const About = () => {
                             <p className="text-base leading-[1.7] sm:text-lg md:text-xl text-muted-foreground font-light">
                                 {t.about.intro2}
                             </p>
-                        </motion.div>
-                    </motion.div>
+                        </m.div>
+                    </m.div>
 
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, x: 50 }}
                         animate={getSlideRightAnimationState(isInView)}
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -81,7 +81,7 @@ export const About = () => {
                         {t.about.features.map((feature, index) => {
                             const Icon = FEATURE_ICONS[index]
                             return (
-                                <motion.div
+                                <m.div
                                     key={feature.title}
                                     initial={{ opacity: 0, y: 40 }}
                                     animate={getAnimationState(isInView)}
@@ -91,19 +91,19 @@ export const About = () => {
                                         ease: [0.16, 1, 0.3, 1],
                                     }}
                                 >
-                                    <motion.div
+                                    <m.div
                                         whileHover={{ y: -8 }}
                                         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                     >
                                         <Card className="p-7 sm:p-7 md:p-8 border border-border/60 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 h-full group bg-card/80 backdrop-blur-sm relative overflow-hidden text-center">
                                             <div className="absolute top-0 right-0 w-20 h-20 sm:w-24 sm:h-24 bg-accent/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-colors duration-500" />
-                                            <motion.div
+                                            <m.div
                                                 className="mb-6 sm:mb-6 w-16 h-16 sm:w-16 sm:h-16 rounded-2xl bg-accent/10 flex items-center justify-center relative z-10 mx-auto"
                                                 whileHover={{ scale: 1.15, rotate: 5 }}
                                                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                             >
                                                 <Icon size={32} className="text-accent" />
-                                            </motion.div>
+                                            </m.div>
                                             <h3 className="text-lg sm:text-lg font-semibold text-foreground mb-4 sm:mb-4 tracking-tight relative z-10">
                                                 {feature.title}
                                             </h3>
@@ -111,11 +111,11 @@ export const About = () => {
                                                 {feature.description}
                                             </p>
                                         </Card>
-                                    </motion.div>
-                                </motion.div>
+                                    </m.div>
+                                </m.div>
                             )
                         })}
-                    </motion.div>
+                    </m.div>
                 </div>
             </div>
         </section>

@@ -1,6 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions'
-import { getAllStructuredData } from '@/seo/structuredData'
+import { getAllStructuredData, getLegalPageStructuredData } from '@/seo/structuredData'
 import '@/styles.css'
 
 interface Props {
@@ -8,7 +8,9 @@ interface Props {
   description: string
   lang?: 'en' | 'el'
   ogImage?: string
-  keywords?: string
+  // 'legal' pages get a compact page-scoped schema instead of the full
+  // home-page graph (which includes FAQ markup that only exists on the home page).
+  pageType?: 'home' | 'legal'
 }
 
 const {
@@ -16,26 +18,35 @@ const {
   description,
   lang = 'en',
   ogImage = '/kos-scenery.jpg',
-  keywords = 'transfer kos, kos transfer, kos airport transfer, transfer kos airport, kos taxi transfer, private transfer kos, kos transfers, kos port transfer, airport transfer kos, kos island transfer, kos taxi, kos shuttle, kos transportation, transfer service kos, KGS airport transfer, kos town transfer, kardamena transfer, tigaki transfer, kefalos transfer, mastichari transfer'
+  pageType = 'home',
 } = Astro.props
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-const schemas = getAllStructuredData()
+const schemas = pageType === 'legal'
+  ? getLegalPageStructuredData(lang, { path: Astro.url.pathname, name: title, description })
+  : getAllStructuredData(lang)
 const ogImageURL = new URL(ogImage, Astro.site)
+
+// hreflang alternates for the current page, not just the home page.
+const path = Astro.url.pathname
+const isGreekPath = path === '/el/' || path.startsWith('/el/')
+const enPath = isGreekPath ? path.replace(/^\/el/, '') || '/' : path
+const elPath = isGreekPath ? path : path === '/' ? '/el/' : `/el${path}`
+
+// Consent banner copy (analytics only loads after the visitor accepts).
+const consentText =
+  lang === 'el'
+    ? 'Χρησιμοποιούμε cookies του Google Analytics για να καταλάβουμε πώς οι επισκέπτες χρησιμοποιούν τον ιστότοπο. Χωρίς διαφημιστικά cookies.'
+    : 'We use Google Analytics cookies to understand how visitors use this site. No advertising cookies.'
+const consentPrivacyHref = lang === 'el' ? '/el/privacy/' : '/privacy/'
+const consentPrivacyLabel = lang === 'el' ? 'Πολιτική Απορρήτου' : 'Privacy Policy'
+const consentAccept = lang === 'el' ? 'Αποδοχή' : 'Accept'
+const consentDecline = lang === 'el' ? 'Απόρριψη' : 'Decline'
 ---
 
 <!DOCTYPE html>
 <html lang={lang} prefix="og: http://ogp.me/ns#">
 <head>
-  <!-- Google Analytics -->
-  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XESQCD1RB6"></script>
-  <script is:inline>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XESQCD1RB6');
-  </script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
@@ -43,7 +54,6 @@ const ogImageURL = new URL(ogImage, Astro.site)
   <title>{title}</title>
   <meta name="title" content={title} />
   <meta name="description" content={description} />
-  <meta name="keywords" content={keywords} />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
@@ -81,9 +91,9 @@ const ogImageURL = new URL(ogImage, Astro.site)
   <link rel="canonical" href={canonicalURL} />
 
   <!-- Alternate Languages -->
-  <link rel="alternate" hreflang="en" href={new URL('/', Astro.site)} />
-  <link rel="alternate" hreflang="el" href={new URL('/el/', Astro.site)} />
-  <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
+  <link rel="alternate" hreflang="en" href={new URL(enPath, Astro.site)} />
+  <link rel="alternate" hreflang="el" href={new URL(elPath, Astro.site)} />
+  <link rel="alternate" hreflang="x-default" href={new URL(enPath, Astro.site)} />
 
   <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -110,10 +120,104 @@ const ogImageURL = new URL(ogImage, Astro.site)
     <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
   ))}
 
+  <!-- Google Analytics: loads only after the visitor accepts analytics
+       cookies (GDPR/ePrivacy). Once consent is stored, the stub queues events
+       immediately and the 161 KB gtag.js library loads on first interaction
+       or after 3.5s idle, keeping it out of the critical loading window. -->
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XESQCD1RB6');
+    (function () {
+      var loaded = false;
+      function loadGA() {
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XESQCD1RB6';
+        document.head.appendChild(s);
+      }
+      function armGA() {
+        ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (e) {
+          addEventListener(e, loadGA, { once: true, passive: true });
+        });
+        setTimeout(loadGA, 3500);
+      }
+      window.__gkArmGA = armGA;
+      var consent = null;
+      try { consent = localStorage.getItem('gk-cookie-consent'); } catch (e) {}
+      if (consent === 'granted') armGA();
+    })();
+  </script>
+
+  <!-- Framer Motion serializes initial opacity:0 into the static HTML; without
+       JS most sections would stay invisible. This makes the no-JS render fully
+       visible for text-only crawlers, screenshot evaluators and failed scripts. -->
+  <noscript>
+    <style>
+      [style*="opacity:0;"], [style*="opacity: 0;"] {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    </style>
+  </noscript>
+
   <!-- View Transitions for smooth navigation -->
   <ClientRouter />
 </head>
 <body>
   <slot />
+
+  <!-- Cookie consent banner: shown until the visitor makes a choice. -->
+  <div
+    id="cookie-banner"
+    hidden
+    class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-sm z-[90] bg-card text-card-foreground border border-border rounded-lg shadow-2xl p-4 sm:p-5"
+    role="dialog"
+    aria-live="polite"
+    aria-label={consentPrivacyLabel}
+  >
+    <p class="text-sm leading-relaxed mb-2">
+      {consentText}
+    </p>
+    <a href={consentPrivacyHref} class="block text-sm underline underline-offset-2 hover:text-accent mb-3">
+      {consentPrivacyLabel}
+    </a>
+    <div class="flex gap-3">
+      <button
+        id="cookie-accept"
+        class="flex-1 bg-accent text-accent-foreground text-sm font-semibold px-4 py-2 rounded-md hover:opacity-90 transition-opacity"
+      >
+        {consentAccept}
+      </button>
+      <button
+        id="cookie-decline"
+        class="flex-1 bg-muted text-foreground text-sm font-medium px-4 py-2 rounded-md hover:bg-muted/70 transition-colors"
+      >
+        {consentDecline}
+      </button>
+    </div>
+  </div>
+
+  <script is:inline data-astro-rerun>
+    (function () {
+      var KEY = 'gk-cookie-consent';
+      var banner = document.getElementById('cookie-banner');
+      if (!banner) return;
+      var stored = null;
+      try { stored = localStorage.getItem(KEY); } catch (e) {}
+      if (stored === 'granted' || stored === 'denied') return;
+      banner.hidden = false;
+      function choose(value) {
+        try { localStorage.setItem(KEY, value); } catch (e) {}
+        banner.hidden = true;
+        if (value === 'granted' && window.__gkArmGA) window.__gkArmGA();
+      }
+      document.getElementById('cookie-accept').addEventListener('click', function () { choose('granted'); });
+      document.getElementById('cookie-decline').addEventListener('click', function () { choose('denied'); });
+    })();
+  </script>
 </body>
 </html>

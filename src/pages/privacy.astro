@@ -1,0 +1,93 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import LegalPage from '@/components/LegalPage.astro'
+
+const title = 'Privacy Policy - GK Vip Transfer Kos'
+const description =
+    'How GK Vip Transfer handles your data: booking details you send via WhatsApp, consent-based Google Analytics cookies, and your rights under GDPR.'
+---
+
+<Layout title={title} description={description} lang="en" pageType="legal">
+  <LegalPage lang="en" heading="Privacy Policy" updated="12 July 2026" altHref="/el/privacy/">
+    <h2>Who we are</h2>
+    <p>
+      GK Vip Transfer is a family-run private transfer service on Kos island, Greece, operated by
+      Georgia Kommata. For anything related to your personal data, contact us
+      at <a data-email-user="gkommata" data-email-domain="gmail.com">gkommata [at] gmail [dot] com</a> or on WhatsApp at +30 697 296 1560.
+    </p>
+
+    <h2>What data we collect</h2>
+    <p>
+      This website has no user accounts and no server-side database. The booking form only collects
+      your trip details: pickup and drop-off location, date, time, number of passengers, and vehicle
+      choice. When you submit the form, those details are placed into a WhatsApp message that you
+      send to us from your own WhatsApp account. At that point we also receive your WhatsApp profile
+      name and phone number, exactly as with any WhatsApp conversation.
+    </p>
+    <p>
+      We use this information solely to arrange and provide your transfer. We do not use it for
+      marketing lists and we never sell it.
+    </p>
+
+    <h2>Cookies and analytics</h2>
+    <p>
+      With your consent, we use Google Analytics 4 to understand how visitors use the site (pages
+      viewed, approximate location, device type). Analytics cookies are set only after you choose
+      "Accept" in the cookie banner; if you decline, no analytics run at all. We use no advertising
+      or marketing cookies.
+    </p>
+    <p>
+      Google's processing is described in
+      the <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">Google Privacy Policy</a>.
+      Analytics data is retained for up to 14 months.
+    </p>
+    <p>
+      <button
+        id="reset-cookie-choice"
+        class="text-sm font-medium underline underline-offset-2 hover:text-accent"
+      >
+        Change your cookie choice
+      </button>
+    </p>
+
+    <h2>Legal bases</h2>
+    <ul>
+      <li>Booking and providing your transfer: performance of a contract (GDPR Art. 6(1)(b)).</li>
+      <li>Analytics cookies: your consent (GDPR Art. 6(1)(a)), which you can withdraw at any time.</li>
+    </ul>
+
+    <h2>Who else processes your data</h2>
+    <ul>
+      <li>WhatsApp (Meta Platforms) delivers your booking messages, under the <a href="https://www.whatsapp.com/legal/privacy-policy-eea" rel="noopener noreferrer" target="_blank">WhatsApp Privacy Policy</a>.</li>
+      <li>Google processes analytics data if you consent, as described above.</li>
+      <li>Our hosting and network providers (Netlify, Cloudflare) may process IP addresses in standard server logs for security and delivery of the site.</li>
+    </ul>
+
+    <h2>How long we keep your data</h2>
+    <p>
+      Booking conversations on WhatsApp are kept only as long as needed to provide the transfer and
+      handle any follow-up, after which they can be deleted on request.
+    </p>
+
+    <h2>Your rights</h2>
+    <p>
+      Under the GDPR you can ask us for access to, correction of, or deletion of your personal data,
+      restriction of or objection to its processing, and a portable copy.
+      Email <a data-email-user="gkommata" data-email-domain="gmail.com">gkommata [at] gmail [dot] com</a> and we will respond as soon as
+      possible. You can also lodge a complaint with the Hellenic Data Protection Authority
+      (<a href="https://www.dpa.gr" rel="noopener noreferrer" target="_blank">dpa.gr</a>).
+    </p>
+
+    <h2>Changes to this policy</h2>
+    <p>
+      If we change how we handle personal data, we will update this page and the date at the top.
+    </p>
+  </LegalPage>
+
+  <script is:inline data-astro-rerun>
+    document.getElementById('reset-cookie-choice')?.addEventListener('click', function () {
+      try { localStorage.removeItem('gk-cookie-consent'); } catch (e) {}
+      location.reload();
+    });
+  </script>
+</Layout>

@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { m, useScroll, useTransform } from 'framer-motion'
 import { Phone } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/react/icons/WhatsAppIcon'
 import { Button } from '@/components/react/ui/button'
@@ -29,7 +29,7 @@ export const Hero = () => {
                 opacity={0.05}
             />
 
-            <motion.div
+            <m.div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
                 style={{
                     backgroundImage: "url('/kos-scenery.avif')",
@@ -37,57 +37,58 @@ export const Hero = () => {
                 }}
             >
                 <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/60 to-black/75" />
-            </motion.div>
+            </m.div>
 
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/10 via-transparent to-transparent" />
 
-            <motion.div
+            <m.div
                 className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-6 py-24 sm:py-20 text-center"
                 style={{ opacity }}
             >
-                <motion.div
+                <m.div
                     initial={{ opacity: 1, y: 0 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0 }}
                 >
-                    <motion.div
+                    {/* Above-the-fold content must never be server-rendered at opacity 0;
+                        crawlers, previews and users with failed JS would see a blank hero. */}
+                    <m.div
                         className="inline-block mb-7 sm:mb-8 px-6 sm:px-8 py-3 sm:py-3 border border-accent/50 rounded-full bg-accent/8 backdrop-blur-xl shadow-2xl shadow-accent/15"
-                        initial={{ opacity: 0, scale: 0.85 }}
+                        initial={{ opacity: 1, scale: 1 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0 }}
                         whileHover={{ scale: 1.05 }}
                     >
                         <span className="text-accent font-semibold tracking-wide text-xs sm:text-sm">
                             {t.hero.badge}
                         </span>
-                    </motion.div>
+                    </m.div>
 
-                    <motion.h1
+                    <m.h1
                         className="text-[2.75rem] leading-[1.05] sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-7 sm:mb-8 md:mb-10 tracking-tight px-2 text-center"
                         initial={{ opacity: 1, y: 0 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0 }}
                     >
-                        <span className="sr-only">Kos Transfer - </span>
                         {t.hero.title} <span className="text-accent italic font-light">{t.hero.titleAccent}</span>
-                    </motion.h1>
+                    </m.h1>
 
-                    <motion.p
+                    <m.p
                         className="text-lg leading-[1.6] sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-12 sm:mb-14 md:mb-16 max-w-3xl mx-auto font-light tracking-wide px-4"
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 1, y: 0 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0 }}
                     >
                         {t.hero.subtitle}
-                    </motion.p>
+                    </m.p>
 
-                    <motion.div
+                    <m.div
                         className="flex flex-col sm:flex-row gap-4 sm:gap-4 md:gap-5 justify-center items-stretch sm:items-center px-4 max-w-2xl mx-auto"
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 1, y: 0 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0 }}
                     >
-                        <motion.div
+                        <m.div
                             className="w-full sm:w-auto"
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.98 }}
@@ -101,9 +102,9 @@ export const Hero = () => {
                                 <WhatsAppIcon className="mr-2.5 sm:mr-2.5 w-[22px] h-[22px]" />
                                 {t.hero.bookWhatsApp}
                             </Button>
-                        </motion.div>
+                        </m.div>
 
-                        <motion.div
+                        <m.div
                             className="w-full sm:w-auto"
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.98 }}
@@ -117,25 +118,25 @@ export const Hero = () => {
                                 <Phone className="mr-2.5 sm:mr-2.5" size={22} />
                                 {t.hero.callNow}
                             </Button>
-                        </motion.div>
-                    </motion.div>
-                </motion.div>
-            </motion.div>
+                        </m.div>
+                    </m.div>
+                </m.div>
+            </m.div>
 
-            <motion.div
+            <m.div
             className="absolute bottom-6 sm:bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer"
             animate={{ y: [0, 14, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
             onClick={handleScrollClick}
             >
             <div className="w-6 h-10 sm:w-7 sm:h-11 md:w-8 md:h-12 border-2 border-white/50 rounded-full flex items-start justify-center p-1.5 sm:p-2 backdrop-blur-md bg-white/5 hover:border-accent/70 transition-colors duration-300">
-            <motion.div
+            <m.div
             className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-accent rounded-full shadow-xl shadow-accent/60"
             animate={{ y: [0, 16, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
             />
             </div>
-            </motion.div>
+            </m.div>
         </header>
     )
 }

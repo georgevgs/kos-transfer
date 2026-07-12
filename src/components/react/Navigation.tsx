@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { Menu, X, Globe } from 'lucide-react'
 import { Button } from '@/components/react/ui/button'
 import { Monogram } from '@/components/react/icons/Monogram'
@@ -15,7 +15,7 @@ type NavLink = {
 export const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
-    const { t, language, setLanguage } = useLanguage()
+    const { t, language } = useLanguage()
     const { openWhatsAppBooking } = useWhatsApp()
     const mobileMenuRef = useFocusTrap(isOpen)
     
@@ -60,10 +60,10 @@ export const Navigation = () => {
         }
     }
 
-    const handleLanguageToggle = () => {
-        const newLanguage = language === 'en' ? 'el' : 'en'
-        setLanguage(newLanguage)
-    }
+    // Real navigation between the localized URLs: the Greek page lives at /el/
+    // with its own canonical, hreflang and schema, so swapping content in
+    // client state would show Greek content on the English URL.
+    const altLanguageHref = language === 'en' ? '/el/' : '/'
 
     const getLanguageLabel = (): string => {
         if (language === 'en') {
@@ -74,7 +74,7 @@ export const Navigation = () => {
 
     return (
         <>
-            <motion.nav
+            <m.nav
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -87,7 +87,7 @@ export const Navigation = () => {
                 <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16 sm:h-20">
                         <div className="flex-shrink-0">
-                            <motion.a
+                            <m.a
                                 href="#"
                                 onClick={(e) => {
                                     e.preventDefault()
@@ -107,7 +107,7 @@ export const Navigation = () => {
                                     Vip Transfer
                                 </span>
                                 <span className="sr-only">GK Vip Transfer</span>
-                            </motion.a>
+                            </m.a>
                         </div>
 
                         <div className="hidden lg:flex items-center justify-center flex-1">
@@ -132,8 +132,8 @@ export const Navigation = () => {
                         </div>
 
                         <div className="hidden lg:flex items-center justify-end gap-4">
-                            <motion.button
-                                onClick={handleLanguageToggle}
+                            <m.a
+                                href={altLanguageHref}
                                 className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
                                     isScrolled
                                         ? 'bg-card/80 border border-border/60 hover:border-accent/40'
@@ -157,9 +157,9 @@ export const Navigation = () => {
                                 }`}>
                                     {language === 'en' ? 'ΕΛ' : 'EN'}
                                 </span>
-                            </motion.button>
+                            </m.a>
 
-                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                 <Button
                                     onClick={openWhatsAppBooking}
                                     className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 whitespace-nowrap"
@@ -167,11 +167,11 @@ export const Navigation = () => {
                                 >
                                     {t.nav.booking}
                                 </Button>
-                            </motion.div>
+                            </m.div>
                         </div>
 
                         <div className="flex lg:hidden">
-                            <motion.button
+                            <m.button
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => setIsOpen(!isOpen)}
                                 className={`p-2.5 rounded-xl transition-colors ${
@@ -188,16 +188,16 @@ export const Navigation = () => {
                                 ) : (
                                     <Menu size={24} strokeWidth={3} className={isScrolled ? 'text-foreground' : 'text-white'} aria-hidden="true" />
                                 )}
-                            </motion.button>
+                            </m.button>
                         </div>
                     </div>
                 </div>
-            </motion.nav>
+            </m.nav>
 
             <AnimatePresence>
                 {isOpen && (
                     <>
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
@@ -206,7 +206,7 @@ export const Navigation = () => {
                             onClick={() => setIsOpen(false)}
                             aria-hidden="true"
                         />
-                        <motion.div
+                        <m.div
                             id="mobile-menu"
                             ref={mobileMenuRef as React.RefObject<HTMLDivElement>}
                             initial={{ x: '100%' }}
@@ -235,7 +235,7 @@ export const Navigation = () => {
                             <div className="flex-1 overflow-y-auto p-5 sm:p-6">
                                 <nav className="space-y-1" aria-label="Mobile navigation links">
                                     {navLinks.map((link, index) => (
-                                        <motion.a
+                                        <m.a
                                             key={link.href}
                                             href={link.href}
                                             onClick={(e) => {
@@ -248,19 +248,19 @@ export const Navigation = () => {
                                             className="block px-4 py-3.5 rounded-xl text-[15px] font-medium text-foreground hover:bg-accent/10 hover:text-accent transition-colors active:bg-accent/15"
                                         >
                                             {link.label}
-                                        </motion.a>
+                                        </m.a>
                                     ))}
                                 </nav>
                             </div>
 
                             <div className="p-5 sm:p-6 border-t border-border/40 space-y-3">
-                                <motion.div
+                                <m.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.3, delay: 0.25 }}
                                 >
-                                    <button
-                                        onClick={handleLanguageToggle}
+                                    <a
+                                        href={altLanguageHref}
                                         className="w-full flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-muted/50 border border-border/60 hover:border-accent/40 transition-all duration-300 active:bg-muted"
                                         aria-label={getLanguageLabel()}
                                     >
@@ -268,10 +268,10 @@ export const Navigation = () => {
                                         <span className="text-sm font-medium text-foreground">
                                             {language === 'en' ? 'Ελληνικά' : 'English'}
                                         </span>
-                                    </button>
-                                </motion.div>
+                                    </a>
+                                </m.div>
 
-                                <motion.div
+                                <m.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.3, delay: 0.3 }}
@@ -286,9 +286,9 @@ export const Navigation = () => {
                                     >
                                         {t.nav.booking}
                                     </Button>
-                                </motion.div>
+                                </m.div>
                             </div>
-                        </motion.div>
+                        </m.div>
                     </>
                 )}
             </AnimatePresence>

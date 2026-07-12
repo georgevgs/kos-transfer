@@ -11,15 +11,15 @@ export const en: Translations = {
     },
     hero: {
         badge: '#1 Kos Transfer Service',
-        title: 'Kos Transfer',
-        titleAccent: '- Premium Airport & Island Transport',
+        title: 'GK Vip Transfer',
+        titleAccent: '- Kos Airport & Island Transfers',
         subtitle:
-            'Book your Kos transfer service today. Airport transfers from KGS, port pickups & hotel transfers across the island. 24/7 availability, flight tracking, fixed prices.',
+            'Private transfers from Kos Airport (KGS), port pickups and hotel transfers across the island. Available 24/7 with flight tracking and fixed prices.',
         bookWhatsApp: 'Book Transfer Now',
         callNow: 'Call Now',
     },
     booking: {
-        badge: 'Book Your Kos Transfer',
+        badge: 'Booking',
         title: 'Reserve Your',
         titleAccent: 'Transfer',
         subtitle: "Fill out the details below and we'll confirm your Kos transfer via WhatsApp",
@@ -35,10 +35,10 @@ export const en: Translations = {
         selectDropoff: 'Select drop-off location',
         other: 'Other (specify in WhatsApp message)',
         submitButton: 'Complete Booking via WhatsApp',
-        noteText: 'Your Kos transfer details will be sent via WhatsApp for confirmation',
+        noteText: 'Your transfer details will be sent via WhatsApp for confirmation',
     },
     fleet: {
-        badge: 'Our Transfer Fleet',
+        badge: 'Our Fleet',
         title: 'Choose Your',
         titleAccent: 'Vehicle',
         subtitle: 'Comfortable vehicles for your Kos airport transfer or island tour',
@@ -70,7 +70,7 @@ export const en: Translations = {
         },
     },
     services: {
-        badge: 'Kos Transfer Services',
+        badge: 'Our Services',
         title: 'Complete Island',
         titleAccent: 'Coverage',
         subtitle: 'Professional transfers to every corner of Kos',
@@ -112,37 +112,37 @@ export const en: Translations = {
     },
     about: {
         badge: 'Why Choose GK Vip Transfer',
-        title: 'Reliable Kos Transfer',
-        titleAccent: 'Service',
+        title: 'Reliable Transfers',
+        titleAccent: 'Across Kos',
         intro1:
-            'At GK Vip Transfer, we provide professional Kos transfer services from the airport, port, and hotels across the island. With flight tracking and 24/7 availability, we ensure you never wait for your transfer needs.',
+            'GK Vip Transfer is the family business of Georgia Kommata, a local owner-driver who knows every road on Kos. We provide private transfers from the airport, the port, and hotels across the island. With real-time flight tracking and 24/7 availability, your driver is waiting when you arrive.',
         intro2:
-            "Whether you need airport transfer from KGS, port pickup, or island tour, we offer fixed prices with no hidden fees. Trusted by hundreds of travelers visiting Kos.",
+            'Whether you need an airport pickup from KGS, a port transfer, or an island tour, every ride has a fixed price agreed at booking with no hidden fees. Rated 5.0 by our travelers on Google.',
         features: [
             {
-                title: 'Professional Kos Transfer',
+                title: 'Professional Service',
                 description: 'Clean, comfortable vehicles and experienced local drivers who know Kos',
             },
             {
                 title: 'Fully Licensed & Insured',
-                description: 'All Kos transfers include comprehensive insurance and licensed drivers',
+                description: 'Every ride includes comprehensive insurance and a licensed driver',
             },
             {
                 title: '24/7 Transfer Service',
-                description: 'Early morning flights, late arrivals - we cover all Kos airport transfers',
+                description: 'Early morning flights, late arrivals - we cover any pickup at any hour',
             },
             {
                 title: 'Flight Tracking Included',
-                description: 'We monitor your flight so your Kos transfer is always on time',
+                description: 'We monitor your flight so your driver is always on time',
             },
         ],
     },
     testimonials: {
-        badge: 'Kos Transfer Reviews',
+        badge: 'Reviews',
         title: 'What Our',
         titleAccent: 'Clients Say',
-        subtitle: 'Real experiences from travelers who booked their Kos transfer service with us',
-        joinText: 'Join hundreds of satisfied customers who trusted us with their Kos transfer needs',
+        subtitle: 'Real experiences from travelers who booked with us',
+        joinText: 'Rated 5.0 ★ on Google by travelers like you. Find us on Google to read every review',
         items: [
             {
                 name: 'Sarah M.',
@@ -189,12 +189,12 @@ export const en: Translations = {
         ],
     },
     faq: {
-        badge: 'Kos Transfer FAQ',
+        badge: 'FAQ',
         title: 'Frequently Asked',
         titleAccent: 'Questions',
         subtitle: 'Everything you need to know about booking a Kos transfer',
         stillHaveQuestions: 'Still have questions?',
-        contactPrompt: "Contact us via WhatsApp or email and we'll be happy to help with your Kos transfer!",
+        contactPrompt: "Contact us via WhatsApp or email and we'll be happy to help!",
         items: [
             {
                 question: 'How do I book a Kos transfer?',
@@ -214,15 +214,15 @@ export const en: Translations = {
             },
             {
                 question: 'What areas of Kos do you cover?',
-                answer: 'We provide Kos transfers to the entire island including Kos Airport (KGS), Kos Port, Kos Town, Kardamena, Kefalos, Tigaki, Mastichari, Marmari, and all hotels and resorts.',
+                answer: 'We serve the entire island including Kos Airport (KGS), Kos Port, Kos Town, Kardamena, Kefalos, Tigaki, Mastichari, Marmari, and all hotels and resorts.',
             },
             {
                 question: 'Is your Kos transfer service available 24/7?',
-                answer: 'Yes, we provide Kos transfers around the clock, including early morning flights and late-night arrivals at Kos Airport. Simply specify your pickup time when booking.',
+                answer: 'Yes, we operate around the clock, including early morning flights and late-night arrivals at Kos Airport. Simply specify your pickup time when booking.',
             },
             {
                 question: 'What payment methods do you accept for Kos transfers?',
-                answer: 'We accept cash (EUR) and card payments for all Kos transfers. Payment is made at the end of your ride - no prepayment required.',
+                answer: 'We accept cash (EUR) and card payments for all rides. Payment is made at the end of your ride - no prepayment required.',
             },
             {
                 question: 'How many passengers can your Kos transfer vehicles hold?',
@@ -237,14 +237,16 @@ export const en: Translations = {
     footer: {
         companyName: 'GK Vip Transfer',
         description:
-            'Professional Kos transfer service. Transfer from KGS, port transfers & private transportation. 24/7 availability, flight tracking, fixed prices.',
+            'Family-run private transfer service on Kos island. Airport (KGS) and port transfers, hotel pickups and island tours. 24/7 availability, flight tracking, fixed prices.',
         quickLinks: 'Quick Links',
-        contact: 'Book Kos Transfer',
+        contact: 'Contact',
         location: 'Location',
         whatsapp: 'WhatsApp',
         island: 'Kos Island',
         region: 'Dodecanese, Greece',
         copyright: 'GK Vip Transfer - Kos Transfer Service. All rights reserved.',
+        privacy: 'Privacy Policy',
+        terms: 'Terms of Service',
     },
     common: {
         loading: 'Loading...',

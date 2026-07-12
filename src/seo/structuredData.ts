@@ -1,620 +1,434 @@
+import { en } from '@/i18n/en'
+import { el } from '@/i18n/el'
+
 type StructuredDataSchema = Record<string, unknown>
+type Locale = 'en' | 'el'
 
 const BASE_URL = 'https://gkviptransfer.gr'
 const BUSINESS_NAME = 'GK Vip Transfer Kos'
 const BUSINESS_PHONE = '+306972961560'
-const BUSINESS_EMAIL = 'gkommata@gmail.com'
+// Email intentionally left out of all structured data: JSON-LD is plain text
+// in every page's HTML, the easiest place for spam harvesters to scrape.
+const WHATSAPP_URL = 'https://wa.me/306972961560'
 const OWNER_NAME = 'Georgia Kommata'
+const INSTAGRAM_URL = 'https://www.instagram.com/georgia.transport'
 
-export const getLocalBusinessSchema = (): StructuredDataSchema => {
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'LocalBusiness',
-        '@id': `${BASE_URL}/#business`,
-        name: BUSINESS_NAME,
-        alternateName: ['Transfer Kos', 'Kos Transfer', 'Kos Airport Transfer', 'GK Vip Transfer Kos', 'Transfer Kos Service'],
-        description: 'Professional transfer Kos services - airport and port transfers in Kos Island, Greece. 24/7 availability, flight tracking, and fixed prices.',
-        url: BASE_URL,
-        telephone: BUSINESS_PHONE,
-        email: BUSINESS_EMAIL,
-        image: {
-            '@type': 'ImageObject',
-            url: `${BASE_URL}/kos-scenery.jpg`,
-            width: 1200,
-            height: 630,
-        },
-        logo: {
-            '@type': 'ImageObject',
-            url: `${BASE_URL}/gk-monogram-geometric.svg`,
-            width: 215,
-            height: 150,
-        },
-        priceRange: '€€',
-        currenciesAccepted: 'EUR',
-        paymentAccepted: ['Cash', 'Credit Card', 'Bank Transfer'],
-        address: {
-            '@type': 'PostalAddress',
-            addressLocality: 'Kos',
-            addressRegion: 'Dodecanese',
-            addressCountry: 'GR',
-            postalCode: '85300',
-        },
-        geo: {
-            '@type': 'GeoCoordinates',
-            latitude: 36.8935,
-            longitude: 26.9861,
-        },
-        areaServed: [
-            {
-                '@type': 'City',
-                name: 'Kos',
-                '@id': 'https://www.wikidata.org/wiki/Q178488',
-            },
-            {
-                '@type': 'Place',
-                name: 'Kos Island',
-                geo: {
-                    '@type': 'GeoCircle',
-                    geoMidpoint: {
-                        '@type': 'GeoCoordinates',
-                        latitude: 36.8935,
-                        longitude: 26.9861,
-                    },
-                    geoRadius: '50000',
-                },
-            },
-        ],
-        serviceArea: {
-            '@type': 'GeoCircle',
-            geoMidpoint: {
-                '@type': 'GeoCoordinates',
-                latitude: 36.8935,
-                longitude: 26.9861,
-            },
-            geoRadius: '50000',
-        },
-        openingHoursSpecification: {
-            '@type': 'OpeningHoursSpecification',
-            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-            opens: '00:00',
-            closes: '23:59',
-        },
-        sameAs: ['https://www.instagram.com/georgia.transport'],
-        founder: {
-            '@type': 'Person',
-            name: OWNER_NAME,
-            jobTitle: 'Owner & Operator',
-        },
-        employee: {
-            '@type': 'Person',
-            name: OWNER_NAME,
-        },
-        potentialAction: [
-            {
-                '@type': 'ReserveAction',
-                target: {
-                    '@type': 'EntryPoint',
-                    urlTemplate: `${BASE_URL}/#booking`,
-                    inLanguage: ['en', 'el'],
-                    actionPlatform: ['http://schema.org/DesktopWebPlatform', 'http://schema.org/MobileWebPlatform'],
-                },
-                result: {
-                    '@type': 'Reservation',
-                    name: 'Transfer Booking',
-                },
-            },
-        ],
-        hasOfferCatalog: {
-            '@type': 'OfferCatalog',
-            name: 'Kos Transfer Services',
-            itemListElement: [
-                {
-                    '@type': 'OfferCatalog',
-                    name: 'Airport Transfers',
-                    itemListElement: [
-                        {
-                            '@type': 'Offer',
-                            itemOffered: {
-                                '@type': 'Service',
-                                name: 'Kos Airport to Hotel Transfer',
-                                serviceType: 'Airport Transfer',
-                            },
-                        },
-                        {
-                            '@type': 'Offer',
-                            itemOffered: {
-                                '@type': 'Service',
-                                name: 'Hotel to Kos Airport Transfer',
-                                serviceType: 'Airport Transfer',
-                            },
-                        },
-                    ],
-                },
-                {
-                    '@type': 'OfferCatalog',
-                    name: 'Port Transfers',
-                    itemListElement: [
-                        {
-                            '@type': 'Offer',
-                            itemOffered: {
-                                '@type': 'Service',
-                                name: 'Kos Port Transfer',
-                                serviceType: 'Port Transfer',
-                            },
-                        },
-                    ],
-                },
-                {
-                    '@type': 'OfferCatalog',
-                    name: 'Island Tours',
-                    itemListElement: [
-                        {
-                            '@type': 'Offer',
-                            itemOffered: {
-                                '@type': 'TouristTrip',
-                                name: 'Kos Island Sightseeing Tour',
-                                serviceType: 'Sightseeing Tour',
-                            },
-                        },
-                    ],
-                },
-            ],
-        },
-    }
+// Stable node identifiers; every cross-reference below uses these.
+// Entity nodes (business, service, fleet, …) are shared across locales;
+// page-level nodes (webpage, breadcrumb, faq) are minted per page URL.
+const BUSINESS_ID = `${BASE_URL}/#business`
+const SERVICE_ID = `${BASE_URL}/#service`
+const FLEET_ID = `${BASE_URL}/#fleet`
+const TOUR_ID = `${BASE_URL}/#tour`
+const AIRPORT_ID = `${BASE_URL}/#airport`
+const ISLAND_ID = `${BASE_URL}/#kos-island`
+const WEBSITE_ID = `${BASE_URL}/#website`
+const PERSON_ID = `${BASE_URL}/#georgia`
+const CAR_SEDAN_ID = `${BASE_URL}/#car-peugeot-308`
+const CAR_VAN_ID = `${BASE_URL}/#car-ford-transit`
+
+const SERVICE_TOWNS = ['Kos Town', 'Kardamena', 'Kefalos', 'Tigaki', 'Mastichari', 'Marmari']
+
+const kosIsland: StructuredDataSchema = {
+    '@type': 'Place',
+    '@id': ISLAND_ID,
+    name: 'Kos Island',
+    sameAs: ['https://www.wikidata.org/wiki/Q178488', 'https://en.wikipedia.org/wiki/Kos'],
+    geo: {
+        '@type': 'GeoCircle',
+        geoMidpoint: { '@type': 'GeoCoordinates', latitude: 36.8935, longitude: 26.9861 },
+        geoRadius: 50000,
+    },
 }
 
-export const getTransportServiceSchema = (): StructuredDataSchema => {
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'TaxiService',
-        '@id': `${BASE_URL}/#service`,
-        name: `${BUSINESS_NAME} - Airport Transfer Service`,
-        description: 'Professional airport transfer service from Kos International Airport (KGS) to any destination on Kos Island. 24/7 service with flight tracking.',
-        provider: {
-            '@type': 'LocalBusiness',
-            name: BUSINESS_NAME,
-            '@id': `${BASE_URL}/#business`,
+const business: StructuredDataSchema = {
+    '@type': 'LocalBusiness',
+    '@id': BUSINESS_ID,
+    name: BUSINESS_NAME,
+    alternateName: ['GK VIP Transfer'],
+    description:
+        'Private airport and port transfer service on Kos Island, Greece. 24/7 availability, flight tracking, fixed prices, run by owner-driver Georgia Kommata.',
+    slogan: '24/7 private transfers across Kos Island',
+    url: BASE_URL,
+    telephone: BUSINESS_PHONE,
+    image: { '@type': 'ImageObject', url: `${BASE_URL}/kos-scenery.jpg`, width: 1200, height: 630 },
+    logo: { '@type': 'ImageObject', url: `${BASE_URL}/gk-monogram-geometric.svg`, width: 215, height: 150 },
+    priceRange: '€€',
+    currenciesAccepted: 'EUR',
+    paymentAccepted: ['Cash', 'Credit Card', 'Bank Transfer'],
+    knowsLanguage: ['el', 'en'],
+    address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Kos',
+        addressRegion: 'Dodecanese',
+        postalCode: '85300',
+        addressCountry: 'GR',
+    },
+    geo: { '@type': 'GeoCoordinates', latitude: 36.8935, longitude: 26.9861 },
+    // hasMap: 'https://maps.google.com/?cid=XXXXXXXXXXXXXXXX', // TODO: Google Maps CID link from the Google Business Profile
+    areaServed: [
+        { '@id': ISLAND_ID },
+        ...SERVICE_TOWNS.map((name) => ({
+            '@type': 'City',
+            name,
+            containedInPlace: { '@id': ISLAND_ID },
+        })),
+    ],
+    openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        opens: '00:00',
+        closes: '23:59',
+    },
+    sameAs: [
+        INSTAGRAM_URL,
+        // TODO: add the Google Business Profile / Maps URL (highest-value single addition)
+        // TODO: add Facebook page URL once one exists
+    ],
+    contactPoint: [
+        {
+            '@type': 'ContactPoint',
+            contactType: 'reservations',
+            telephone: BUSINESS_PHONE,
+            availableLanguage: ['English', 'Greek'],
         },
-        areaServed: {
-            '@type': 'Place',
-            name: 'Kos Island, Greece',
+        {
+            '@type': 'ContactPoint',
+            contactType: 'customer service',
+            name: 'WhatsApp',
+            url: WHATSAPP_URL,
+            telephone: BUSINESS_PHONE,
+            availableLanguage: ['English', 'Greek'],
         },
-        availableChannel: {
-            '@type': 'ServiceChannel',
-            serviceUrl: BASE_URL,
-            servicePhone: {
-                '@type': 'ContactPoint',
-                telephone: BUSINESS_PHONE,
-                contactType: 'Reservations',
-                availableLanguage: ['English', 'Greek'],
-            },
+    ],
+    founder: { '@id': PERSON_ID },
+    employee: { '@id': PERSON_ID },
+    owns: [{ '@id': CAR_SEDAN_ID }, { '@id': CAR_VAN_ID }],
+    knowsAbout: [{ '@id': AIRPORT_ID }, 'Kos Island', 'Airport transfers', 'Port transfers', 'Private island tours'],
+    makesOffer: [{ '@type': 'Offer', itemOffered: { '@id': SERVICE_ID } }],
+    potentialAction: {
+        '@type': 'ReserveAction',
+        target: {
+            '@type': 'EntryPoint',
+            urlTemplate: `${BASE_URL}/#booking`,
+            inLanguage: ['en', 'el'],
+            actionPlatform: ['http://schema.org/DesktopWebPlatform', 'http://schema.org/MobileWebPlatform'],
         },
-        termsOfService: `${BASE_URL}/#terms`,
-        serviceOutput: {
-            '@type': 'Reservation',
-            name: 'Transfer Booking Confirmation',
-        },
-        category: ['Airport Transfer', 'Port Transfer', 'Private Transfer', 'Sightseeing Tours'],
-    }
-}
-
-export const getVehicleListingSchema = (): StructuredDataSchema => {
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'ItemList',
-        '@id': `${BASE_URL}/#vehicles`,
-        name: 'GK Vip Transfer Fleet',
-        description: 'Our fleet of modern, well-maintained vehicles for comfortable transfers in Kos',
+        result: { '@type': 'Reservation', name: 'Transfer Booking' },
+    },
+    hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Kos Transfer Services',
         itemListElement: [
             {
+                '@type': 'OfferCatalog',
+                name: 'Airport Transfers',
+                itemListElement: [
+                    {
+                        '@type': 'Offer',
+                        itemOffered: {
+                            '@type': 'Service',
+                            name: 'Kos Airport to Hotel Transfer',
+                            serviceType: 'Airport Transfer',
+                        },
+                    },
+                    {
+                        '@type': 'Offer',
+                        itemOffered: {
+                            '@type': 'Service',
+                            name: 'Hotel to Kos Airport Transfer',
+                            serviceType: 'Airport Transfer',
+                        },
+                    },
+                ],
+            },
+            {
+                '@type': 'OfferCatalog',
+                name: 'Port Transfers',
+                itemListElement: [
+                    {
+                        '@type': 'Offer',
+                        itemOffered: { '@type': 'Service', name: 'Kos Port Transfer', serviceType: 'Port Transfer' },
+                    },
+                ],
+            },
+            {
+                '@type': 'OfferCatalog',
+                name: 'Island Tours',
+                itemListElement: [{ '@type': 'Offer', itemOffered: { '@id': TOUR_ID } }],
+            },
+        ],
+    },
+}
+
+const owner: StructuredDataSchema = {
+    '@type': 'Person',
+    '@id': PERSON_ID,
+    name: OWNER_NAME,
+    jobTitle: 'Owner & Operator',
+    worksFor: { '@id': BUSINESS_ID },
+    knowsLanguage: ['el', 'en'],
+    knowsAbout: ['Kos Island', 'Airport transfers', 'Private tours'],
+    sameAs: [INSTAGRAM_URL],
+}
+
+const taxiService: StructuredDataSchema = {
+    '@type': 'TaxiService',
+    '@id': SERVICE_ID,
+    name: `${BUSINESS_NAME} - Airport Transfer Service`,
+    serviceType: 'Airport transfer',
+    description:
+        'Private airport transfer service from Kos International Airport (KGS) to any destination on Kos Island. 24/7 service with flight tracking.',
+    provider: { '@id': BUSINESS_ID },
+    areaServed: { '@id': ISLAND_ID },
+    hoursAvailable: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        opens: '00:00',
+        closes: '23:59',
+    },
+    availableChannel: {
+        '@type': 'ServiceChannel',
+        serviceUrl: BASE_URL,
+        servicePhone: {
+            '@type': 'ContactPoint',
+            telephone: BUSINESS_PHONE,
+            contactType: 'reservations',
+            availableLanguage: ['English', 'Greek'],
+        },
+    },
+    serviceOutput: { '@type': 'Reservation', name: 'Transfer Booking Confirmation' },
+    category: ['Airport Transfer', 'Port Transfer', 'Private Transfer', 'Sightseeing Tours'],
+}
+
+// Vehicle specs deliberately limited to what is visible on the page;
+// structured data must mirror on-page content.
+const fleet: StructuredDataSchema = {
+    '@type': 'ItemList',
+    '@id': FLEET_ID,
+    name: 'GK Vip Transfer Fleet',
+    description: 'Our fleet of modern, well-maintained vehicles for comfortable transfers in Kos',
+    itemListElement: [
+        {
+            '@type': 'ListItem',
+            position: 1,
+            item: {
                 '@type': 'Car',
-                '@id': `${BASE_URL}/#vehicle-peugeot308`,
+                '@id': CAR_SEDAN_ID,
                 name: 'Peugeot 308 Sedan',
-                brand: {
-                    '@type': 'Brand',
-                    name: 'Peugeot',
-                },
+                brand: { '@type': 'Brand', name: 'Peugeot' },
                 model: '308',
                 vehicleConfiguration: 'Sedan',
                 vehicleSeatingCapacity: 4,
-                numberOfAirbags: 6,
-                vehicleInteriorType: 'Leather',
-                fuelType: 'Diesel',
                 additionalProperty: [
-                    {
-                        '@type': 'PropertyValue',
-                        name: 'Air Conditioning',
-                        value: 'Yes',
-                    },
-                    {
-                        '@type': 'PropertyValue',
-                        name: 'Luggage Capacity',
-                        value: '3 large suitcases',
-                    },
+                    { '@type': 'PropertyValue', name: 'Air Conditioning', value: 'Yes' },
+                    { '@type': 'PropertyValue', name: 'Luggage Capacity', value: '3 large suitcases' },
                 ],
             },
-            {
+        },
+        {
+            '@type': 'ListItem',
+            position: 2,
+            item: {
                 '@type': 'Car',
-                '@id': `${BASE_URL}/#vehicle-fordtransit`,
+                '@id': CAR_VAN_ID,
                 name: 'Ford Transit Van',
-                brand: {
-                    '@type': 'Brand',
-                    name: 'Ford',
-                },
+                brand: { '@type': 'Brand', name: 'Ford' },
                 model: 'Transit',
                 vehicleConfiguration: 'Van',
                 vehicleSeatingCapacity: 8,
-                numberOfAirbags: 4,
-                fuelType: 'Diesel',
                 additionalProperty: [
-                    {
-                        '@type': 'PropertyValue',
-                        name: 'Air Conditioning',
-                        value: 'Yes',
-                    },
-                    {
-                        '@type': 'PropertyValue',
-                        name: 'Luggage Capacity',
-                        value: '8 large suitcases',
-                    },
-                    {
-                        '@type': 'PropertyValue',
-                        name: 'Ideal For',
-                        value: 'Groups and Families',
-                    },
+                    { '@type': 'PropertyValue', name: 'Air Conditioning', value: 'Yes' },
+                    { '@type': 'PropertyValue', name: 'Luggage Capacity', value: '6 large suitcases' },
+                    { '@type': 'PropertyValue', name: 'Ideal For', value: 'Groups and Families' },
                 ],
             },
-        ],
-    }
+        },
+    ],
 }
 
-export const getTouristDestinationSchema = (): StructuredDataSchema => {
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'TouristTrip',
-        '@id': `${BASE_URL}/#kos-tour`,
-        name: 'Kos Island Private Tour',
-        description: 'Explore the beautiful island of Kos with our private tour service. Visit ancient ruins, traditional villages, and stunning beaches.',
-        provider: {
-            '@type': 'LocalBusiness',
-            name: BUSINESS_NAME,
-            '@id': `${BASE_URL}/#business`,
-        },
-        itinerary: [
-            {
-                '@type': 'Place',
-                name: 'Asklepion',
-                description: 'Ancient healing temple and medical school',
-            },
-            {
-                '@type': 'Place',
-                name: 'Zia Village',
-                description: 'Traditional mountain village with stunning sunset views',
-            },
-            {
-                '@type': 'Place',
-                name: 'Neratzia Castle',
-                description: 'Medieval castle in Kos Town harbor',
-            },
-            {
-                '@type': 'Place',
-                name: 'Paradise Beach',
-                description: 'Beautiful sandy beach with crystal clear waters',
-            },
-        ],
-        touristType: ['Families', 'Couples', 'Solo Travelers', 'Groups'],
-    }
+const islandTour: StructuredDataSchema = {
+    '@type': 'TouristTrip',
+    '@id': TOUR_ID,
+    name: 'Kos Island Private Tour',
+    description:
+        'Explore the beautiful island of Kos with our private tour service. Visit ancient ruins, traditional villages, and stunning beaches.',
+    provider: { '@id': BUSINESS_ID },
+    itinerary: [
+        { '@type': 'Place', name: 'Asklepion', description: 'Ancient healing temple and medical school' },
+        { '@type': 'Place', name: 'Zia Village', description: 'Traditional mountain village with stunning sunset views' },
+        { '@type': 'Place', name: 'Neratzia Castle', description: 'Medieval castle in Kos Town harbor' },
+        { '@type': 'Place', name: 'Paradise Beach', description: 'Beautiful sandy beach with crystal clear waters' },
+    ],
+    touristType: ['Families', 'Couples', 'Solo Travelers', 'Groups'],
 }
 
-export const getAirportSchema = (): StructuredDataSchema => {
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'Airport',
-        '@id': 'https://www.wikidata.org/wiki/Q1432617',
-        name: 'Kos International Airport',
-        alternateName: ['Hippocrates Airport', 'KGS Airport'],
-        iataCode: 'KGS',
-        icaoCode: 'LGKO',
-        geo: {
-            '@type': 'GeoCoordinates',
-            latitude: 36.7993,
-            longitude: 27.0917,
-        },
-        address: {
-            '@type': 'PostalAddress',
-            addressLocality: 'Antimacheia',
-            addressRegion: 'Kos',
-            addressCountry: 'GR',
-        },
-    }
+const airport: StructuredDataSchema = {
+    '@type': 'Airport',
+    // Own the identifier; external entities (Wikidata/Wikipedia) belong in sameAs.
+    '@id': AIRPORT_ID,
+    name: 'Kos International Airport',
+    alternateName: ['Hippocrates Airport', 'KGS Airport'],
+    iataCode: 'KGS',
+    icaoCode: 'LGKO',
+    sameAs: ['https://www.wikidata.org/wiki/Q1432617', 'https://en.wikipedia.org/wiki/Kos_International_Airport'],
+    geo: { '@type': 'GeoCoordinates', latitude: 36.7993, longitude: 27.0917 },
+    address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Antimacheia',
+        addressRegion: 'Kos',
+        addressCountry: 'GR',
+    },
+    containedInPlace: { '@id': ISLAND_ID },
 }
 
-export const getWebPageSchema = (): StructuredDataSchema => {
+const website: StructuredDataSchema = {
+    '@type': 'WebSite',
+    '@id': WEBSITE_ID,
+    url: BASE_URL,
+    name: BUSINESS_NAME,
+    inLanguage: ['en', 'el'],
+    publisher: { '@id': BUSINESS_ID },
+}
+
+const PAGE_META: Record<Locale, { url: string; name: string; description: string }> = {
+    en: {
+        url: `${BASE_URL}/`,
+        name: 'GK Vip Transfer - Kos Airport, Port & Island Service',
+        description:
+            'Private Kos transfer service. Book airport transfers from KGS, port pickups, hotel transfers & island tours. 24/7 service, flight tracking, fixed prices.',
+    },
+    el: {
+        url: `${BASE_URL}/el/`,
+        name: 'GK Vip Transfer - Μεταφορές Κως | Αεροδρόμιο, Λιμάνι & Νησί',
+        description:
+            'Ιδιωτικές μεταφορές στην Κω. Transfer από το αεροδρόμιο KGS, το λιμάνι και προς όλα τα ξενοδοχεία. Υπηρεσία 24/7, παρακολούθηση πτήσεων, σταθερές τιμές.',
+    },
+}
+
+const getWebPage = (locale: Locale): StructuredDataSchema => {
+    const page = PAGE_META[locale]
     return {
-        '@context': 'https://schema.org',
         '@type': 'WebPage',
-        '@id': `${BASE_URL}/#webpage`,
-        url: BASE_URL,
-        name: 'GK Vip Transfer Kos | Private Transfers in Kos Island Greece',
-        description: '#1 Kos transfer service. Book airport transfers from KGS, port pickups, hotel transfers & island tours. 24/7 service, flight tracking, fixed prices.',
-        inLanguage: ['en', 'el'],
-        isPartOf: {
-            '@type': 'WebSite',
-            '@id': `${BASE_URL}/#website`,
-            url: BASE_URL,
-            name: 'GK Vip Transfer Kos',
+        '@id': `${page.url}#webpage`,
+        url: page.url,
+        name: page.name,
+        description: page.description,
+        inLanguage: locale,
+        isPartOf: { '@id': WEBSITE_ID },
+        about: { '@id': BUSINESS_ID },
+        mainEntity: { '@id': BUSINESS_ID },
+        primaryImageOfPage: { '@type': 'ImageObject', url: `${BASE_URL}/kos-scenery.jpg`, width: 1200, height: 630 },
+        breadcrumb: { '@id': `${page.url}#breadcrumb` },
+        speakable: {
+            '@type': 'SpeakableSpecification',
+            cssSelector: ['h1', '#about', '#faq'],
         },
-        about: {
-            '@type': 'Thing',
-            name: 'Airport Transfer Services',
+    }
+}
+
+const HOME_LABEL: Record<Locale, string> = { en: 'Home', el: 'Αρχική' }
+
+const getBreadcrumb = (locale: Locale): StructuredDataSchema => {
+    const page = PAGE_META[locale]
+    return {
+        '@type': 'BreadcrumbList',
+        '@id': `${page.url}#breadcrumb`,
+        itemListElement: [{ '@type': 'ListItem', position: 1, name: HOME_LABEL[locale], item: page.url }],
+    }
+}
+
+// FAQ markup is generated from the same i18n source as the visible FAQ section,
+// so the schema always matches on-page content in the page's own language.
+const getFAQ = (locale: Locale): StructuredDataSchema => {
+    const page = PAGE_META[locale]
+    const items = (locale === 'el' ? el : en).faq.items
+    return {
+        '@type': 'FAQPage',
+        '@id': `${page.url}#faq`,
+        isPartOf: { '@id': `${page.url}#webpage` },
+        inLanguage: locale,
+        mainEntity: items.map(({ question, answer }) => ({
+            '@type': 'Question',
+            name: question,
+            acceptedAnswer: { '@type': 'Answer', text: answer },
+        })),
+    }
+}
+
+// NOTE: Review and AggregateRating markup intentionally removed.
+// Google treats reviews of a LocalBusiness published on that business's own
+// site as "self-serving" and ignores them for rich results; fabricated-looking
+// review markup risks a spammy-structured-markup manual action. Testimonials
+// stay as visible page content only; the Google Business Profile in sameAs is
+// the legitimate path to the real Google reviews.
+
+/**
+ * Single consolidated JSON-LD graph for the given page locale. Returned as a
+ * one-element array so Layout.astro emits exactly one
+ * <script type="application/ld+json"> block.
+ */
+export const getAllStructuredData = (locale: Locale = 'en'): StructuredDataSchema[] => {
+    return [
+        {
+            '@context': 'https://schema.org',
+            '@graph': [
+                business,
+                owner,
+                taxiService,
+                fleet,
+                islandTour,
+                airport,
+                kosIsland,
+                website,
+                getWebPage(locale),
+                getBreadcrumb(locale),
+                getFAQ(locale),
+            ],
         },
-        primaryImageOfPage: {
-            '@type': 'ImageObject',
-            url: `${BASE_URL}/kos-scenery.jpg`,
-            width: 1200,
-            height: 630,
-        },
-        breadcrumb: {
-            '@type': 'BreadcrumbList',
-            '@id': `${BASE_URL}/#breadcrumb`,
-            itemListElement: [
+    ]
+}
+
+type LegalPageMeta = {
+    path: string
+    name: string
+    description: string
+}
+
+/**
+ * Compact graph for legal pages (privacy, terms): the business and website
+ * entities plus a WebPage and breadcrumb scoped to the page's own URL. The
+ * home page's FAQ markup is intentionally not repeated here, since FAQPage
+ * markup must describe content that exists on the page itself.
+ */
+export const getLegalPageStructuredData = (locale: Locale, page: LegalPageMeta): StructuredDataSchema[] => {
+    const url = `${BASE_URL}${page.path}`
+    return [
+        {
+            '@context': 'https://schema.org',
+            '@graph': [
+                business,
+                website,
                 {
-                    '@type': 'ListItem',
-                    position: 1,
-                    name: 'Home',
-                    item: BASE_URL,
+                    '@type': 'WebPage',
+                    '@id': `${url}#webpage`,
+                    url,
+                    name: page.name,
+                    description: page.description,
+                    inLanguage: locale,
+                    isPartOf: { '@id': WEBSITE_ID },
+                    about: { '@id': BUSINESS_ID },
+                    breadcrumb: { '@id': `${url}#breadcrumb` },
+                },
+                {
+                    '@type': 'BreadcrumbList',
+                    '@id': `${url}#breadcrumb`,
+                    itemListElement: [
+                        { '@type': 'ListItem', position: 1, name: HOME_LABEL[locale], item: PAGE_META[locale].url },
+                        { '@type': 'ListItem', position: 2, name: page.name, item: url },
+                    ],
                 },
             ],
         },
-    }
-}
-
-export const getReviewsSchema = (): StructuredDataSchema => {
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'ItemList',
-        '@id': `${BASE_URL}/#reviews`,
-        name: 'Customer Reviews - GK Vip Transfer Kos',
-        description: 'Real customer reviews from travelers who used our Kos transfer services',
-        itemListElement: [
-            {
-                '@type': 'Review',
-                '@id': `${BASE_URL}/#review-1`,
-                author: {
-                    '@type': 'Person',
-                    name: 'Sarah M.',
-                },
-                datePublished: '2025-11-18',
-                reviewRating: {
-                    '@type': 'Rating',
-                    ratingValue: 5,
-                    bestRating: 5,
-                },
-                reviewBody:
-                    "Georgia was already waiting when we came out of arrivals - such a relief after a long flight! Car was spotless and cool, and she knew exactly where our hotel was. Couldn't have asked for a better start to our holiday.",
-                itemReviewed: {
-                    '@type': 'LocalBusiness',
-                    name: BUSINESS_NAME,
-                    '@id': `${BASE_URL}/#business`,
-                },
-            },
-            {
-                '@type': 'Review',
-                '@id': `${BASE_URL}/#review-2`,
-                author: {
-                    '@type': 'Person',
-                    name: 'Michael S.',
-                },
-                datePublished: '2025-09-22',
-                reviewRating: {
-                    '@type': 'Rating',
-                    ratingValue: 5,
-                    bestRating: 5,
-                },
-                reviewBody:
-                    'Traveled with my wife and 4 kids, so we needed the bigger van. Plenty of room for everyone and all our bags. The driver was patient with the kids and even helped us with the luggage. Very fair price too.',
-                itemReviewed: {
-                    '@type': 'LocalBusiness',
-                    name: BUSINESS_NAME,
-                    '@id': `${BASE_URL}/#business`,
-                },
-            },
-            {
-                '@type': 'Review',
-                '@id': `${BASE_URL}/#review-3`,
-                author: {
-                    '@type': 'Person',
-                    name: 'Emma A.',
-                },
-                datePublished: '2025-12-14',
-                reviewRating: {
-                    '@type': 'Rating',
-                    ratingValue: 5,
-                    bestRating: 5,
-                },
-                reviewBody:
-                    'Used them three times during our week in Kos - airport, a day trip to Zia, and back to the airport. Always on time, always friendly. Georgia even recommended a great taverna in Zia village!',
-                itemReviewed: {
-                    '@type': 'LocalBusiness',
-                    name: BUSINESS_NAME,
-                    '@id': `${BASE_URL}/#business`,
-                },
-            },
-            {
-                '@type': 'Review',
-                '@id': `${BASE_URL}/#review-4`,
-                author: {
-                    '@type': 'Person',
-                    name: 'James O.',
-                },
-                datePublished: '2026-01-15',
-                reviewRating: {
-                    '@type': 'Rating',
-                    ratingValue: 5,
-                    bestRating: 5,
-                },
-                reviewBody:
-                    "Our flight got delayed by almost 3 hours and I was worried, but they tracked it and were there when we finally landed. No fuss, no extra charge. That's proper service right there.",
-                itemReviewed: {
-                    '@type': 'LocalBusiness',
-                    name: BUSINESS_NAME,
-                    '@id': `${BASE_URL}/#business`,
-                },
-            },
-            {
-                '@type': 'Review',
-                '@id': `${BASE_URL}/#review-5`,
-                author: {
-                    '@type': 'Person',
-                    name: 'Maria R.',
-                },
-                datePublished: '2025-10-28',
-                reviewRating: {
-                    '@type': 'Rating',
-                    ratingValue: 5,
-                    bestRating: 5,
-                },
-                reviewBody:
-                    'Booked last minute on WhatsApp - got a reply within minutes and everything was sorted. The Peugeot was comfortable and clean. Simple, easy, exactly what you want after traveling.',
-                itemReviewed: {
-                    '@type': 'LocalBusiness',
-                    name: BUSINESS_NAME,
-                    '@id': `${BASE_URL}/#business`,
-                },
-            },
-            {
-                '@type': 'Review',
-                '@id': `${BASE_URL}/#review-6`,
-                author: {
-                    '@type': 'Person',
-                    name: 'Thomas D.',
-                },
-                datePublished: '2025-08-08',
-                reviewRating: {
-                    '@type': 'Rating',
-                    ratingValue: 5,
-                    bestRating: 5,
-                },
-                reviewBody:
-                    "Organised transfers for 12 of our wedding guests arriving on different flights. Georgia coordinated everything perfectly - everyone got picked up on time. One less thing to stress about on our big day!",
-                itemReviewed: {
-                    '@type': 'LocalBusiness',
-                    name: BUSINESS_NAME,
-                    '@id': `${BASE_URL}/#business`,
-                },
-            },
-        ],
-    }
-}
-
-export const getFAQSchema = (): StructuredDataSchema => {
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        '@id': `${BASE_URL}/#faq`,
-        mainEntity: [
-            {
-                '@type': 'Question',
-                name: 'How do I book a Kos transfer?',
-                acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'You can book your Kos transfer directly through our website using the booking form, or contact us via WhatsApp for instant confirmation. We recommend booking at least 24 hours in advance, especially during peak season.',
-                },
-            },
-            {
-                '@type': 'Question',
-                name: 'How much does a Kos airport transfer cost?',
-                acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'Kos transfer prices vary by destination. We offer fixed prices with no hidden fees. Contact us via WhatsApp for an instant quote for your specific route from Kos Airport (KGS) to your hotel.',
-                },
-            },
-            {
-                '@type': 'Question',
-                name: 'What happens if my flight to Kos is delayed?',
-                acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'We monitor all flight arrivals at Kos Airport (KGS) in real-time and automatically adjust pickup times for delays. There are no extra charges for flight delays - your Kos transfer will be waiting when you land.',
-                },
-            },
-            {
-                '@type': 'Question',
-                name: 'Do you provide Kos port transfers?',
-                acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'Yes, we provide Kos port transfers for cruise ship passengers and ferry travelers. We track all arrivals and will be waiting at the port when your ship docks.',
-                },
-            },
-            {
-                '@type': 'Question',
-                name: 'What areas of Kos do you cover?',
-                acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'We provide Kos transfers to the entire island including Kos Airport (KGS), Kos Port, Kos Town, Kardamena, Kefalos, Tigaki, Mastichari, Marmari, and all hotels and resorts.',
-                },
-            },
-            {
-                '@type': 'Question',
-                name: 'Is your Kos transfer service available 24/7?',
-                acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'Yes, we provide Kos transfers around the clock, including early morning flights and late-night arrivals at Kos Airport. Simply specify your pickup time when booking.',
-                },
-            },
-            {
-                '@type': 'Question',
-                name: 'What payment methods do you accept for Kos transfers?',
-                acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'We accept cash (EUR) and card payments for all Kos transfers. Payment is made at the end of your ride - no prepayment required.',
-                },
-            },
-            {
-                '@type': 'Question',
-                name: 'How many passengers can your Kos transfer vehicles hold?',
-                acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'Our Peugeot 308 sedan accommodates up to 4 passengers with 3 large suitcases. Our Ford Transit van can fit up to 8 passengers with 6 large suitcases - perfect for families and groups.',
-                },
-            },
-            {
-                '@type': 'Question',
-                name: 'Can I book a Kos island tour with your transfer service?',
-                acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'Absolutely! Besides airport and port transfers, we offer Kos island tours to Asklepion, Zia village, beaches, and other attractions. Contact us for custom tour itineraries.',
-                },
-            },
-        ],
-    }
-}
-
-export const getAggregateRatingSchema = (): StructuredDataSchema => {
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'LocalBusiness',
-        '@id': `${BASE_URL}/#business`,
-        name: BUSINESS_NAME,
-        aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: '5.0',
-            reviewCount: 6,
-            bestRating: '5',
-            worstRating: '1',
-        },
-    }
-}
-
-export const getAllStructuredData = (): StructuredDataSchema[] => {
-    return [
-        getLocalBusinessSchema(),
-        getTransportServiceSchema(),
-        getVehicleListingSchema(),
-        getTouristDestinationSchema(),
-        getAirportSchema(),
-        getWebPageSchema(),
-        getReviewsSchema(),
-        getFAQSchema(),
-        getAggregateRatingSchema(),
     ]
 }

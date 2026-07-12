@@ -1,9 +1,48 @@
-# Allow all search engines
+# GK Vip Transfer — all search engines and AI assistants welcome.
+# NOTE: Cloudflare's "AI Crawl Control" managed robots.txt must stay DISABLED
+# in the dashboard, or it will prepend Disallow rules for AI crawlers above this file.
+
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://gkviptransfer.gr/sitemap-index.xml
+# AI training & retrieval crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
 
-# Crawl-delay for nice behavior
-Crawl-delay: 1
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://gkviptransfer.gr/sitemap-index.xml

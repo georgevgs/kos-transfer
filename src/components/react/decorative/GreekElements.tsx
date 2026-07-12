@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 
 export function GreekBorder() {
     return (
@@ -31,7 +31,7 @@ export function GreekCorner({ position = 'top-left' }: { position?: 'top-left' |
     }
 
     return (
-        <motion.div
+        <m.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -46,7 +46,7 @@ export function GreekCorner({ position = 'top-left' }: { position?: 'top-left' |
                     strokeLinecap="square"
                 />
             </svg>
-        </motion.div>
+        </m.div>
     )
 }
 
@@ -90,7 +90,7 @@ export function GreekMeanderPattern() {
 
 export function GreekColumn() {
     return (
-        <motion.div
+        <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -113,6 +113,6 @@ export function GreekColumn() {
                 <rect x="5" y="175" width="50" height="5" fill="currentColor" />
                 <rect x="0" y="180" width="60" height="20" fill="currentColor" />
             </svg>
-        </motion.div>
+        </m.div>
     )
 }

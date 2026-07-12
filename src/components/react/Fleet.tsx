@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { Briefcase, BadgeCheck, Shield, Users } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/react/icons/WhatsAppIcon'
 import { Card } from '@/components/react/ui/card'
@@ -74,7 +74,7 @@ export const Fleet = () => {
                     {VEHICLES.map((vehicle, index) => {
                         const vehicleData = t.fleet.vehicles[vehicle.key]
                         return (
-                            <motion.div
+                            <m.div
                                 key={vehicle.key}
                                 initial={{ opacity: 0, y: 50 }}
                                 animate={getAnimationState(isInView)}
@@ -82,15 +82,19 @@ export const Fleet = () => {
                             >
                                 <Card className="overflow-hidden border border-border/60 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/15 group bg-card/80 backdrop-blur-sm p-0">
                                     <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
-                                        <motion.img
+                                        <m.img
                                             src={vehicle.image}
                                             alt={vehicleData.name}
+                                            width={1536}
+                                            height={1024}
+                                            loading="lazy"
+                                            decoding="async"
                                             className="w-full h-full object-cover object-[center_35%]"
                                             whileHover={{ scale: 1.08 }}
                                             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
-                                        <motion.div
+                                        <m.div
                                             className="absolute bottom-5 sm:bottom-6 left-5 sm:left-6 right-5 sm:right-6"
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={getAnimationState(isInView)}
@@ -99,7 +103,7 @@ export const Fleet = () => {
                                             <h3 className="text-2xl sm:text-3xl md:text-3xl font-bold text-white tracking-tight text-center">
                                                 {vehicleData.name}
                                             </h3>
-                                        </motion.div>
+                                        </m.div>
                                     </div>
 
                                     <div className="p-6 sm:p-7 bg-card/95 backdrop-blur-sm">
@@ -134,7 +138,7 @@ export const Fleet = () => {
                                             <ul className="grid grid-cols-1 gap-4 sm:gap-4">
                                                 {vehicleData.features.map((feature) => {
                                                     return (
-                                                        <motion.li
+                                                        <m.li
                                                             key={feature}
                                                             className="text-base sm:text-base text-muted-foreground flex items-center group/item"
                                                             whileHover={{ x: 4 }}
@@ -146,13 +150,13 @@ export const Fleet = () => {
                                                                 strokeWidth={2}
                                                             />
                                                             {feature}
-                                                        </motion.li>
+                                                        </m.li>
                                                     )
                                                 })}
                                             </ul>
                                         </div>
 
-                                        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                                        <m.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                                             <Button
                                                 className="w-full bg-accent hover:bg-accent/95 text-accent-foreground font-semibold tracking-wide transition-all duration-300 hover:shadow-xl hover:shadow-accent/30 text-base sm:text-base rounded-2xl relative overflow-hidden group/btn h-[56px]"
                                                 onClick={() => handleVehicleBooking(vehicleData.name)}
@@ -161,10 +165,10 @@ export const Fleet = () => {
                                                 <WhatsAppIcon className="mr-2.5 sm:mr-2.5 w-[22px] h-[22px]" />
                                                 {t.fleet.bookVehicle}
                                             </Button>
-                                        </motion.div>
+                                        </m.div>
                                     </div>
                                 </Card>
-                            </motion.div>
+                            </m.div>
                         )
                     })}
                 </div>

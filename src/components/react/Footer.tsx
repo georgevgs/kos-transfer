@@ -1,6 +1,7 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Mail, Instagram, MapPin, Phone } from 'lucide-react'
 import { Monogram } from '@/components/react/icons/Monogram'
+import { ObfuscatedEmail } from '@/components/react/common/ObfuscatedEmail'
 import { WhatsAppIcon } from '@/components/react/icons/WhatsAppIcon'
 import { Separator } from '@/components/react/ui/separator'
 import { CONTACT, SOCIAL_MEDIA } from '@/constants/contact'
@@ -23,8 +24,9 @@ const SOCIAL_LINKS: SocialLink[] = [
 
 export const Footer = () => {
     const currentYear = new Date().getFullYear()
-    const { getPhoneLink, getWhatsAppLink, getEmailLink } = useContactLinks()
-    const { t } = useLanguage()
+    const { getPhoneLink, getWhatsAppLink } = useContactLinks()
+    const { t, language } = useLanguage()
+    const legalPrefix = language === 'el' ? '/el' : ''
 
     const quickLinks = [
         { href: '#fleet', label: t.nav.fleet },
@@ -39,7 +41,7 @@ export const Footer = () => {
 
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-12 md:gap-14 mb-16 sm:mb-16 md:mb-20">
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -50,6 +52,10 @@ export const Footer = () => {
                             <img
                                 src="/kos-map.avif"
                                 alt=""
+                                width={1024}
+                                height={1024}
+                                loading="lazy"
+                                decoding="async"
                                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[320px] h-auto brightness-0 invert"
                             />
                         </div>
@@ -62,9 +68,9 @@ export const Footer = () => {
                         <p className="text-primary-foreground/75 leading-relaxed font-light text-base sm:text-base relative z-10">
                             {t.footer.description}
                         </p>
-                    </motion.div>
+                    </m.div>
 
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -89,9 +95,9 @@ export const Footer = () => {
                                 )
                             })}
                         </ul>
-                    </motion.div>
+                    </m.div>
 
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -131,17 +137,12 @@ export const Footer = () => {
                                     size={22}
                                                                         className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform"
                                 />
-                                <a
-                                    href={getEmailLink()}
-                                    className="text-sm sm:text-sm text-primary-foreground/75 hover:text-accent transition-colors font-light break-all"
-                                >
-                                    {CONTACT.email}
-                                </a>
+                                <ObfuscatedEmail className="text-sm sm:text-sm text-primary-foreground/75 hover:text-accent transition-colors font-light break-all" />
                             </li>
                         </ul>
-                    </motion.div>
+                    </m.div>
 
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -162,7 +163,7 @@ export const Footer = () => {
                             {SOCIAL_LINKS.map((social) => {
                                 const Icon = social.icon
                                 return (
-                                    <motion.a
+                                    <m.a
                                         key={social.label}
                                         href={social.href}
                                         className="w-12 h-12 sm:w-12 sm:h-12 rounded-full bg-primary-foreground/5 hover:bg-accent/15 border border-primary-foreground/10 hover:border-accent/40 flex items-center justify-center transition-all duration-300"
@@ -174,16 +175,16 @@ export const Footer = () => {
                                             size={22}
                                                                                         className="text-primary-foreground hover:text-accent transition-colors"
                                         />
-                                    </motion.a>
+                                    </m.a>
                                 )
                             })}
                         </div>
-                    </motion.div>
+                    </m.div>
                 </div>
 
                 <Separator className="bg-primary-foreground/15 mb-10 sm:mb-10" />
 
-                <motion.div
+                <m.div
                     className="text-center text-primary-foreground/60 text-sm sm:text-sm font-light"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -193,7 +194,21 @@ export const Footer = () => {
                     <p>
                         © {currentYear} {t.footer.copyright}
                     </p>
-                </motion.div>
+                    <div className="mt-4 flex justify-center gap-6">
+                        <a
+                            href={`${legalPrefix}/privacy/`}
+                            className="hover:text-accent transition-colors underline-offset-4 hover:underline"
+                        >
+                            {t.footer.privacy}
+                        </a>
+                        <a
+                            href={`${legalPrefix}/terms/`}
+                            className="hover:text-accent transition-colors underline-offset-4 hover:underline"
+                        >
+                            {t.footer.terms}
+                        </a>
+                    </div>
+                </m.div>
             </div>
         </footer>
     )

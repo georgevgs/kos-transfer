@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { Star, Quote } from 'lucide-react'
 import { Card } from '@/components/react/ui/card'
 import { SectionHeader } from '@/components/react/common/SectionHeader'
@@ -35,13 +35,13 @@ export const Testimonials = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     {t.testimonials.items.map((testimonial, index) => {
                         return (
-                            <motion.div
+                            <m.div
                                 key={`${testimonial.name}-${index}`}
                                 initial={{ opacity: 0, y: 40 }}
                                 animate={getAnimationState(isInView)}
                                 transition={{ duration: 0.7, delay: 0.5 + index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                             >
-                                <motion.div
+                                <m.div
                                     whileHover={{ y: -8 }}
                                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                 >
@@ -49,13 +49,13 @@ export const Testimonials = () => {
                                         <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-accent/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-colors duration-500" />
 
                                         <div className="relative z-10">
-                                            <motion.div
+                                            <m.div
                                                 className="mb-5 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto"
                                                 whileHover={{ rotate: 180, scale: 1.1 }}
                                                 transition={{ duration: 0.5 }}
                                             >
                                                 <Quote size={24} className="text-accent" />
-                                            </motion.div>
+                                            </m.div>
 
                                             <div className="flex gap-1 mb-4 justify-center">
                                                 {Array.from({ length: testimonial.rating }).map((_, i) => (
@@ -85,13 +85,13 @@ export const Testimonials = () => {
                                             </div>
                                         </div>
                                     </Card>
-                                </motion.div>
-                            </motion.div>
+                                </m.div>
+                            </m.div>
                         )
                     })}
                 </div>
 
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={getAnimationState(isInView)}
                     transition={{ duration: 0.7, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
@@ -100,7 +100,7 @@ export const Testimonials = () => {
                     <p className="text-muted-foreground font-light text-base sm:text-lg">
                         {t.testimonials.joinText}
                     </p>
-                </motion.div>
+                </m.div>
             </div>
         </section>
     )

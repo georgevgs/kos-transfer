@@ -1,12 +1,12 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import { App } from '@/components/react/App'
+import HomePage from '@/components/HomePage.astro'
 
 const title = 'GK Vip Transfer - Kos Airport, Port & Island Service'
-const description = '#1 Kos Transfer service. Airport pickups from KGS, port & hotel transfers, island tours. Fixed prices, 24/7 availability, flight tracking. Book now.'
+const description = 'Private Kos transfers rated 5.0 on Google. Airport pickups from KGS, port & hotel transfers, island tours. Fixed prices, 24/7, flight tracking. Book now.'
 ---
 
 <Layout title={title} description={description} lang="en">
-  <!-- Server-rendered React (SSR + hydration) so crawlers get the real content -->
-  <App client:load initialLanguage="en" />
+  <!-- Server-rendered React islands (SSR + staged hydration) so crawlers get the real content -->
+  <HomePage lang="en" />
 </Layout>

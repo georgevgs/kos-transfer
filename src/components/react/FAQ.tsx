@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { SectionHeader } from '@/components/react/common/SectionHeader'
 import { useLanguage } from '@/i18n'
@@ -39,7 +39,7 @@ export const FAQ = () => {
                     isInView={isInView}
                 />
 
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={getAnimationState(isInView)}
                     transition={{ duration: 0.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -49,7 +49,7 @@ export const FAQ = () => {
                         const isOpen = openIndex === index
 
                         return (
-                            <motion.div
+                            <m.div
                                 key={index}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={getAnimationState(isInView)}
@@ -58,21 +58,22 @@ export const FAQ = () => {
                             >
                                 <button
                                     onClick={() => handleToggle(index)}
+                                    aria-expanded={isOpen}
                                     className="w-full px-6 sm:px-8 py-5 sm:py-6 flex items-center justify-between gap-4 text-left hover:bg-accent/5 transition-colors duration-200"
                                 >
                                     <span className="font-semibold text-foreground text-base sm:text-lg pr-4">
                                         {faq.question}
                                     </span>
-                                    <motion.div
+                                    <m.div
                                         animate={{ rotate: isOpen ? 180 : 0 }}
                                         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                         className="flex-shrink-0"
                                     >
                                         <ChevronDown size={24} strokeWidth={3} className="text-accent" />
-                                    </motion.div>
+                                    </m.div>
                                 </button>
 
-                                <motion.div
+                                <m.div
                                     initial={false}
                                     animate={{
                                         height: isOpen ? 'auto' : 0,
@@ -86,13 +87,13 @@ export const FAQ = () => {
                                             {faq.answer}
                                         </p>
                                     </div>
-                                </motion.div>
-                            </motion.div>
+                                </m.div>
+                            </m.div>
                         )
                     })}
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={getAnimationState(isInView)}
                     transition={{ duration: 0.7, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
@@ -104,7 +105,7 @@ export const FAQ = () => {
                     <p className="text-muted-foreground font-light text-sm sm:text-base">
                         {t.faq.contactPrompt}
                     </p>
-                </motion.div>
+                </m.div>
             </div>
         </section>
     )

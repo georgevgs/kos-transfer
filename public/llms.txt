@@ -1,0 +1,39 @@
+# GK Vip Transfer
+
+> Private airport, port and hotel transfer service on Kos island, Greece.
+> Owner-operated by Georgia Kommata. Available 24/7 with real-time flight
+> tracking, fixed prices and licensed, insured, English-speaking drivers.
+> Book via the website form or WhatsApp +30 697 296 1560.
+
+GK Vip Transfer provides pre-booked private transfers between Kos
+International Airport (KGS), Kos Port and every town and resort on Kos
+island: Kos Town, Kardamena, Kefalos, Tigaki, Mastichari, Marmari, Lambi,
+Psalidi and Antimachia. All flights and ferries are tracked in real time
+and there is no extra charge for delays. Prices are fixed and confirmed at
+booking with no hidden fees. Payment is cash (EUR) or card at the end of
+the ride; no prepayment is required.
+
+Fleet:
+- Peugeot 308 sedan: up to 4 passengers, 3 large suitcases
+- Ford Transit van: up to 8 passengers, 6 large suitcases
+
+Services: Kos Airport (KGS) transfers, Kos Port transfers (ferry and
+cruise), hotel and resort transfers island-wide, private island tours
+(Asklepion, Zia village, Neratzia Castle), and beach transfers (Paradise
+Beach, Tigaki, Kefalos).
+
+## Pages
+
+- [Home (English)](https://gkviptransfer.gr/): Services, fleet, FAQ and booking form for Kos transfers
+- [Home (Greek)](https://gkviptransfer.gr/el/): Greek-language version of the site
+
+## Booking & Contact
+
+- [Booking form](https://gkviptransfer.gr/#booking): Reserve a transfer online; confirmation via WhatsApp
+- WhatsApp / Phone: +30 697 296 1560 (24/7, instant quotes and confirmation)
+
+## Optional
+
+- [Sitemap](https://gkviptransfer.gr/sitemap-index.xml): XML sitemap index
+- [Privacy Policy](https://gkviptransfer.gr/privacy/): How personal data and cookies are handled
+- [Terms of Service](https://gkviptransfer.gr/terms/): Booking, payment and cancellation terms

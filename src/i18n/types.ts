@@ -116,6 +116,8 @@ export type Translations = {
         island: string
         region: string
         copyright: string
+        privacy: string
+        terms: string
     }
     common: {
         loading: string

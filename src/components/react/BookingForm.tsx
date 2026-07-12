@@ -1,6 +1,6 @@
 import { useState, useId, useEffect } from 'react'
 import type { FormEvent } from 'react'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Calendar, Clock, MapPin, Users, Car } from 'lucide-react'
 import { Button } from '@/components/react/ui/button'
 import { Card } from '@/components/react/ui/card'
@@ -109,14 +109,14 @@ export const BookingForm = () => {
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent" aria-hidden="true" />
 
             <div className="max-w-4xl mx-auto relative z-10">
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     className="text-center mb-12 sm:mb-14"
                 >
-                    <motion.div
+                    <m.div
                         className="inline-block mb-5 sm:mb-6 px-6 sm:px-7 py-2.5 border border-accent/40 rounded-full bg-accent/8 backdrop-blur-xl shadow-lg shadow-accent/10"
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -127,7 +127,7 @@ export const BookingForm = () => {
                         <span className="text-accent font-semibold tracking-wide text-xs sm:text-sm">
                             {t.booking.badge}
                         </span>
-                    </motion.div>
+                    </m.div>
                     <h2 
                         id="booking-heading"
                         className="text-[2.25rem] leading-[1.1] sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-5 tracking-tight text-center px-4"
@@ -137,9 +137,9 @@ export const BookingForm = () => {
                     <p className="text-base sm:text-lg text-muted-foreground font-light max-w-2xl mx-auto px-4">
                         {t.booking.subtitle}
                     </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -315,7 +315,7 @@ export const BookingForm = () => {
                                 </div>
                             </div>
 
-                            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                            <m.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                                 <Button
                                     type="submit"
                                     disabled={isSubmitting}
@@ -327,14 +327,14 @@ export const BookingForm = () => {
                                         {isSubmitting ? 'Preparing...' : t.booking.submitButton}
                                     </span>
                                 </Button>
-                            </motion.div>
+                            </m.div>
 
                             <p className="text-center text-sm text-muted-foreground px-4" role="note">
                                 {t.booking.noteText}
                             </p>
                         </form>
                     </Card>
-                </motion.div>
+                </m.div>
             </div>
         </section>
     )
